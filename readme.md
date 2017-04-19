@@ -4,7 +4,7 @@
 
 [MDN(最新)](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript)  
 [W3C School-Javascript(舊版)](https://www.w3schools.com/js/js_intro.asp)  
-[W3C School-Javascript-Reference](https://www.w3schools.com/jsref/default.asp)
+[W3C School-Javascript-Reference](https://www.w3schools.com/jsref/default.asp)  
 [codecademy-javascript](https://www.codecademy.com/learn/javascript)    
 [Markdown語法(中文)](http://markdown.tw/)
 
