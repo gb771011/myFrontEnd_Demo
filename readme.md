@@ -3,13 +3,17 @@
 ## 參考
 
 [MDN(最新)](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript)  
-[W3C School-Javascript(舊版)](https://www.w3schools.com/js/js_intro.asp)
+[W3C School-Javascript(舊版)](https://www.w3schools.com/js/js_intro.asp)  
+[W3C School-Javascript-Reference](https://www.w3schools.com/jsref/default.asp)
+[codecademy-javascript](https://www.codecademy.com/learn/javascript)    
+[Markdown語法(中文)](http://markdown.tw/)
 
 ## 變數
 
-一般的變數宣告長這樣:
+JS的變數宣告長這樣:
 
     var 變數名稱 = 變數值 ;
+
 如上所示，包含了宣告方式(var)，變數名稱與變數值
 
 #### 宣告方式  
@@ -29,30 +33,44 @@ JS的變數名稱需符合下列原則:
 
 #### 變數值
 
-變數值可為下列型態:
-
 1. 數值(integer)
 
-        var var1=1.234
+        var varInt=1.234;
 
 1. 字串(string)
 
-        var var2="Hello World"
+        var varStr="Hello World";
 
 1. 布林值(boolean)
 
-        var var3=true;
+        var varBln=true;
 
 1. 陣列(array)
 
-       var var4=["apple",1.234,False]; 
+       var varArray=["apple",1.234,False]; 
 
 1. 物件(object)
 
-        var var5={
+        var varObject={
             name:"Gary",
             age:18
+        };
+
+1. 函式(function)
+
+        var varFun=function(arg){
+                ..code
         }
 ---
 
-## 迴圈
+## 函式
+
+使用下面語法建立函式
+
+        var 函式名稱=function(參數){
+                //程式碼
+        }
+
+
+
+---
