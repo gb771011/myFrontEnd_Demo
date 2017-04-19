@@ -9,4 +9,4 @@ git add .
 git commit -m "%newCommit%"
 git push -u origin master
 
-timeout /t 5
+timeout /t 3 /nobreak
