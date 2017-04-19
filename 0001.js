@@ -7,5 +7,5 @@ while (i < 10) {
 
 */
 
-var varAry1=["Hello",1.234,"Gary",false,123];
+var varAry1=["Hello",1.234,"Gary",false];
 console.log(varAry1);
