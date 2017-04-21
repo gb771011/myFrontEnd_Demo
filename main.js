@@ -10,9 +10,12 @@ function clock(){
 
         document.getElementById("clock").innerHTML="toLocaleString(): "+localeTime;
         document.getElementById("clock2").innerHTML="toString(): "+stringTime;
+
         console.log(localeSpilt[1]);
         console.log(stringSpilt[4]);
+
+        document.title=localeSpilt[1];
         
     }, 1000);
 }
-clock();
+window.onload=clock();
