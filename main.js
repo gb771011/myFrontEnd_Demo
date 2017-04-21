@@ -1,14 +1,18 @@
-/*
-var i = 0;
-while (i < 10) {
-    console.log(i);
-    i++;
+function clock(){
+    setInterval(function() {
+        var date=new Date();
+        var localeTime=date.toLocaleString();
+        var stringTime=date.toString();
+
+        var localeSpilt=localeTime.split(" ");
+        var stringSpilt=stringTime.split(" ");
+
+
+        document.getElementById("clock").innerHTML="toLocaleString(): "+localeTime;
+        document.getElementById("clock2").innerHTML="toString(): "+stringTime;
+        console.log(localeSpilt[1]);
+        console.log(stringSpilt[4]);
+        
+    }, 1000);
 }
-
-*/
-function fun1(){
-    var date=new Date();
-    prompt(date);
-}
-
-
+clock();
