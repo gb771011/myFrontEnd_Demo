@@ -3,7 +3,7 @@
 ## 參考
 
 [MDN(最新)](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript)  
-[W3C School-Javascript(舊版)](https://www.w3schools.com/js/js_intro.asp)  
+[W3C School-Javascript](https://www.w3schools.com/js/js_intro.asp)  
 [W3C School-Javascript-Reference](https://www.w3schools.com/jsref/default.asp)  
 [codecademy-javascript](https://www.codecademy.com/learn/javascript)    
 [Markdown語法(中文)](http://markdown.tw/)
@@ -21,8 +21,8 @@ JS的變數宣告長這樣:
 JS的變數宣告有3種:
 
 * **var**:可修改值的全域變數  
-* **let**:可修改值的區域變數  
-* **const**:不可修改值的全域常數    
+* **let**:可修改值的區域變數(ES6新增)  
+* **const**:不可修改值的全域常數(ES6新增)    
 
 #### 變數名稱
 
@@ -67,14 +67,13 @@ JS的變數名稱需符合下列原則:
 
 可用下面語法建立函式
 
-        var 函式名稱=function(參數){
-                //程式碼
-        }
-
-或是
-
         function 函式名稱(參數){
                //程式碼 
         }
 
+或是
+
+        var 函式名稱=function(參數){
+                //程式碼
+        }
 ---
