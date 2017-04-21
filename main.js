@@ -6,4 +6,9 @@ while (i < 10) {
 }
 
 */
-document.getElementById("title").innerHTML="date()";
+function fun1(){
+    var date=new Date();
+    prompt(date);
+}
+
+
