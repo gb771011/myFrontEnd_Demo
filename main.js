@@ -14,7 +14,7 @@ function clock(){
         console.log(localeSpilt[1]);
         console.log(stringSpilt[4]);
 
-        document.title=localeSpilt[1];
+        document.title=localeSpilt[2];
         
     }, 1000);
 }
