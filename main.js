@@ -10,9 +10,14 @@ function clock(){
 
         document.getElementById("clock").innerHTML="toLocaleString(): "+localeTime;
         document.getElementById("clock2").innerHTML="toString(): "+stringTime;
-        console.log(localeSpilt[1]);
-        console.log(stringSpilt[4]);
+        // console.log(localeSpilt[1]);
+        // console.log(stringSpilt[4]);
         
     }, 1000);
 }
 clock();
+
+var divt1=document.getElementById("t1");
+for (i in divt1){
+    console.log(i+" = "+divt1[i]);
+}
