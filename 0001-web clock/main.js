@@ -15,11 +15,12 @@ function showTimeStanard() {
     // 注意兩個method的輸出格式不同
 }
 
+
 var clockL;
 var clockS;
 
 function clockLSwitch(bln){
-    // true=Run,false=stop
+    // true=Run,false=stop    
     if(bln){
         clockL=setInterval(showTimeLocale,1000);
         console.log("TimeLocale on");
@@ -30,6 +31,17 @@ function clockLSwitch(bln){
     }
 }
 
+function clockSSwitch(bln){
+    // true=Run,false=stop
+    if(bln){
+        clockS=setInterval(showTimeStanard,1000);
+        console.log("TimeStandard on");
+    }
+    else{
+        window.clearInterval(clockS);
+        console.log("TimeStandard off");
+    }
+}
 
 
 
