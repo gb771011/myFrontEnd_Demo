@@ -1,0 +1,12 @@
+@font-face{
+    font-family:'digital-clock-font';
+    /*css相對路徑:
+    1.若檔案/資料夾與css檔
+    2.使用 "../" 來回到上一層            
+    */
+    src: url("../font/digital-7.monoitalic.ttf");
+}
+.digit{
+    font-family:'digital-clock-font';
+    color: red;
+}

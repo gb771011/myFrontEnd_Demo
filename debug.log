@@ -7,3 +7,6 @@
 [0425/122558.541:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: 存取被拒。 (0x5)
 [0425/122558.579:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: 管道已結束。 (0x6D)
 [0425/122558.579:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: 存取被拒。 (0x5)
+[0427/103117.190:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: 存取被拒。 (0x5)
+[0427/103117.190:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: 管道已結束。 (0x6D)
+[0427/103117.190:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp\reports: 存取被拒。 (0x5)
