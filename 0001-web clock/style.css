@@ -1,12 +1,21 @@
 @font-face{
     font-family:'digital-clock-font';
-    /*css相對路徑:
-    1.若檔案/資料夾與css檔
-    2.使用 "../" 來回到上一層            
-    */
     src: url("../font/digital-7.monoitalic.ttf");
 }
+
 .digit{
     font-family:'digital-clock-font';
-    color: red;
+    color: #0000ff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+body{
+    /*width: 480px;*/
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid black;
+}
+div{
+    border: 1px solid lightseagreen;
 }
