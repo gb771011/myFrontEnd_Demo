@@ -1,21 +1,29 @@
 {
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Launch index.html (disable sourcemaps)",
+            "name": "Launch directly",
             "type": "chrome",
             "request": "launch",
-            "sourceMaps": false,
-            "file": "${file}"
-            
+            "url": "${file}",
+            "webRoot": "${fileDirname}"
+            // "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        {
+            "name": "Launch in server(port:8080)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080/${fileBasename}",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "port": 9222,
+            "webRoot": "${fileDirname}"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Node",
-            "program": "${file}",
-        },
+            "name": "Node Debug",
+            "program": "${file}"
+        }
 
     ]
 }
