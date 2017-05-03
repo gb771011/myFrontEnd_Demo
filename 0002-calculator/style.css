@@ -2,19 +2,14 @@
 :root{
     /*語法:--[變數名稱]:[變數值]*/
     --btn_h:100px;
-}
-
-*{
-    /*固定元素尺寸，讓margin跟padding不會影響到元素的尺寸*/
-    box-sizing: border-box;
-    
+    --btn_w:100px;
 }
 body{
-    width:60%;
-    max-width: 650px;
+    width:calc(var(--btn_w) * 4 + 30px);
+    /*簡易內容置中*/
     margin: 0 auto;
     background-color:lightgray;
-    border: 1px solid green;
+    border: 10px solid green;
 }
 h1{
     text-align: center;
@@ -22,18 +17,43 @@ h1{
 .row{
     /*border: 1px solid red;*/
     height: calc(var(--btn_h) + 20px);
-    padding: 10px 0;
+    
 }
-.button{
+.btn{
+    /*固定元素尺寸，讓margin跟padding不會影響到元素的總尺寸(內容尺寸內縮)*/
+    box-sizing: border-box;
     border: 1px solid darkblue;
     background-color: lightblue;
-    margin:0 10px;
-    /*padding: 10px;*/
+    margin:10px 10px 10px 0;
     float: left;
-    width:calc(25% - 20px);
+    width:var(--btn_w);
     height: var(--btn_h);   
     line-height: var(--btn_h);
     /*文字置中method1:-line-height=height*/
     text-align: center;
-    font-size: 3.5em;
+    font-size: 3em;
+    /*font-weight: bold;*/
+    /*CSS:防止網頁內文字被選取，需加前墜詞*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+.btn_R{
+    margin:10px 0;
+}
+.btn:hover{
+    box-shadow:2px 2px darkblue;
+    }
+.btn:active{
+    box-shadow:none;
+     position: relative;
+     /*background-color: blue;*/
+     top: 2px;
+     left: 2px;
+}
+#ans{
+    text-align: right;
+    font-size: 5em;
+    border: 5px dashed black
 }

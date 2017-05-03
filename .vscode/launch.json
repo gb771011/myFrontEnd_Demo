@@ -20,7 +20,7 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:8080/${fileBasename}",
-            // "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
             "port": 9222,
             "webRoot": "${fileDirname}",
             "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
@@ -35,6 +35,5 @@
             "program": "${file}"
         }
 
->>>>>>> 7049f440c69ed256e71512a3ef604724703d4881
     ]
 }
