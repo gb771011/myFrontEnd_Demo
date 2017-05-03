@@ -1,37 +1,47 @@
 // main javascript sourse for \0002-calculator\index.html
 
- function keyIn1(input){
-    //  將#ans的數字*10後，再加上點選的數字
-    // key:被點擊的div的innerHTML
-    var last=Number(document.getElementById("ans").innerText);
-    var key=Number(input);
-    
-    var result=10*last+key;
-    document.getElementById("ans").innerHTML=result;
+var numKey = function () {
+    var last = document.getElementById("ans").innerText;
+    var key = this.innerText;
+    var result;
 
-/*    console.log("last number : "+last);
-    console.log("Key in number : "+key);
-    console.log("Result : "+result);*/
-}
-
-function object(){
-        var input=document.getElementsByClassName("num");
-        input.onclose=function(){
-            console.log("123");
-        };
-        console.log(input);
-        // for(i in input){console.log(i+" : "+input[i]);}
-}
-
-var numKey=function(){
-    console.log(this.innerText);
+    // 檢查第一位是不是0
+    if (last == "0") {
+        if (key != ".") {
+            result = key;
+        }
+        else{
+            result = last + key;
+        }
+    }
+    else {
+        result = last + key;
+    }
+    document.getElementById("ans").innerText = result;
+    console.log(result.length);
 };
 
-window.onload=function(){
-    //給所有div.num添加onclick的event listener
-   var numList=document.getElementsByClassName("num");
-   for(i=0;i<numList.length;i++){
-       numList[i].onclick=numKey;
-   }
-   console.log("Add numKey() to each div.num`s onclick event");
+var ansClean = function () {
+    document.getElementById("ans").innerText = 0;
+};
+
+var numDot = function () {
+    var last = document.getElementById("ans").innerText;
+
+    document.getElementById("ans").innerHTML = last + ".";
+};
+
+window.onload = function () {
+    //給所有div.num添加onclick event listener:numKey
+    i = 0;
+    var numList = document.getElementsByClassName("num");
+    for (i = 0; i < numList.length; i++) {
+        numList[i].onclick = numKey;
+    }
+    console.log("Add numKey() to each div.num`s onclick event");
+
+    //給div#clean添加onclick event listener:ansClean
+    document.getElementById("ansClean").onclick = ansClean;
+    console.log("Add ansClean() to div#ansClean onclick event");
+
 };
