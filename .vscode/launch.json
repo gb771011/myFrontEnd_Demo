@@ -9,21 +9,32 @@
     "version": "0.1.0",
     "configurations": [
         {
-            "name": "Launch localhost",
+            "name": "Launch",
             "type": "chrome",
             "request": "launch",
-            "url": "http://127.0.0.1:8080/index.html",
-            "webRoot": "${workspaceRoot}/wwwroot"
-            
-            //${workspaceRoot}:為vscode開啟的資料夾路徑
+            "url": "${file}",
+            "webRoot": "${fileDirname}"
         },
         {
-            "name": "Launch index.html (disable sourcemaps)",
+            "name": "Launch via port8080",
             "type": "chrome",
             "request": "launch",
-            "sourceMaps": false,
-            // "file": "${workspaceRoot}/index.html"
-            "file": "${file}"
+            "url": "http://localhost:8080/${fileBasename}",
+            // "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "port": 9222,
+            "webRoot": "${fileDirname}",
+            "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Node Debug",
+            "program": "${file}"
         }
+
+>>>>>>> 7049f440c69ed256e71512a3ef604724703d4881
     ]
 }

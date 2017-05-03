@@ -1,0 +1,39 @@
+/*CSS3變數設定區:所有CSS的變數都必須在:root裡設定*/
+:root{
+    /*語法:--[變數名稱]:[變數值]*/
+    --btn_h:100px;
+}
+
+*{
+    /*固定元素尺寸，讓margin跟padding不會影響到元素的尺寸*/
+    box-sizing: border-box;
+    
+}
+body{
+    width:60%;
+    max-width: 650px;
+    margin: 0 auto;
+    background-color:lightgray;
+    border: 1px solid green;
+}
+h1{
+    text-align: center;
+}
+.row{
+    /*border: 1px solid red;*/
+    height: calc(var(--btn_h) + 20px);
+    padding: 10px 0;
+}
+.button{
+    border: 1px solid darkblue;
+    background-color: lightblue;
+    margin:0 10px;
+    /*padding: 10px;*/
+    float: left;
+    width:calc(25% - 20px);
+    height: var(--btn_h);   
+    line-height: var(--btn_h);
+    /*文字置中method1:-line-height=height*/
+    text-align: center;
+    font-size: 3.5em;
+}
