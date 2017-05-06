@@ -1,47 +1,46 @@
-// main javascript sourse for \0002-calculator\index.html
+var ans = document.getElementById("ans"),
+    keyClean = document.getElementById("clean"),
+    keyBackSpace = document.getElementById("backSpace"),
+    keyNum = document.getElementsByClassName("num");
+var i, key, last, ansNum, ansClean, ansBackSpace;
 
-var numKey = function () {
-    var last = document.getElementById("ans").innerText;
-    var key = this.innerText;
-    var result;
+ansNum = function () {
+    input = this.innerText;
 
-    // 檢查第一位是不是0
-    if (last == "0") {
-        if (key != ".") {
-            result = key;
+    // div#ans為"0"時執行下列檢查
+    /**
+    key=1~9 => ans=1~9(首位不為0)
+    key="." => ans=0.
+     */
+    if (ans.innerText.length < 10) { //  限制div#ans的字數
+        if (ans.innerText === "0" && key != ".") {
+            ans.innerText = input;
+        } else {
+            ans.innerText += input;
         }
-        else{
-            result = last + key;
-        }
     }
-    else {
-        result = last + key;
+    console.log("numKey(" + input + ") onclick");
+};
+//給所有div.num添加onclick event:numKey()
+for (i = 0; i < keyNum.length; i++) {
+    keyNum[i].addEventListener("click", ansNum);
+}
+
+ansClean = function () {
+    ans.innerText = 0;
+    console.log("ansClean() onclick");
+};
+//給div#clean添加onclick event:ansClean()
+keyClean.addEventListener("click", ansClean);
+
+ansBackSpace = function () {
+    last = ans.innerText.length - 1;
+    if (ans.innerText.length > 1) {
+        ans.innerText = ans.innerText.substring(0, last);
+        console.log("ansBackSpace() onclick:BackSpace");
+    } else {
+        ans.innerText = "0";
+        console.log("ansBackSpace() onclick:return to Zero");
     }
-    document.getElementById("ans").innerText = result;
-    console.log(result.length);
 };
-
-var ansClean = function () {
-    document.getElementById("ans").innerText = 0;
-};
-
-var numDot = function () {
-    var last = document.getElementById("ans").innerText;
-
-    document.getElementById("ans").innerHTML = last + ".";
-};
-
-window.onload = function () {
-    //給所有div.num添加onclick event listener:numKey
-    i = 0;
-    var numList = document.getElementsByClassName("num");
-    for (i = 0; i < numList.length; i++) {
-        numList[i].onclick = numKey;
-    }
-    console.log("Add numKey() to each div.num`s onclick event");
-
-    //給div#clean添加onclick event listener:ansClean
-    document.getElementById("ansClean").onclick = ansClean;
-    console.log("Add ansClean() to div#ansClean onclick event");
-
-};
+keyBackSpace.addEventListener("click", ansBackSpace);
