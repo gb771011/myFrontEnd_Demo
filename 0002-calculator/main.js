@@ -28,7 +28,7 @@ ansNum = function () {
     }
 
     console.log("numKey(" + input + ") onclick");
-};
+}
 //給所有div.num添加onclick event:numKey()
 for (i = 0; i < keyNum.length; i++) {
     keyNum[i].addEventListener("click", ansNum);
