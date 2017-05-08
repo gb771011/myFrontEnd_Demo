@@ -2,8 +2,12 @@
 var ans = document.getElementById("ans"),
     keyClean = document.getElementById("clean"),
     keyBackSpace = document.getElementById("backSpace"),
-    keyNum = document.getElementsByClassName("num");
-var i, key, last, ansNum, ansClean, ansBackSpace;
+    keyAdd = document.getElementById("add"),
+    keyEqual = document.getElementById("equal");
+var keyNum = document.getElementsByClassName("num");
+
+var i, key, last, temp=[],isEqual=false,c1,c2;
+var ansNum, ansClean, ansBackSpace, ansAdd;
 
 ansNum = function () {
     input = this.innerText;
@@ -14,13 +18,16 @@ ansNum = function () {
     key="." => ans=0.
      */
     if (ans.innerText.length < 10) { //  限制div#ans的字數
-        if (ans.innerText === "0" && key != ".") {
+        if (ans.innerText === "0" && key != "." || isEqual) {
             ans.innerText = input;
+            isEqual=false;
+            console.log("Return isEqual=false");
         } else {
             ans.innerText += input;
         }
     }
-    console.log("numKey(" + input + ") onclick");
+
+    console.log("numKey(" + input + ") onclick";
 };
 //給所有div.num添加onclick event:numKey()
 for (i = 0; i < keyNum.length; i++) {
@@ -45,3 +52,29 @@ ansBackSpace = function () {
     }
 };
 keyBackSpace.addEventListener("click", ansBackSpace);
+
+ansEqual=function(){
+    temp[2]=ans.innerText;
+    console.log(temp);
+    switch (temp[1]) {
+        case 0:
+            ans.innerText=Number(temp[0])+Number(temp[2]);
+            break;
+    
+        default:
+            break;
+    }
+    isEqual=true;
+    temp=[];
+    console.log("ansEqual() onclick",temp);
+};
+keyEqual.addEventListener("click", ansEqual);
+
+ansAdd = function () {
+    temp[0]=ans.innerText;
+    temp[1]=0;
+    ans.innerText="0";
+    console.log("ansAdd() onclick");
+    console.log(temp);
+};
+keyAdd.addEventListener("click", ansAdd);
