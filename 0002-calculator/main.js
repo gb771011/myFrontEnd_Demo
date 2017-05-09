@@ -1,13 +1,13 @@
-
 var ans = document.getElementById("ans"),
     keyClean = document.getElementById("clean"),
     keyBackSpace = document.getElementById("backSpace"),
-    keyAdd = document.getElementById("add"),
+    keyCalculate = document.getElementById("calculate"),
     keyEqual = document.getElementById("equal");
-var keyNum = document.getElementsByClassName("num");
+var keyNum = document.getElementsByClassName("num"),
+    keyCalculate = document.getElementsByClassName("calculate");
 
-var i, key, last, temp=[],isEqual=false,c1,c2;
-var ansNum, ansClean, ansBackSpace, ansAdd;
+var i, key, last, temp = {}, isEqual = false, input = "", output = 0,c1,c2;
+var ansNum, ansClean, ansBackSpace, ansCalculate;
 
 ansNum = function () {
     input = this.innerText;
@@ -17,28 +17,28 @@ ansNum = function () {
     key=1~9 => ans=1~9(首位不為0)
     key="." => ans=0.
      */
-    if (ans.innerText.length < 10) { //  限制div#ans的字數
-        if (ans.innerText === "0" && key != "." || isEqual) {
+    c1=ans.innerText === "0" && input != ".";
+    c2=isEqual;
+    if (ans.innerText.length < 9) { //  限制div#ans的字數
+        console.log(isEqual);
+        if (c1 || c2) {
             ans.innerText = input;
-            isEqual=false;
+            isEqual = false;
             console.log("Return isEqual=false");
         } else {
             ans.innerText += input;
         }
     }
-
     console.log("numKey(" + input + ") onclick");
-}
-//給所有div.num添加onclick event:numKey()
+};
 for (i = 0; i < keyNum.length; i++) {
     keyNum[i].addEventListener("click", ansNum);
 }
 
 ansClean = function () {
-    ans.innerText = 0;
+    ans.innerText = "0";
     console.log("ansClean() onclick");
 };
-//給div#clean添加onclick event:ansClean()
 keyClean.addEventListener("click", ansClean);
 
 ansBackSpace = function () {
@@ -53,28 +53,46 @@ ansBackSpace = function () {
 };
 keyBackSpace.addEventListener("click", ansBackSpace);
 
-ansEqual=function(){
-    temp[2]=ans.innerText;
+ansEqual = function () {
+    temp.val2 = ans.innerText;
     console.log(temp);
-    switch (temp[1]) {
-        case 0:
-            ans.innerText=Number(temp[0])+Number(temp[2]);
+    switch (temp.opt) {
+        case "add":
+            output = Number(temp.val1) + Number(temp.val2);
             break;
-    
+        case "minus":
+            output = Number(temp.val1) - Number(temp.val2);
+            break;
+        case "times":
+            output = Number(temp.val1) * Number(temp.val2);
+            break;
+        case "divide":
+            output = Number(temp.val1) / Number(temp.val2);
+            break;
         default:
             break;
     }
-    isEqual=true;
-    temp=[];
-    console.log("ansEqual() onclick",temp);
+    // if (toString(output).length > 10) {
+    //     output = toString(output).slice(0, 8);
+    // }
+
+    ans.innerText = output.toPrecision(9);
+
+    isEqual = true;
+    temp = {};
+    console.log("ansEqual() onclick", temp,isEqual);
 };
 keyEqual.addEventListener("click", ansEqual);
 
-ansAdd = function () {
-    temp[0]=ans.innerText;
-    temp[1]=0;
-    ans.innerText="0";
+ansCalculate = function () {
+    temp.val1 = ans.innerText;
+    temp.opt = this.value;
+    ans.innerText = "0";
     console.log("ansAdd() onclick");
+    // console.dir(this.value);
     console.log(temp);
 };
-keyAdd.addEventListener("click", ansAdd);
+for (i = 0; i < keyCalculate.length; i++) {
+    keyCalculate[i].addEventListener("click", ansCalculate);
+}
+

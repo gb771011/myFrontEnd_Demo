@@ -8,7 +8,7 @@ body{
     /*簡易內容置中*/
     margin: 0 auto;
     background-color:lightgray;
-    border: 10px solid green;
+    border: 10px solid grey;
 }
 h1{
     text-align: center;
@@ -21,8 +21,8 @@ h1{
 .btn{
     /*固定元素尺寸，讓margin跟padding不會影響到元素的總尺寸(內容尺寸內縮)*/
     box-sizing: border-box;
-    border: 1px solid darkblue;
-    background-color: lightblue;
+    /*border: 1px solid darkblue;*/
+    /*background-color: lightblue;*/
     margin-left: 5px;
     float: left;
     width:var(--btn_h);
@@ -43,7 +43,7 @@ h1{
     margin-right: 5px
 }
 .btn:hover{
-    box-shadow:2px 2px darkblue;
+    box-shadow:2px 2px gray;
     }
 .btn:active{
     box-shadow:none;
@@ -55,8 +55,10 @@ h1{
 #ans{
     border: 2px solid black;
     margin: 5px;
+    padding:0 5px;
     height: 75px;
     line-height: 75px;    
     text-align: right;
     font-size: 4em;
+    overflow: hidden;
 }
