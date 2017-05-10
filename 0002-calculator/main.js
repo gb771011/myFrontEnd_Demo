@@ -1,4 +1,5 @@
 var ans = document.getElementById("ans"),
+    keyCleanError = document.getElementById("cleanError"),
     keyClean = document.getElementById("clean"),
     keyBackSpace = document.getElementById("backSpace"),
     keyCalculate = document.getElementById("calculate"),
@@ -6,38 +7,49 @@ var ans = document.getElementById("ans"),
 var keyNum = document.getElementsByClassName("num"),
     keyCalculate = document.getElementsByClassName("calculate");
 
-var i, key, last, temp = {}, isEqual = false, input = "", output = 0,c1,c2;
+var i, key, last, temp = {}, isEqual = false, input = "", output = 0, c1, c2;
+var doReset = true;
+
 var ansNum, ansClean, ansBackSpace, ansCalculate;
 
 ansNum = function () {
     input = this.innerText;
 
-    // div#ans為"0"時執行下列檢查
-    /**
-    key=1~9 => ans=1~9(首位不為0)
-    key="." => ans=0.
-     */
-    c1=ans.innerText === "0" && input != ".";
-    c2=isEqual;
-    if (ans.innerText.length < 9) { //  限制div#ans的字數
-        console.log(isEqual);
-        if (c1 || c2) {
-            ans.innerText = input;
-            isEqual = false;
-            console.log("Return isEqual=false");
+    /*
+    #ans取代/添加分析
+    1.首位為"0"，輸入為"1~9":顯示值為"1~9"
+    2.首位為"0"，輸入為".":顯示為"0."
+    3.已完成計算，輸入為"1~9":顯示值為"1~9"
+    4.已完成計算，輸入為".":顯示為"0."
+    */
+    if (doReset) {
+        if (input === ".") {
+            ans.innerText = "0.";
         } else {
-            ans.innerText += input;
+            ans.innerText = input;
         }
+        doReset = false;
+    } else {
+        ans.innerText += input;
     }
     console.log("numKey(" + input + ") onclick");
+    console.log(temp);
 };
 for (i = 0; i < keyNum.length; i++) {
     keyNum[i].addEventListener("click", ansNum);
 }
 
+ansCleanError = function () {
+    ans.innerText = "0";
+    console.log("ansCleanError() onclick", temp);
+};
+keyCleanError.addEventListener("click", ansCleanError);
+
 ansClean = function () {
     ans.innerText = "0";
-    console.log("ansClean() onclick");
+    temp = {};
+    doReset = true;
+    console.log("ansClean() onclick", temp);
 };
 keyClean.addEventListener("click", ansClean);
 
@@ -72,15 +84,13 @@ ansEqual = function () {
         default:
             break;
     }
-    // if (toString(output).length > 10) {
-    //     output = toString(output).slice(0, 8);
-    // }
 
-    ans.innerText = output.toPrecision(9);
+    // ans.innerText = output.toPrecision(9);
+    ans.innerText = output;
 
-    isEqual = true;
+    doReset = true;
     temp = {};
-    console.log("ansEqual() onclick", temp,isEqual);
+    console.log("ansEqual() onclick");
 };
 keyEqual.addEventListener("click", ansEqual);
 
@@ -88,9 +98,8 @@ ansCalculate = function () {
     temp.val1 = ans.innerText;
     temp.opt = this.value;
     ans.innerText = "0";
-    console.log("ansAdd() onclick");
-    // console.dir(this.value);
-    console.log(temp);
+    console.log("ansCalculate() onclick");
+    doReset = true;
 };
 for (i = 0; i < keyCalculate.length; i++) {
     keyCalculate[i].addEventListener("click", ansCalculate);
