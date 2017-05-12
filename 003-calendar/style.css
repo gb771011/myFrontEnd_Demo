@@ -40,6 +40,9 @@ section{
     /*0.95 * body.width*/
    margin: 0 auto;
 }
+caption{
+    font-size:2em;
+}
 table, tr, th, td {
     border-collapse: collapse;
     text-align:center

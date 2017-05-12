@@ -1,58 +1,66 @@
-// 顯示最後一次更新的時間
-function update() {
-    var time = document.getElementById("time"),
-        date = document.getElementById("date"),
-        now = new Date();
+function settingCalender(i1) {
+    console.log("settingCalender() activate");
+    var date = new Date();
+    var day = document.getElementById("day"),
+        month = document.getElementById("month");
+    var dateStr = [],
+        targetMonth = 0,
+        dayFirst = 0,
+        dayCount = 0,
+        calenderRow = 0,
+        tempRow = "";
+        
+    //確認補正參數(未指定or參數=0時>>顯示當前月份)
+    if (i1 === undefined || i1 === 0) {
+        console.log("{No Input}");
+    }
+    else {
+        date.setMonth(i1 + date.getMonth());
+    }
+    dateStr = date.toDateString().split(" ");
+    console.log("dateStr:", dateStr);
+    targetMonth = date.getMonth();
+    console.log("targetMonth :", targetMonth);
 
-    time.innerText = "Last update : " + now.toLocaleTimeString();
-    date.innerText = "Today : " + now.toDateString();
+    //取得指定月份的天數(從下個月逆推算)
+    date.setMonth(1 + targetMonth, 0);
+    dayCount = date.getDate();
+    console.log("dayCount:", dayCount);
 
-}
-window.onload = update();
+    //取得指定月份第一天為星期幾
+    date.setMonth(targetMonth, 1);
+    dayFirst = date.getDay();
+    console.log("dayFirst:", dayFirst);;
 
-var date = new Date();
+    //根據dayfirst決定顯示的行數
+    if (dayFirst > 3) {
+        calenderRow = 6;
+    } else {
+        calenderRow = 5;
+    }
+    console.log("calenderRow:",calenderRow) ;
 
-//取得當月第一天是星期幾
-date.setDate(1);
-var dayFirst = 0;
-dayFirst = date.getDay();
-console.log("First day:", dayFirst);
+    //將指定年分跟月份(英文)加到table的表頭
+    month.innerText = dateStr[3] + "-" + dateStr[1];
+    console.log("Year-Month(eng):", month.innerText);
 
-//取得當月天數
-date.setMonth(date.getMonth() + 1, 0);
-var dayCount = "";
-dayCount = date.toString().split(" ")[2];
-console.log("dayCount:", dayCount);
-
-var allDay = [];
-//排序
-dayFirst = 1;
-dayCount = 31;
-for (var j = 0; j < 6; j++) {
-    var week = [];
-    for (var i = 0; i < 7; i++) {
-        var val = (i + j * 7) - dayFirst +1;
-        if (val > dayCount || val < 1) {
-            val = " ";
+    //將日期內容加到table裡面
+    for (var j = 0; j < calenderRow; j++) {
+        tempRow = "<tr>";
+        for (var i = 0; i < 7; i++) {
+            var val = (i + j * 7) - dayFirst + 1;
+            if (val > dayCount || val < 1) {
+                val = " ";
+            }
+            tempRow += "<td>" + val + "</td>";
         }
-        week[i] = val;
+        tempRow += "</tr>";
+        day.innerHTML += tempRow;
     }
-    allDay[j] = week;
-}
-console.log(allDay.length);
-
-var str="";
-for (var i = 0; i < allDay.length; i++) {
-    str="";
-    for (var a in allDay[i]) {
-       str += allDay[i][a]+" ";        
-    }
-    console.log(str);
+    // Tip: element.cloneNode
 }
 
-
-
-// console.log(allDay);
+window.onload = settingCalender(3);
 
 /*
 console.log("Use JS Date Method");
@@ -65,13 +73,3 @@ date.setDate(31);
 console.log(date.toString());
 console.log("/Use JS Date Method");
  */
-
-/*
-// 當月第一天
-var nowMonth=date.getMonth(),
-    nowDay=date.getDay();
-
-console.log("nowMonth : " + (nowMonth+1));
-console.log("nowDay : " + (nowDay+1));
-*/
-
