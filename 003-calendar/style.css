@@ -22,10 +22,18 @@
 }
 body{
     /*1.*/
-    width:95vw;
+    width:350px;
     margin: 0 auto;
     background-color: #c2e8ac;
     border: 1px solid #68be34;
+}
+header p{
+    /*margin: 0;*/
+    text-decoration-line: underline; 
+}
+header h1{
+    margin: 10px 0;
+    text-align: center;
 }
 section{
     width: 95%;
