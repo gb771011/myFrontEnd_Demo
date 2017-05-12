@@ -26,13 +26,13 @@ console.log("dayCount:", dayCount);
 
 var allDay = [];
 //排序
-dayFirst = 5;
+dayFirst = 1;
 dayCount = 31;
 for (var j = 0; j < 6; j++) {
     var week = [];
     for (var i = 0; i < 7; i++) {
-        var val = (i + j * 7) - dayFirst;
-        if (val > dayCount || val < 0) {
+        var val = (i + j * 7) - dayFirst +1;
+        if (val > dayCount || val < 1) {
             val = " ";
         }
         week[i] = val;
