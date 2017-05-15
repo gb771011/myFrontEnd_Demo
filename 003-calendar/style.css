@@ -35,7 +35,7 @@ header h1{
     margin: 10px 0;
     text-align: center;
 }
-section{
+div{
     width: 95%;
     /*0.95 * body.width*/
    margin: 0 auto;
