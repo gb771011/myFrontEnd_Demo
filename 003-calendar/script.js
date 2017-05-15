@@ -30,7 +30,7 @@ function settingCalender(i1) {
     //取得指定月份第一天為星期幾
     date.setMonth(targetMonth, 1);
     dayFirst = date.getDay();
-    console.log("dayFirst:", dayFirst);;
+    console.log("dayFirst:", dayFirst);
 
     //根據dayfirst決定顯示的行數
     if (dayFirst > 3) {
