@@ -22,30 +22,24 @@
 }
 body{
     /*1.*/
-    width:350px;
+    width:100%;
     margin: 0 auto;
     background-color: #c2e8ac;
     border: 1px solid #68be34;
 }
-header p{
-    /*margin: 0;*/
-    text-decoration-line: underline; 
-}
-header h1{
-    margin: 10px 0;
-    text-align: center;
-}
-div{
-    width: 95%;
-    /*0.95 * body.width*/
-   margin: 0 auto;
-}
-caption{
-    font-size:2em;
+
+#myCalendar{
+    max-width: 400px;
+    min-width: 240px;
+    margin: 0 auto;
 }
 table, tr, th, td {
     border-collapse: collapse;
     text-align:center
+}
+caption{
+    font-size:2em;
+    padding: 10px 0;
 }
 table{
     width:95%;
@@ -57,12 +51,6 @@ th, td{
     width: calc(100% / 7);
     /*= calc( [100% * table.width] / 7 )*/
     border: 1px solid black;
-}
-th{
-    height: 2rem;
-    font-size: 1.2rem
-}
-td{
     height: 1.5rem;
     font-size: 1rem
 }
