@@ -17,7 +17,7 @@
         }
 
         h1,
-        h3 {
+        h2 {
             text-align: center;
         }
 
@@ -45,11 +45,28 @@
             font-size: 1.2rem;
         }
 
-        footer {
-            border: 1px dotted black;
+        a::after {
+            content: attr(href);
+            /*attr(Attributes):css的函式，可回傳指定屬性的的值*/
+        }
+
+        footer p,
+        figure {
+            margin: 0 0 1rem 0;
+            padding: 0 0 0.5rem 1rem;
+            border-bottom: 2px dashed #00a2a2;
+            border-left: 10px solid #00a2a2;
+        }
+
+        footer figcaption {
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+            text-align: center;
+            border: 1px solid #00a2a2;
         }
     </style>
-    <title>HTML form</title>
+
+    <title>004-HTML form</title>
 </head>
 
 <body>
@@ -58,37 +75,43 @@
     </header>
     <hr>
     <article>
-        <h3>All type of input</h3>
-        <form onsubmit="showit()">
-            <table>
-                <tr>
-                    <th>Type</th>
-                    <th>Display</th>
-                </tr>
-                <tr>
-                    <td>time</td>
-                    <td><input type="time" value=""></td>
-                </tr>
-                <tr>
-                    <td>submit</td>
-                    <td><input type="submit" value="true"></td>
-                </tr>
-            </table>
-
+        <h2>All type of input</h2>
+        <form>
         </form>
     </article>
     <hr>
     <footer>
-        <h3>Note</h3>
-        <p><a href="https://www.w3schools.com/html/html_form_input_types.asp">w3c:html_form_input_types</a>
+        <h2>Note</h2>
+        <p><a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank"></a>
         </p>
-        <p><b>form:action vs onsubmit</b><br>
-            <ol>
-                <li> action="URL":在submit之後，會開啟指定的頁面&根據指定的方式傳遞資料給伺服器處裡</li>
-                <li>onsubmit=js_function():在submit之後，會執行指定的副程式(用法同onclick事件)</li>
-            </ol>
-        </p>
+
+        <figure>
+            <figcaption>form Attributes : action vs onsubmit</figcaption>
+            <li> action="URL":在submit之後，會開啟指定的頁面&根據指定的方式傳遞資料給伺服器處裡</li>
+            <li>onsubmit=js_function():在submit之後，會執行指定的副程式(用法同onclick事件)</li>
+        </figure>
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
+ <!--           <fieldset>
+                <input type="submit">
+                <input type="reset">
+            </fieldset>
+            <p><input type="text"></p>
+
+            <p><input type="radio" value="123">123</p>
+            <p><input type="checkbox" value="123" checked>123</p>
+            <p><input type="button" value="123"></p>
+            <p><input type="color"></p>
+            <p><input type="datetime-local"></p>
+            <p><input type="month"></p>
+            <p>
+                <input type="number" min="1" max="5">
+            </p>
+            <p><input type="range"></p>
+            <p><input type="search"></p>
+            <p><input type="week"></p>
+            <hr>
+            <p><input type="email"></p>-->
