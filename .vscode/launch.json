@@ -31,7 +31,7 @@
                     "webRoot": "${fileDirname}",
                     "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
                     "runtimeArgs": [
-                        "--remote-debugging-port=9222", 
+                        "--remote-debugging-port=9222",
                         "--disable-extensions", // 禁用擴充功能
                         "--disk-cache-size 0", // 將快取設為0
                         "--disable-translate " // 禁用翻譯功能
