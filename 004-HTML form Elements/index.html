@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,87 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-        .c1 {
-            font-size: 2em;
-            color: red;
-        }
-
-        span {
-            display: inline-block;
-            width: 150px;
-            padding: 0.25rem 0;
-            margin: 0.5rem 0;
-            
-            background-color: #09ffff;
-            border-bottom: 2px solid #008282;
-
-            text-align: center;
-        }
-
-        input {
-            margin-left: 0.5rem;
-            cursor: pointer;
-        }
-    </style>
-    <script src="main.js" defer></script>
-    <title>004-HTML form reference</title>
+    <!--<script src="main.js" defer=""></script>-->
+    <title>004-HTML form element</title>
 </head>
 
 <body>
     <header>
-        <h1>Hello HTML5 Form</h1>
+        <h1>004-HTML form element</h1>
     </header>
     <hr>
     <article>
-        <h2>Old input Element(Text)</h2>
-        <form id="input_old_text"></form>
 
-        <h2>Old input Element(Option)</h2>
-        <form id="input_old_option"></form>
+        <form>
+            <h2>Form Element</h2>
+            <h4>SELECT</h4>
+            <select>
+                <!--option[value=item$$]*4-->
+                <option value="item01" selected>item01</option>
+                <option value="item02">item02</option>
+                <option value="item03">item03</option>
+                <option value="item04">item04</option>
+            </select>
+            <br>
+            <h4>TEXTAREA</h4>
+            <textarea rows="10" cols="30">rows="10" cols="30",Hello Textarea</textarea><br>
+            <h4>BUTTON</h4>
+            <button type="button">Change text in button by .innerHTML</button>
 
-        <h2>Old input Element(Action)</h2>
-        <form id="input_old_action"></form>
+            <hr>
 
-        <h2>New input Element HTML5</h2>
-        <form id="input_new"></form>
+            <h2>Input Element(Text)</h2>
+            <h4>TEXT</h4><input type="text"><br>
+            <h4>PASSWORD</h4><input type="password"><br>
 
-        <h2>New input Element HTML5(especially useful for mobile user)</h2>
-        <form id="input_new_mobile"></form>
+            <hr>
+            <h2>Form Element HTML5</h2>
+            <h4>DATALIST</h4>
+            <div>provide other option to other input</div>
+
+            <input list="data_list">
+            <datalist id="data_list">
+                <!--option[value=item$]{hint$@100}*5-->
+                <option value="item1">hint100</option>
+                <option value="item2">hint101</option>
+                <option value="item3">hint102</option>
+                <option value="item4">hint103</option>
+                <option value="item5">hint104</option>
+            </datalist>
+
+        </form>
+        <h4>OUTPUT</h4>
+        <form oninput="x.value=parseInt(a.value)-parseInt(b.value)">
+            0
+            <input type="range" id="a" name="aa" value="50"> 100 +
+            <input type="number" id="b" name="bb" value="50"> =
+            <output name="x" for="a b"></output>
+            <br><br>
+            <input type="submit">
+        </form>
+
+
+        <hr>
+        <form>
+
+            <h2>Input(Option)</h2>
+            <h4>RADIO</h4>
+            <!--input[type=radio name=radio_group]{item$}*4-->
+            <input type="radio" name="radio_group">item1</input>
+            <input type="radio" name="radio_group">item2</input>
+            <input type="radio" name="radio_group">item3</input>
+            <input type="radio" name="radio_group">item4</input>
+
+            <br>
+            <h4>CHECKBOX</h4>
+            <!--input[type=checkbox name=group_checkbox]{item$@2}*4-->
+            <input type="checkbox" name="group_checkbox">item2</input>
+            <input type="checkbox" name="group_checkbox">item3</input>
+            <input type="checkbox" name="group_checkbox">item4</input>
+            <input type="checkbox" name="group_checkbox">item5</input>
+            <br>
+            <h4>BUTTON</h4>
+            <input type="button" value="button1">
+            <input type="button" value="button2">
+            <input type="button" value="button3">
+            <input type="button" value="button4"><br>
+            <input type="button" value="Change text in button by input.value">
+            <br>
+
+            <hr>
+
+            <h2>Input(Action)</h2>
+            <h4>SUBMIT</h4><input type="submit"> <br>
+            <h4>RESET</h4><input type="reset"> <br>
+
+            <hr>
+
+            <h2>New input HTML5</h2>
+            <h4>TIME</h4><input type="time"><br>
+            <h4>DATE</h4><input type="date"><br>
+            <h4>DATETIME-LOCAL</h4>
+            <input type="datetime-local"><br>
+            <h4>WEEK</h4><input type="week"><br>
+            <h4>COLOR</h4><input type="color"><br>
+
+            <hr>
+
+            <h2>New input HTML5<br>(especially useful for mobile user)</h2>
+
+            <h4>EMAIL</h4><input type="email"><br>
+            <h4>TEL</h4><input type="tel"><br>
+            <h4>URL</h4><input type="url"><br>
+        </form>
     </article>
     <hr>
     <footer>
         <h2>Note</h2>
-        <p><a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank"></a>
+        <p><a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank">W3C HTML:input type</a>
         </p>
 
         <figure>
             <figcaption>form Attributes : action vs onsubmit</figcaption>
-            <li> action="URL":在submit之後，會開啟指定的頁面&根據指定的方式傳遞資料給伺服器處裡</li>
+            <li> action="URL":在submit之後，會開啟指定的頁面&amp;根據指定的方式傳遞資料給伺服器處裡</li>
             <li>onsubmit=js_function():在submit之後，會執行指定的副程式(用法同onclick事件)</li>
         </figure>
     </footer>
 
+
+
+
 </body>
 
 </html>
-<!--           <fieldset>
-                <input type="submit">
-                <input type="reset">
-            </fieldset>
-            <p><input type="text"></p>
-
-            <p><input type="radio" value="123">123</p>
-            <p><input type="checkbox" value="123" checked>123</p>
-            <p><input type="button" value="123"></p>
-            <p><input type="color"></p>
-            <p><input type="datetime-local"></p>
-            <p><input type="month"></p>
-            <p>
-                <input type="number" min="1" max="5">
-            </p>
-            <p><input type="range"></p>
-            <p><input type="search"></p>
-            <p><input type="week"></p>
-            <hr>
-            <p><input type="email"></p>-->

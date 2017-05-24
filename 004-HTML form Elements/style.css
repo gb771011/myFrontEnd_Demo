@@ -37,10 +37,10 @@
             font-size: 1.2rem;
         }
 
-        a::after {
+        /*a::after {
             content: attr(href);
-            /*attr(Attributes):css的函式，可回傳指定屬性的的值*/
-        }
+        }*/
+         /*attr(Attributes):css的函式，可回傳指定屬性的的值*/
 
         footer p,
         figure {
@@ -56,3 +56,24 @@
             text-align: center;
             border: 1px solid #00a2a2;
         }
+        .c1 {
+            font-size: 2em;
+            color: red;
+        }
+
+        h4{
+            width: 150px;
+            background-color: #09ffff;
+            border-bottom: 2px solid #008282;
+            padding: 0.25rem 0;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        span{
+            display: inline-block;
+        }
+
+        input {
+            margin-left: 0.5rem;
+            cursor: pointer;
+        } 

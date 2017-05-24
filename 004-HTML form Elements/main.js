@@ -39,6 +39,10 @@ function addElementByArray(parent_id, data) {
     }
 }
 //  ["text", "password", "submit", "reset", "radio", "checkbox", "button"] ["number", "range", "search", "color"]
+addElementByArray(""
+
+);
+
 addElementByArray("input_old_text",
     ["text", "password"]
 );
@@ -51,9 +55,10 @@ addElementByArray("input_old_action",
     ["submit", "reset"]
 );
 
-
-addElementByArray("input_new",["time", "date", "datetime-local", "week","color"]
+addElementByArray("input_new",
+    ["time", "date", "datetime-local", "week", "color"]
 );
 
-addElementByArray("input_new_mobile",["email", "tel", "url"]
+addElementByArray("input_new_mobile",
+    ["email", "tel", "url"]
 );
