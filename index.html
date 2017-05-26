@@ -6,34 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <base href="https://gb771011.github.io/myFrontEnd/" target="_blank">
-    <title>My GitHub Page</title>
+    <style>
+        body {
+            width: 80%;
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: #ccffcc;
+        }
+
+        ul {
+            padding-left: 10px;
+        }
+
+        li {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        a {
+            text-decoration: none;
+            width: 100%;
+            position: relative;
+        }
+
+        @keyframes ani1 {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        a::before {
+            content: attr(href);
+        }
+
+        a:hover::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 100%;
+            border-bottom: 3px solid lime;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: ani1 0.3s forwards;
+        }
+    </style>
+    <title>My homepage</title>
 </head>
 
 <body>
-    <h1>My GitHub Page</h1>
-    <hr>
-    <p>
-        Hello,Visitor <br>
-        here is my GitHub`s homepage <br>
-        you can all my web front-end practice below the page <br>
-    </p>
-    <h3>Practive Page Link</h3>
-    <ul>
-        <li><a href="001-Date() object test">001-Date() object test</a></li>
-        <li><a href="002-calculator_v1">002-calculator_v1</a></li>
-        <li><a href="003-calendar_v1">003-calendar_v1</a></li>
-        <li><a href="004-HTML form Elements">004-HTML form Elements</a></li>
-    </ul>
-    <!--
-    Emmet:
-    ul>(li>a^)*3
-    
-    <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-    </ul>
--->
+    <h1>My Homepage</h1>
+    <header>
+        <p>
+            Hello,Visitor <br> here is my GitHub`s homepage <br> you can see all my web front-end practice below the page
+            <br>
+        </p>
+    </header>
+    <article>
+        <h3>Practive Page Link</h3>
+        <ul>
+            <li><a href="001-Date() object test"></a></li>
+            <li><a href="002-calculator_v1"></a></li>
+            <li><a href="003-calendar_v1"></a></li>
+            <li><a href="004-HTML form Elements"></a></li>
+        </ul>
+    </article>
 </body>
 
 </html>
