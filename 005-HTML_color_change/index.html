@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>007</title>
+    <style>
+        body {
+            width: 98vw;
+            /*height: 98vh;*/
+            margin: auto;
+            border: 1px solid red;
+        }
+
+        .colorBlock {
+            width: 200px;
+            height: 200px;
+            /*line-height: 200px;*/
+            text-align: center;
+            font-size: 1.2em;
+            border: 1px solid black;
+            margin: 20px;
+        }
+
+        .note {
+            margin: 30px;
+            background-color: #d2d2d2
+        }
+    </style>
+</head>
+
+<body id="container">
+    <h1 id="title">007-color changer</h1>
+    <h3>Use button and script to change block background color to random color</h3>
+    <div id="result1" class="colorBlock">00</div>
+    <button type="button" onclick=randomColor(result1)>Click me to change Title's Color </button>
+    <hr>
+
+    <h3>Use input[type=range] to change block background color</h3>
+    <div id="result2" class="colorBlock">back:<br>text:</div>
+    <form oninput=colorChangeByRGB(result2,colorR.value,colorG.value,colorB.value)>
+        <span>R:0</span><input type="range" name="colorR" min="0" max="255">255<br>
+        <span>G:0</span><input type="range" name="colorG" min="0" max="255">255<br>
+        <span>B:0</span><input type="range" name="colorB" min="0" max="255">255<br>
+    </form>
+
+    <div class="note">
+        <b>注意:</b> <br> 1. chrome,opera,firefox的onchange=fun()只會在滑鼠鬆開的瞬間才會動作，若要連續性的動作需用oninput=fun()<br> 2.oninput在IE10裡無效,但onchange在IE10裡的效果等同chrome的oninput
+        <br> 3.若要兼通，在tag內將onchange跟oninput都設置相同的動作即可
+        <br>
+    </div>
+    <hr>
+    <h3>Use color picker(input:color)</h3>
+    <div id="result3" class="colorBlock"></div>
+    <form method="get" target="_self">
+        color picker:
+        <input type="color" name="bkgColor" onchange=colorChangeByHEX(result3,bkgColor.value)><br>
+    </form>
+    <p id="msg">abc</p>
+    <script>
+        var body = document.getElementById("container"),
+            ans = document.getElementById("ans"),
+            msg = document.getElementById("msg"),
+            title = document.getElementById("title");
+        // 轉換hex色碼為rgb
+        function hexToRgb(hex) {
+            var colorR = Number("0x" + hex.substr(1, 2)),
+                colorG = Number("0x" + hex.substr(3, 2)),
+                colorB = Number("0x" + hex.substr(5, 2)),
+                result = "";
+            return "rgb(" + colorR + "," + colorG + "," + colorB + ")";
+        }
+        // 修改顏色
+        function color(input) {
+            ans.value = input
+            title.style.color = hexToRgb(input);
+            msg.innerText = hexToRgb(input);
+        }
+
+        // 變更指定id的背景色跟文字色(使用rgb色碼)
+        function colorChangeByRGB(targetId, iR, iG, iB) {
+            var target = document.getElementById(targetId),
+                rgb = [iR, iG, iB],
+                rgb2 = [256 - iR, 256 - iG, 256 - iB],
+                bgColor = "rgb(%0,%1,%2)",
+                textColor = "rgb(%0,%1,%2)";
+            for (i in rgb) {
+                bgColor = bgColor.replace("%" + i, rgb[i]);
+            }
+            for (i in rgb2) {
+                textColor = textColor.replace("%" + i, rgb2[i]);
+            }
+
+            targetId.style.backgroundColor = bgColor;
+            targetId.style.color = textColor;
+            targetId.innerHTML = "back:" + bgColor + '<br>' + "text:" + textColor;
+        }
+
+        // 變更指定id的背景色跟文字色(使用hex色碼)
+        function colorChangeByHEX(targetId, iHex) {
+            var target = document.getElementById(targetId),
+                textColor = "#",
+                temp = [];
+
+            for (i = 0; i < 3; i++) {
+                //拆開hex色碼，取出各自的rgb值(16進位)
+                temp[i] = iHex.slice(1).substr(i * 2, 2);
+                // 轉換成10進位，並剪去255
+                temp[i] = (255 - parseInt("0x" + temp[i])).toString(16);
+                // 若傳換結果為0~9，在結果前面補0
+                if (temp[i].length < 2) {
+                    temp[i] = "0" + temp[i];
+                }
+                textColor+=temp[i];
+            }
+
+            targetId.style.backgroundColor = iHex;
+            targetId.style.color = textColor;
+            targetId.innerHTML = "back:"+iHex+'<br>'+"text"+textColor;
+        }
+        function abc(targetId, iHex) {
+            var target = document.getElementById(targetId),
+                hex = [iR, iG, iB],
+                hex2 = [255 - iR, 255 - iG, 255 - iB],
+                bgColor = "#",
+                textColor = "#",
+                temp = 0,
+                temp2 = 0;
+
+            for (i in hex) {
+                temp = parseInt(hex[i]).toString(16);
+                if (temp.length < 2) {
+                    temp = "0" + temp;
+                }
+                bgColor += temp;
+            }
+            for (i in hex2) {
+                temp2 = parseInt(hex2[i]).toString(16);
+                if (temp2.length < 2) {
+                    temp2 = "0" + temp2;
+                }
+                textColor += temp2;
+            }
+
+            targetId.style.backgroundColor = bgColor;
+            targetId.style.color = textColor;
+            targetId.innerHTML = "back:" + bgColor + '<br>' + "text:" + textColor;
+        }
+
+        // 亂數產生一個rgb色碼
+        function randomColor(targetId) {
+            var temp = 0,
+                colorCode = "rgb(%0,%1,%2)";
+            for (var i = 0; i < 3; i++) {
+                temp = Math.floor(256 * Math.random());
+                colorCode = colorCode.replace("%" + i, temp);
+            }
+            targetId.innerText = colorCode;
+            targetId.style.backgroundColor = colorCode;
+        }
+                // msg.innerText=Math.random();
+        // msg.innerText=Math.floor(256 * Math.random());
+        // Math.floor(int) : 無條件退位
+        // Math.ceil(int) : 無條件進位
+        // Math.random() : 產生一個0~1之間的亂數
+    </script>
+</body>
+
+</html>
