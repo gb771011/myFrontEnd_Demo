@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>007</title>
+
+</head>
+
+<body id="container">
+    <h1 id="title">007-color changer</h1>
+    <form method="get" target="_self">
+        <input type="color" name="bkgColor" onchange=color(this.value)><br>
+        <input id="ans" type="text" name="bkgInput"><br>
+        <input type="submit">
+    </form>
+    <p id="msg">123</p>
+    <script>
+        var body = document.getElementById("container"),
+            ans = document.getElementById("ans"),
+            msg = document.getElementById("msg"),
+            title = document.getElementById("title");
+// 轉換hex色碼為rgb
+        function hexToRgb(hex) {
+            var colorR = Number("0x" + hex.substr(1, 2)),
+                colorG = Number("0x" + hex.substr(3, 2)),
+                colorB = Number("0x" + hex.substr(5, 2)),
+                result = "";
+            return "rgb(" + colorR + "," + colorG + "," + colorB + ")";
+        }
+        // 修改顏色
+        function color(input) {
+            ans.value = input
+            title.style.color = hexToRgb(input);
+            console.log(hexToRgb(input));
+        }
+
+        // 將querystring的key-value轉換為物件
+        var obj1 = {},
+            x1 = location.search.slice(1).replace(/=/g, '&').split("&");
+        // .slice(1) : 去掉開頭的"?"
+        // .replace(/=/g, '&') : 將字串內的'='取代為'&'
+        // .split("&") : 以"&"為分割符號將字串分段
+        for (var i = 0; i < x1.length; i += 2) {
+            obj1[x1[i]] = x1[i + 1];
+        }
+        console.log(obj1);
+        console.log("JSON.stringify:", JSON.stringify(obj1));
+
+    </script>
+</body>
+
+</html>
