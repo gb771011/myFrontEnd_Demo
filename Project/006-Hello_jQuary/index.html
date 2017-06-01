@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script title="jQuary" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="main.js"></script>
+    <script title="google-code-prettify-" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=default"></script>
+    <script src="main.js" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 90vw;
+            margin: 0 auto;
+        }
+
+        article {
+            background-color: #d9d9d9;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-shadow: 5px 5px #909090;
+        }
+        /*p {
+            background-color:red;
+        }*/
+    </style>
+    <title>006</title>
+</head>
+
+<body>
+    <h1>Hello jQuary!!</h1>
+    <article>
+        <h2>DOM .show() & .hide()</h2>
+        <h4>result</h4>
+        <button id="show" type="button">Click me to Show</button>
+        <button id="hide" type="button">Click me to hide</button>
+        <p>I am 001 p</p>
+        <p>I am 001 p</p>
+        <script>
+            $(function () {
+                $("#show").click(function () {
+                    $("p").show();
+                });
+                $("#hide").click(function () {
+                    $("p").hide();
+                });
+            });
+        </script>
+        <hr>
+        <p>jQuary code:</p>
+        <pre class="prettyprint lang-js">
+$(function () {
+    $("#show").click(function () {
+        $("p").show();
+    });
+    $("#hide").click(function () {
+        $("p").hide();
+    });
+});
+        </pre>
+
+        <p>Standard:</p>
+        <pre class="prettyprint">
+function show(targetElement) {
+    var target = document.getElementsByTagName(targetElement);
+    for (var i = 0; i < target.length; i++) {
+        target[i].style.visibility = "visible";
+    }
+}
+function hide(targetElement) {
+    var target = document.getElementsByTagName(targetElement);
+    for (var i = 0; i < target.length; i++) {
+        target[i].style.visibility = "hidden";
+    }
+}
+document.getElementById("show").addEventListener("click", function () { show("p"); });
+document.getElementById("hide").addEventListener("click", function () { hide("p"); });
+        </pre>
+    </article>
+
+</body>
+
+</html>
+<!--
+    &lt;div>
+        &lt;h3>&lt;/h3>
+        &lt;button id="show" type="button">Click me to Show&lt;/button>
+        &lt;button id="hide" type="button">Click me to hide&lt;/button>
+        &lt;p>I am 001 p&lt;/p>
+        &lt;p>I am 001 p&lt;/p>
+    &lt;/div>
+-->

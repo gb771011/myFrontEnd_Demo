@@ -1,4 +1,4 @@
-*{
+* {
     font-family: "Source Sans Pro", "Arial", sans-serif;
 }
 
@@ -9,17 +9,20 @@ body {
     background-color: #ccffcc;
 }
 
-figure figcaption{
+figure figcaption {
     font-size: 1.8rem;
     font-weight: bold;
 }
-figure ul{
+
+figure ul {
     padding-left: 20px;
 }
-figure li{
+
+figure li {
     font-size: 1.2rem;
     line-height: 1.8rem;
 }
+
 a {
     text-decoration: none;
     width: 100%;
@@ -50,16 +53,19 @@ a::before {
     left: 0;
     animation: ani1 0.3s forwards;
 }
-.bd1{
+
+.bd1 {
     border: 1px solid red;
 }
-.container{
+
+.container {
     margin: 10px;
     padding: 0 10px;
 }
-#title{
+
+#title {
     font-size: 4rem;
     text-align: center;
-    color:#009500;
-    text-shadow:2px 2px #00ff00;
+    color: #009500;
+    text-shadow: 2px 2px #00ff00;
 }
