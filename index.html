@@ -5,75 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <base href="https://gb771011.github.io/myFrontEnd/Project/" target="_blank">
-    <style>
-        body {
-            width: 80%;
-            max-width: 960px;
-            margin: 0 auto;
-            background-color: #ccffcc;
-        }
-
-        ul {
-            padding-left: 10px;
-        }
-
-        li {
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-        }
-
-        a {
-            text-decoration: none;
-            width: 100%;
-            position: relative;
-        }
-
-        @keyframes ani1 {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 100%;
-            }
-        }
-
-        a::before {
-            content: attr(href);
-        }
-
-        a:hover::after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 100%;
-            border-bottom: 3px solid lime;
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: ani1 0.3s forwards;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./src/style.css">
     <title>My homepage</title>
+    <base href="https://gb771011.github.io/myFrontEnd/Project/" target="_self">
 </head>
 
 <body>
-    <h1>My Homepage</h1>
-    <header>
-        <p>
-            Hello,Visitor <br> here is my GitHub`s homepage <br> you can see all my web front-end practice below the page
-            <br>
-        </p>
+    <h1 id="title">My Homepage</h1>
+    <header class="bd1 container">
+        <section>
+            <p>Hello,Visitor</p>
+            <p>here is my GitHub`s homepage</p>
+            <p>you can see all my practice below the page</p>
+        </section>
     </header>
+    <hr>
     <article>
-        <h3>Practive Page Link</h3>
-        <ul>
-            <li><a href="001-Date()_object_test"></a></li>
-            <li><a href="002-calculator_v1"></a></li>
-            <li><a href="003-calendar_v1"></a></li>
-            <li><a href="004-HTML_form_Elements"></a></li>
-            <li><a href="005-HTML_color_change"></a></li>
-        </ul>
+        <figure class="bd1 container"> 
+            <figcaption>Practive Link</figcaption>
+            <ul>
+                <li><a href="001-Date()_object_test" class="effect1"></a></li>
+                <li><a href="002-calculator_v1" class="effect1"></a></li>
+                <li><a href="003-calendar_v1" class="effect1"></a></li>
+                <li><a href="004-HTML_form_Elements" class="effect1"></a></li>
+                <li><a href="005-HTML_color_change" class="effect1"></a></li>
+            </ul>
+        </figure>
     </article>
 </body>
 
