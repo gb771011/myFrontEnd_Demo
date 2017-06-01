@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+* {
+    font-family: "Source Sans Pro", "Arial", "Noto Sans TC", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 90vw;
+    margin: auto;
+}
+
+section {
+    border-bottom: 5px dotted red;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.colorBlock {
+    width: 200px;
+    height: 200px;
+    /*line-height: 200px;*/
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.slideBar {
+    height: 40px;
+    line-height: 40px;
+}
+
+.note {
+    margin: 15px;
+    padding: 10px;
+    background-color: #d2d2d2;
+    /*line-height: 1rem;*/
+}
+
+.note::before {
+    content: attr(value);
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.note ol {
+    padding-left: 20px;
+}
+
+.note p {
+    counter-increment: i;
+}
+
+.note p::before {
+    content: counter(i) "." " ";
+}
