@@ -26,14 +26,7 @@
             <p>I am no.2 &lt;p> in #result1</p>
         </div>
         <script>
-            $(function () {
-                $("#show").click(function () {
-                    $("#result1>p").show();
-                });
-                $("#hide").click(function () {
-                    $("#result1>p").hide();
-                });
-            });
+
         </script>
         <hr>
         <p>jQuary code:</p>
@@ -67,14 +60,92 @@ document.getElementById("hide").addEventListener("click", function () { hide("p"
         </pre>
     </article>
 
+    <article>
+        <h2>使用$(<i>selector</i>).load()讀取資料</h2>
+        <button id="btn1" type="button">Click me</button>
+        <p id="result201" class="result">Loading...</p>
+    </article>
+
+    <article>
+        <h2>使用$.getJson()讀取open data</h2>
+        <p>Json sourse: <a href="http://data.taipei/opendata/datalist/datasetMeta?oid=4d29818c-a3ee-425d-b88a-22ac0c24c712"
+                target="_blank">臺北市今日施工資訊</a></p>
+        <button id="btn2a" type="button">Click me(.ajax)</button>
+        <button id="btn2g" type="button">Click me(.getJson)</button>
+        <p id="result202">Data Here</p>
+        <div>
+            <h3>注意</h3>
+            <p>因跨網域讀取資料會有安全上的問題，故使用chrome測試時，可以使用下列方式:</p>
+            <ol>
+                <li>把要測試的json下載回來，再將url調成本機端的位置後測試，並在chrome啟動時加上參數"--allow-file-access-from-files"(允許讀取本機端檔案)</li>
+                <li>再chrome啟動時加上參數"--disable-web-security"(停止安全性檢查)</li>
+                <li>若資料格式為json，可改用$.getJSON()</li>
+            </ol>
+
+            <p>實際應用時會透過自己的伺服器去獲得資料，或是使用jsonp格式</p>
+        </div>
+
+    </article>
+    <script>
+        $(function () {
+            $("#show").click(function () {
+                $("#result1>p").show();
+            });
+            $("#hide").click(function () {
+                $("#result1>p").hide();
+            });
+
+            $("#btn1").click(function () {
+                $("#result201").load("ajax_test.txt");
+            });
+        });
+
+        var url1 = "http://data.taipei/opendata/datalist/apiAccess",
+            data1 = {
+                "scope": "resourceAquire",
+                "rid": "201d8ae8-dffc-4d17-ae1f-e58d8a95b162"
+                // "limit": 2
+            },
+            url1a = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=201d8ae8-dffc-4d17-ae1f-e58d8a95b162";
+        $(function () {
+            $("#btn2g").click(function () {
+                $.getJSON(url1a, function (e) {
+                    console.log(e);
+                });
+            });
+            $("#btn2a").click(function () {
+                $.ajax({
+                    url: url1,
+                    dataType: "json",
+                    data: data1,
+                    success: function (e) {
+                        var data = e.result.results[0];
+                        var cont = ""
+                        for (i in data) {
+                            console.log(i, ":", data[i]);
+                            cont += '<p>' + i + " : " + data[i] + '</p>'
+                        }
+                        $("#result202").html(cont);
+
+                    },
+                    error: function () {
+                        $("#result202").text("error");
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 <script>
-    function codeHtmlReedit() {
-        var cp = document.getElementsByClassName("lang-html");
-        for (var i = 0; i < cp.length; i++) {
-            cp[i].innerHTML = cp[i].innerHTML.replace(/</g, "&lt;");
+        function codeHtmlReedit() {
+            var cp = document.getElementsByClassName("lang-html");
+            for (var i = 0; i < cp.length; i++) {
+                cp[i].innerHTML = cp[i].innerHTML.replace(/</g, "&lt;");
+            }
         }
-    }
-    codeHtmlReedit();
+        codeHtmlReedit();
+
 </script>
+
 </html>
