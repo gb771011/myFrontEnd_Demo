@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 90vw;
+    margin: 0 auto;
+}
+a{
+    text-decoration:none;
+}
+
+article {
+    background-color: #d9d9d9;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-shadow: 5px 5px #909090;
+}
+
+.result {
+    /*width: 100%;*/
+    height: 6rem;
+    /*line-height: 3rem;*/
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid red;
+}
+
+.result * {
+    margin: 0;
+    padding: 0;
+}

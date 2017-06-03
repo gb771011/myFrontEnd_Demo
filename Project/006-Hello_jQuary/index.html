@@ -6,48 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script title="jQuary" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="main.js"></script>
     <script title="google-code-prettify-" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <script src="main.js" defer></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 90vw;
-            margin: 0 auto;
-        }
-
-        article {
-            background-color: #d9d9d9;
-            margin-bottom: 15px;
-            padding: 10px;
-            box-shadow: 5px 5px #909090;
-        }
-        /*p {
-            background-color:red;
-        }*/
-    </style>
+    <!--<script src="main.js" defer></script>-->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>006</title>
 </head>
 
 <body>
-    <h1>Hello jQuary!!</h1>
+    <h1><a href="https://www.w3schools.com/jquery/default.asp" target="_blank">Hello jQuary!!</a></h1>
     <article>
         <h2>DOM .show() & .hide()</h2>
-        <h4>result</h4>
-        <button id="show" type="button">Click me to Show</button>
-        <button id="hide" type="button">Click me to hide</button>
-        <p>I am 001 p</p>
-        <p>I am 001 p</p>
+        <button id="show" type="button">Show all &lt;p> in #result1</button>
+        <button id="hide" type="button">Hide all &lt;p> in #result1</button>
+        <div id="result1" class="result">
+            <p>I am no.1 &lt;p> in #result1</p>
+            <p>I am no.2 &lt;p> in #result1</p>
+        </div>
         <script>
             $(function () {
                 $("#show").click(function () {
-                    $("p").show();
+                    $("#result1>p").show();
                 });
                 $("#hide").click(function () {
-                    $("p").hide();
+                    $("#result1>p").hide();
                 });
             });
         </script>
@@ -64,7 +45,7 @@ $(function () {
 });
         </pre>
 
-        <p>Standard:</p>
+        <span>Standard:</span>
         <pre class="prettyprint">
 function show(targetElement) {
     var target = document.getElementsByTagName(targetElement);
@@ -84,7 +65,15 @@ document.getElementById("hide").addEventListener("click", function () { hide("p"
     </article>
 
 </body>
-
+<script>
+    function codeHtmlReedit() {
+        var cp = document.getElementsByClassName("lang-html");
+        for (var i = 0; i < cp.length; i++) {
+            cp[i].innerHTML = cp[i].innerHTML.replace(/</g, "&lt;");
+        }
+    }
+    codeHtmlReedit();
+</script>
 </html>
 <!--
     &lt;div>
