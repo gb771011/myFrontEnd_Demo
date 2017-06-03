@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,71 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script title="jQuary" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script title="google-code-prettify-" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <!--<script src="main.js" defer></script>-->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>006</title>
+    <title>Document</title>
 </head>
 
 <body>
-
-    <h1>Hello jQuary!!</h1>
-    <pre class="prettyprint lang-html">
-<b>次次斷航謝果</b>
-        </pre>
-    <script>
-        /*
-        $(".lang-html").html(function(i,co){
-            return "<b>HHH</b>"+co;
-        })
-        */
-    </script>
-
-    <a href="https://www.w3schools.com/jquery/default.asp" target="_blank">click me to see W3C jQuary Tutouial</a>
-
-    <article>
-        <h2>用jQuary顯示/隱藏DOM</h2>
-        <!--<button id="show" type="button">Show all code</button>
-        <button id="hide" type="button">Hide all code</button>
-        <button id="toggle" type="button">Show/Hide all code by on button</button>-->
-
-        <div class="code">
-            <p>jQuary code:</p>
-            <button class="codeDisplay" type="button">Click me to toggle code</button>
-            <pre class="prettyprint lang-js">
-$(function () {
-    $("#show").click(function () {
-        $("p").show();
-    });
-    $("#hide").click(function () {
-        $("p").hide();
-    });
-});
-        </pre>
-        </div>
-
-        <div class="code">
-            <button class="codeDisplay" type="button">Click</button>
-            <p>Standard:</p>
-            <pre class="prettyprint linenums">
-function show(targetElement) {
-    var target = document.getElementsByTagName(targetElement);
-    for (var i = 0; i < target.length; i++) {
-        target[i].style.visibility = "visible";
-    }
-}
-function hide(targetElement) {
-    var target = document.getElementsByTagName(targetElement);
-    for (var i = 0; i < target.length; i++) {
-        target[i].style.visibility = "hidden";
-    }
-}
-document.getElementById("show").addEventListener("click", function () { show("p"); });
-document.getElementById("hide").addEventListener("click", function () { hide("p"); });
-        </pre>
-        </div>
-
-    </article>
-
     <article>
         <h2>使用$(<i>selector</i>).load()讀取資料</h2>
         <button id="btn1" type="button">Click me</button>
@@ -144,48 +84,6 @@ document.getElementById("hide").addEventListener("click", function () { hide("p"
             });
         });
     </script>
-
 </body>
-
-<script>
-        // 把.prettyprint裡的<替換成&lt;(原生JS)
-        function codeHtmlReedit() {
-            var cp = document.getElementsByClassName("lang-html");
-            for (var i = 0; i < cp.length; i++) {
-                cp[i].innerHTML = cp[i].innerHTML.replace(/</g, "&lt;");
-            }
-        }
-        // codeHtmlReedit();
-
-        // 把.prettyprint裡的<替換成&lt;(jQuary)，注意此程式不能放到document.ready之後
-        /*
-        var cont = $(".lang-html").html().replace(/</g, "&lt;");
-        $(".lang-html").html(cont);
-        */
-
-        $(function () {
-
-            $(".codeDisplay").click(function () {
-                $($(this).nextAll("pre")[0]).toggle();
-            });
-            var tt = $(".lang-html").siblings("span").text();
-            console.log(tt);
-        });
-/*
-        $(function () {
-            $("#show").click(function () {
-                $("article:first-of-type pre").show();
-            });
-            $("#hide").click(function () {
-                $("article:first-of-type pre").hide();
-            });
-            $("#toggle").click(function () {
-                $("article:first-of-type pre").toggle();
-            });
-
-        });
-*/
-
-</script>
 
 </html>

@@ -7,11 +7,7 @@ function codeHtmlReedit() {
     }
 }
 codeHtmlReedit();
-/*        
-jQuary套用宣告:
-所有jQuary的程式碼外層都必須包一個$(document).ready(function () { ~~code here~~});
-或是省略"document).ready"，簡寫為$(function () { ~~code here~~ });
-*/
+
 //按下按鈕讓<p>顯示/消失(use jQuary)--6 line
 
 //按下按鈕讓<p>顯示/消失(ECMAscript)--14 lines
