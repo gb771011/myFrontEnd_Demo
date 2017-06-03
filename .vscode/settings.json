@@ -1,7 +1,7 @@
 // 將您的設定放入此檔案中以覆寫預設值和使用者設定。
 {   // 設定檔案總管理是否隱藏下列檔案/資料夾
     "files.exclude": {
-        "**/.git": true,
+        "**/.git": false,
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,

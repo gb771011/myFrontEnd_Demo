@@ -109,7 +109,7 @@ document.getElementById("hide").addEventListener("click", function () { hide("p"
             url1a = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=201d8ae8-dffc-4d17-ae1f-e58d8a95b162";
         $(function () {
             $("#btn2g").click(function () {
-                $.getJSON(url1a, function (e) {
+                $.getJSON("aplin.json", function (e) {
                     console.log(e);
                 });
             });
