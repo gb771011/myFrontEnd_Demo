@@ -11,28 +11,32 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>006-jQuary Effect Demo</title>
     <style>
-        .desc ul {
+        em {
+            font-size: 1.1rem;
+            color: red;
+        }
+
+        .codeDemo ul {
             margin-top: 0;
         }
 
-        .desc ul li {
+        .codeDemo ul li {
             list-style-type: square;
         }
 
-        .desc b {
+        .codeDemo b {
             font-size: 1.2rem;
         }
 
-        .desc b::after {
+        .codeDemo b::after {
             content: " : ";
         }
 
-
-        h4 {            
-            margin: 0 auto;            
+        .codeDemo h4 {
+            margin-top: 0 auto;
             background-color: #999999;
+            color: wheat;
         }
-
     </style>
 </head>
 
@@ -44,50 +48,59 @@
             <li>Google code prettify</li>
         </ol>
     </header>
-    <article class="desc">
+    <article class="codeDemo">
+        <h4>說明</h4>
         <ol>
             <li>jQuary語法: $(<i>selector</i>).action()</li>
             <li>
-                $(document).ready(function(){ //your_code }) 當頁面中所有的DOM都載入完畢後才執行your_code <br> 實際使用時可縮寫為
-                <mark>$(function(){ //your_code })</mark>
+                $(document).ready(function(){ //your_code }) 當頁面中所有的DOM都載入完畢後才執行your_code <br> 實際使用時可縮寫為$(function(){ //your_code
+                })即可
+            </li>
+            <h4>範例</h4>
+            <pre class="prettyprint lang-js">
+// 標準寫法
+$(document).ready(function(){
+    //your_code 
+});
+
+// 縮寫
+$(function(){
+    //your_code
+    });
+                </pre>
             </li>
             <li>
                 可以使用&lt;script src="">讀取外部JS，但必須在載入外部JS前必須先載入jQuary，否則外部JS會無法運作
             </li>
         </ol>
         <h1></h1>
-
     </article>
-    <article>
-        <h1 id="title">簡單顯示/隱藏<a href=""></a></h1>
-        <section class="desc">
+    <article id="bk1" class="codeDemo">
+        <h1 id="title">特效--直接顯示隱藏<a href=""></a></h1>
+        <section>
             <div>
-                <h4>效果說明</h4>
+                <h4>顯示效果</h4>
+                <p>從DOM右下角往左上角收合/展開</p>
+                <h4>method:</h4>
                 <ul>
                     <li><b>.show()</b>讓DOM顯示</li>
                     <li><b>.hide()</b>讓DOM隱形</li>
                     <li><b>.toggle</b>切換DOM的顯示狀態(顯示&rarr;隱藏，反之亦然)</li>
                 </ul>
+
+                <h4 id="parameter">參數</h4>
+                <p>.show(<i>speed</i>,<i>callback()</i>)</p>
+                <ul>
+                    <li>speed:執行的速度</li>
+                    <li>callback:動作完成後執行的副程式</li>
+                </ul>
             </div>
+
             <div>
-                <h4>參數</h4>
-            </div>
-            <div class="codeDemo">
                 <h4>範例</h4>
                 <button id="btnShow" type="button">.show():顯示程式碼</button>
                 <button id="btnHide" type="button">.hide():隱藏程式碼</button>
                 <button id="btnToggle" type="button">.toggle():切換程式碼顯示狀態</button>
-                <script>
-                    $("#btnShow").click(function () {
-                        $("#bk101").show(300, "swing");
-                    });
-                    $("#btnHide").click(function () {
-                        $("#bk101").hide(300, "linear");
-                    });
-                    $("#btnToggle").click(function () {
-                        $("#bk101").toggle(300, "swing");
-                    });
-                </script>
 
                 <pre id="bk101" class="prettyprint lang-js">
 //使用jQuary
@@ -101,47 +114,130 @@ $("#btnToggle").click(function () {
     $("#bk101").toggle(300, "swing");
 });
 
-//原生JS實現.show()
-function show(targetElement) {
-    var target = document.getElementsByTagName(targetElement);
-    for (var i = 0; i < target.length; i++) {
-        target[i].style.visibility = "visible";
-    }
-}
-document.getElementById("show").addEventListener("click", function () { show("p"); });
-//原生JS實現.hide()
-function hide(targetElement) {
-    var target = document.getElementsByTagName(targetElement);
-    for (var i = 0; i < target.length; i++) {
-        target[i].style.visibility = "hidden";
-    }
-}
-document.getElementById("hide").addEventListener("click", function () { hide("p"); });
         </pre>
             </div>
         </section>
-
     </article>
+    <article id="bk2" class="codeDemo">
+        <!--h1[id=title]+section>h4{method}+ul>li*3^div*2-->
+        <h1 id="title">特效-淡入淡出顯示隱藏</h1>
+        <section>
+            <h4>顯示效果</h4>
+            <p>
+                顯示:快速地讓出現外框後，再將內容從透明變實體
+            </p>
+            <h4>method</h4>
+            <ul>
+                <li><b>.fadeIn()</b>顯示DOM(透明>>實體)</li>
+                <li><b>.fadeOut()</b>消失(實體>>透明)</li>
+                <li><b>.fadeToggle()</b>狀態切換</li>
+                <li><b>.fadeTo()</b>修改目標的透明度(實體>>半透明) <br>
+                    <em>注意:透過fadeTo修改過的元素若要恢復原來的透明度,須重新該DOM的style.opacity值為1(可另外寫在callback裡)</em></li>
+            </ul>
+            <h4>參數</h4>
+            <div>
+                <ul>
+                    <li><b>前三項</b><a href="#parameter">與上面相同</a></li>
+                    <li>
+                        <b>.fadeTo(<i>speed</i>,<i>opacity</i>,<i>callback</i>)</b>
+                        <ul>
+                            <li>speed:<a href="#parameter">與上面相同</a></li>
+                            <li>opacity:變化後的透明度[0(透明)~1(實體)]</li>
+                            <li>callback:<a href="#parameter">與上面相同</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4>範例</h4>
+                <button id="btn201">.fadein()--淡入顯示</button>
+                <button id="btn202">.fadeout()--淡出隱形</button>
+                <br>
+                <button id="btn203">.fadetoggle()--切換狀態(淡入<>淡出)</button>
+                <button id="btn204">.fadeto()--切換狀態(實體<>半透明)</button>
+            </div>
+            <pre id="bk2Code" class="prettyprint">
+// fadeIn
+$("#btn201").click(function () {
+    $("#bk2Code").fadeIn(1000);
+});
+
+// fadeOut
+$("#btn202").click(function () {
+    $("#bk2Code").fadeOut(1000);
+});
+
+// fadeToggle
+$("#btn203").click(function () {
+    $("#bk2Code").fadeToggle(1000);
+});
+
+// fadeTo
+$("#btn204").click(function () {
+    var sp=300;
+    // alert($("#bk2Code").css("opacity"));
+    if ($("#bk2Code").css("opacity") <1) {
+        $("#bk2Code").fadeTo(sp, 1);
+    }else{
+        $("#bk2Code").fadeTo(sp, 0.5);
+    }
+});
+            </pre>
+        </section>
+    </article>
+    <script>
+        $(function () {
+            // bk1
+            //jQuary
+            $("#btnShow").click(function () {
+                $("#bk101").show(300, "swing");
+            });
+            $("#btnHide").click(function () {
+                $("#bk101").hide(300, "linear");
+            });
+            $("#btnToggle").click(function () {
+                $("#bk101").toggle(300, "swing");
+            });
+            $("#bk101").hide();
+            //原生JS--.show()
+            function show(targetElement) {
+                var target = document.getElementsByTagName(targetElement);
+                for (var i = 0; i < target.length; i++) {
+                    target[i].style.visibility = "visible";
+                }
+            }
+            document.getElementById("btnShow").addEventListener("click", function () { show("p"); });
+            //原生JS--.hide()
+            function hide(targetElement) {
+                var target = document.getElementsByTagName(targetElement);
+                for (var i = 0; i < target.length; i++) {
+                    target[i].style.visibility = "hidden";
+                }
+            }
+            document.getElementById("btnHide").addEventListener("click", function () { hide("p"); });
+
+            // #bk2
+            $("#bk2Code").hide();
+            $("#btn201").click(function () {
+                $("#bk2Code").fadeIn(1000);
+            });
+            $("#btn202").click(function () {
+                $("#bk2Code").fadeOut(1000);
+            });
+            $("#btn203").click(function () {
+                $("#bk2Code").fadeToggle(1000);
+            });
+            $("#btn204").click(function () {
+                var sp = 300;
+                // alert($("#bk2Code").css("opacity"));
+                if ($("#bk2Code").css("opacity") < 1) {
+                    $("#bk2Code").fadeTo(sp, 1);
+                } else {
+                    $("#bk2Code").fadeTo(sp, 0.5);
+                }
+            });
+        });
+    </script>
 </body>
-
-<script>
-                    // 把.prettyprint裡的<替換成&lt;(原生JS)
-                    function codeHtmlReedit() {
-                        var cp = document.getElementsByClassName("lang-html");
-                        for (var i = 0; i < cp.length; i++) {
-                            cp[i].innerHTML = cp[i].innerHTML.replace(/</g, "&lt;");
-                        }
-                    }
-    // codeHtmlReedit();
-
-    /*
-    // 把.prettyprint裡的<替換成&lt;(jQuary)，注意此程式不能放到document.ready之內
-    var cont = $(".lang-html").html().replace(/</g, "&lt;");
-    $(".lang-html").html(cont);
-    */
-
-</script>
-
-<!---->
 
 </html>

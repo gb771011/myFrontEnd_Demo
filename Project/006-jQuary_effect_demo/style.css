@@ -11,13 +11,6 @@ a {
     text-decoration: none;
 }
 
-article {
-    background-color: #d9d9d9;
-    margin-bottom: 15px;
-    padding: 0.5rem;
-    box-shadow: 5px 5px #909090;
-}
-
 section {
     border: 1px dashed black;
     border-bottom: 2px solid black;
@@ -25,7 +18,12 @@ section {
     margin: 1rem;
 }
 
-
+.codeDemo {
+    background-color: #d9d9d9;
+    margin-bottom: 15px;
+    padding: 0.5rem;
+    box-shadow: 5px 5px #909090;
+}
 
 .result {
     /*width: 100%;*/
@@ -42,7 +40,7 @@ section {
 }
 
 .prettyprint {
-    display: none;
+    /*display: none;*/
     max-height: 200px;
     overflow: auto;
 }
