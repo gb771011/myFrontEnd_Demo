@@ -1,24 +1,11 @@
 ## 練習題連結    
 
-<<<<<<< HEAD
 1. [簡單時鐘](https://gb771011.github.io/myFrontEnd/Project/001-Date()_object_test)   
 2. [簡單計算機](https://gb771011.github.io/myFrontEnd/Project/002-calculator_v1)    
 3. [當月日曆](https://gb771011.github.io/myFrontEnd/Project/003-calendar_v1) 
-=======
-1. [簡單時鐘](https://gb771011.github.io/myFrontEnd/001-Date()_object_test)   
-2. [簡單計算機](https://gb771011.github.io/myFrontEnd/002-calculator_v1)    
-3. [當月日曆](https://gb771011.github.io/myFrontEnd/003-calendar_v1) 
->>>>>>> 765c55dfa157c72bdd3c44f7ab9b0a108c297459
 4. [JS表單元素一覽](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo)
 5. [JS顏色變換](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo)
-6. [jQuery特效Demo](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo)     
-
-
-<<<<<<< HEAD
-[Github Page首頁](https://gb771011.github.io/myFrontEnd/Project/)
-=======
-[Github Page首頁](https://gb771011.github.io/myFrontEnd/)
->>>>>>> 765c55dfa157c72bdd3c44f7ab9b0a108c297459
+6. [jQuery特效Demo](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo) 
 
 <!-----
 
