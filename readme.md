@@ -3,8 +3,8 @@
 1. [簡單時鐘](https://gb771011.github.io/myFrontEnd/Project/001-Date()_object_test)   
 2. [簡單計算機](https://gb771011.github.io/myFrontEnd/Project/002-calculator_v1)    
 3. [當月日曆](https://gb771011.github.io/myFrontEnd/Project/003-calendar_v1) 
-4. [JS表單元素一覽](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo)
-5. [JS顏色變換](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo)
+4. [JS表單元素一覽](https://gb771011.github.io/myFrontEnd/Project/004-HTML_form_Elements)
+5. [JS顏色變換](https://gb771011.github.io/myFrontEnd/Project/005-HTML_color_change)
 6. [jQuery特效Demo](https://gb771011.github.io/myFrontEnd/Project/006-jQuary_effect_demo) 
 
 <!-----
