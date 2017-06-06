@@ -10,34 +10,7 @@
     <!--<script src="main.js" defer></script>-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>006-jQuary Effect Demo</title>
-    <style>
-        em {
-            font-size: 1.1rem;
-            color: red;
-        }
-
-        .codeDemo ul {
-            margin-top: 0;
-        }
-
-        .codeDemo ul li {
-            list-style-type: square;
-        }
-
-        .codeDemo b {
-            font-size: 1.2rem;
-        }
-
-        .codeDemo b::after {
-            content: " : ";
-        }
-
-        .codeDemo h4 {
-            margin-top: 0 auto;
-            background-color: #999999;
-            color: wheat;
-        }
-    </style>
+   
 </head>
 
 <body>
@@ -120,6 +93,7 @@ $("#btnToggle").click(function () {
     </article>
     <article id="bk2" class="codeDemo">
         <!--h1[id=title]+section>h4{method}+ul>li*3^div*2-->
+
         <h1 id="title">特效-淡入淡出顯示隱藏</h1>
         <section>
             <h4>顯示效果</h4>
@@ -185,58 +159,110 @@ $("#btn204").click(function () {
             </pre>
         </section>
     </article>
-    <script>
-        $(function () {
-            // bk1
-            //jQuary
-            $("#btnShow").click(function () {
-                $("#bk101").show(300, "swing");
-            });
-            $("#btnHide").click(function () {
-                $("#bk101").hide(300, "linear");
-            });
-            $("#btnToggle").click(function () {
-                $("#bk101").toggle(300, "swing");
-            });
-            $("#bk101").hide();
-            //原生JS--.show()
-            function show(targetElement) {
-                var target = document.getElementsByTagName(targetElement);
-                for (var i = 0; i < target.length; i++) {
-                    target[i].style.visibility = "visible";
-                }
-            }
-            document.getElementById("btnShow").addEventListener("click", function () { show("p"); });
-            //原生JS--.hide()
-            function hide(targetElement) {
-                var target = document.getElementsByTagName(targetElement);
-                for (var i = 0; i < target.length; i++) {
-                    target[i].style.visibility = "hidden";
-                }
-            }
-            document.getElementById("btnHide").addEventListener("click", function () { hide("p"); });
+    <!--article>h1[id=title]{特效--滑動顯示隱藏}+section>h4+p-->
+    <article id="bk3" class="codeDemo">
+        <h1 id="title">特效--滑動顯示隱藏</h1>
+        <section>
+            <!--(h4+p)*3++pre-->
+            <h4>顯示效果</h4>
+            <p>
+                由上往下展開元素
+            </p>
+            <!---->
+            <h4>method</h4>
+            <p>
+                <ul>
+                    <li><b>.slideDown()</b>滑動顯示</li>
+                    <li><b>.slideUp()</b>滑動消失</li>
+                    <li><b>.slideToggle()</b>滑動變換狀態</li>
+                </ul>
+            </p>
+            <h4>參數</h4>
+            <p>
+                <a href="#parameter">與上面相同</a>
+            </p>
+            <h4>範例</h4>
+            <button id="btn301" type="button">.slideDown():滑動顯示</button>
+            <button id="btn302" type="button">.slideUp():滑動消失</button>
+            <button id="btn303" type="button">.slideToggle():滑動變換狀態</button>
+            <pre id="bk3Code" class="prettyprint">
+$("#btn301").click(function () {
+    $("#bk3Code").slideDown();
+});
+$("#btn302").click(function () {
+    $("#bk3Code").slideUp();
+});
+$("#btn303").click(function () {
+    $("#bk3Code").slideToggle();
+});
+        </pre>
+            <script>
+                $("#btn301").click(function () {
+                    $("#bk3Code").slideDown();
+                });
+                $("#btn302").click(function () {
+                    $("#bk3Code").slideUp();
+                });
+                $("#btn303").click(function () {
+                    $("#bk3Code").slideToggle();
+                });
+                $("#bk3Code").hide();
+            </script>
+        </section>
+    </article>
 
-            // #bk2
-            $("#bk2Code").hide();
-            $("#btn201").click(function () {
-                $("#bk2Code").fadeIn(1000);
-            });
-            $("#btn202").click(function () {
-                $("#bk2Code").fadeOut(1000);
-            });
-            $("#btn203").click(function () {
-                $("#bk2Code").fadeToggle(1000);
-            });
-            $("#btn204").click(function () {
-                var sp = 300;
-                // alert($("#bk2Code").css("opacity"));
-                if ($("#bk2Code").css("opacity") < 1) {
-                    $("#bk2Code").fadeTo(sp, 1);
-                } else {
-                    $("#bk2Code").fadeTo(sp, 0.5);
+    <script>
+            $(function () {
+                // bk1
+                //jQuary
+                $("#btnShow").click(function () {
+                    $("#bk101").show(300, "swing");
+                });
+                $("#btnHide").click(function () {
+                    $("#bk101").hide(300, "linear");
+                });
+                $("#btnToggle").click(function () {
+                    $("#bk101").toggle(300, "swing");
+                });
+                $("#bk101").hide();
+                //原生JS--.show()
+                function show(targetElement) {
+                    var target = document.getElementsByTagName(targetElement);
+                    for (var i = 0; i < target.length; i++) {
+                        target[i].style.visibility = "visible";
+                    }
                 }
+                document.getElementById("btnShow").addEventListener("click", function () { show("p"); });
+                //原生JS--.hide()
+                function hide(targetElement) {
+                    var target = document.getElementsByTagName(targetElement);
+                    for (var i = 0; i < target.length; i++) {
+                        target[i].style.visibility = "hidden";
+                    }
+                }
+                document.getElementById("btnHide").addEventListener("click", function () { hide("p"); });
+
+                // #bk2
+                $("#bk2Code").hide();
+                $("#btn201").click(function () {
+                    $("#bk2Code").fadeIn(1000);
+                });
+                $("#btn202").click(function () {
+                    $("#bk2Code").fadeOut(1000);
+                });
+                $("#btn203").click(function () {
+                    $("#bk2Code").fadeToggle(1000);
+                });
+                $("#btn204").click(function () {
+                    var sp = 300;
+                    // alert($("#bk2Code").css("opacity"));
+                    if ($("#bk2Code").css("opacity") < 1) {
+                        $("#bk2Code").fadeTo(sp, 1);
+                    } else {
+                        $("#bk2Code").fadeTo(sp, 0.5);
+                    }
+                });
             });
-        });
     </script>
 </body>
 
