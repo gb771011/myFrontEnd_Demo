@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="application/json" src="data.json">
+
+    </script>
+    <title>007-mouse event</title>
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+        * {
+            font-family: "Source Sans Pro", "Arial", "Noto Sans TC", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 90vw;
+            height: 90vh;
+            margin: 0 auto;
+            overflow: hidden;
+            background: linear-gradient(#ccffcc, #33cc33);
+        }
+
+        article {
+            border: 1px solid red;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        th {
+            padding: 10px;
+            font-size: 1.5rem;
+        }
+
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <header>
+        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">w3c-js reference-DOM event</a>
+    </header>
+    <article>
+        <table id="mouseEvent">
+            <h3>mouse event</h3>
+            <tr>
+                <th>事件</th>
+                <th>敘述</th>
+            </tr>
+
+        </table>
+        <script>
+            $(function () {
+                // 使用constructor建立資料
+                function tableRow(tgId, name, desc) {
+                    this.name = name;
+                    this.desc = desc;
+                    $("#mouseEvent").append("<tr><td>" + this.name + "</td><td>" + this.desc + "</td></tr>");
+                }
+                apple = new tableRow("mouseEvent", "onclick", "典籍又見時");
+                $.ajax({
+                    url: "data.json",
+                    dataType: "json",
+                    success:function(){
+                        alert("success");
+                    }
+                }
+                );
+            });
+        </script>
+    </article>
+</body>
+
+</html>

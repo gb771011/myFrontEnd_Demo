@@ -6,6 +6,7 @@
 4. [JS表單元素一覽](https://gb771011.github.io/myFrontEnd/practice/004-HTML_form_Elements)
 5. [JS顏色變換](https://gb771011.github.io/myFrontEnd/practice/005-HTML_color_change)
 6. [jQuery特效Demo](https://gb771011.github.io/myFrontEnd/practice/006-jQuary_effect_demo) 
+7. [mouse事件Demo](https://gb771011.github.io/myFrontEnd/practice/007-mouse_event) 
 
 <!-----
 
