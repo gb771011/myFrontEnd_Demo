@@ -13,20 +13,21 @@
     <style>
         @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
         * {
-            font-family: "Source Sans Pro", "Arial", "Noto Sans TC", sans-serif;
+            font-family: "Noto Sans TC", "Source Sans Pro", "Arial", sans-serif;
             box-sizing: border-box;
         }
 
         body {
-            width: 90vw;
-            height: 90vh;
+            width: 100%;
+            /*height: 100%;*/
             margin: 0 auto;
-            overflow: hidden;
-            background: linear-gradient(#ccffcc, #33cc33);
+            /*overflow-x: hidden;*/
+            background-color: #ccffcc;
+            /*, #33cc33)*/
         }
 
         article {
-            border: 1px solid red;
+            /*border: 1px solid red;*/
             margin-bottom: 10px;
             padding-bottom: 10px;
         }
@@ -39,8 +40,13 @@
         }
 
         table {
-            width: 100%;
-            margin: 0 auto;
+            width: calc(100% - 20px);
+            margin: 0 10px;
+        }
+
+        h2 {
+            text-align: center;
+            text-transform: capitalize;
         }
 
         th {
@@ -48,8 +54,12 @@
             font-size: 1.5rem;
         }
 
+        th:first-child {
+            width: 30%;
+        }
+
         td {
-            padding: 5px;
+            padding: 0 0.5rem;
         }
     </style>
 </head>
@@ -60,31 +70,27 @@
         <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">w3c-js reference-DOM event</a>
     </header>
     <article>
+        <h2>mouse event</h2>
         <table id="mouseEvent">
-            <h3>mouse event</h3>
             <tr>
-                <th>事件</th>
-                <th>敘述</th>
+                <th>事件名稱</th>
+                <th>監聽動作</th>
             </tr>
 
         </table>
         <script>
             $(function () {
                 // 使用constructor建立資料
-                function tableRow(tgId, name, desc) {
-                    this.name = name;
-                    this.desc = desc;
-                    $("#mouseEvent").append("<tr><td>" + this.name + "</td><td>" + this.desc + "</td></tr>");
-                }
-                apple = new tableRow("mouseEvent", "onclick", "典籍又見時");
-                $.ajax({
-                    url: "data.json",
-                    dataType: "json",
-                    success:function(){
-                        alert("success");
+                function a2t(target) {
+                    this.target = target;
+                    this.on = function (name, desc) {
+                        $(this.target).append("<tr><td>" + name + "</td><td>" + desc + "</td></tr>");
                     }
                 }
-                );
+                var me=new a2t("#mouseEvent");
+                me.on("onclick", "點擊左鍵時");
+                me.on("oncontextmenu", "呼叫右鍵選單時");
+
             });
         </script>
     </article>
