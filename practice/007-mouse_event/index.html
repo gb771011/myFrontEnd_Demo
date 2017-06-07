@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="application/json" src="data.json">
-
     </script>
     <title>007-mouse event</title>
     <style>
@@ -67,33 +65,75 @@
 <body>
     <h1></h1>
     <header>
-        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">w3c-js reference-DOM event</a>
+        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">w3c-js reference-DOM event</a>
     </header>
-    <article>
+    <article id="mouseEventDemo">
         <h2>mouse event</h2>
-        <table id="mouseEvent">
-            <tr>
-                <th>事件名稱</th>
-                <th>監聽動作</th>
-            </tr>
-
-        </table>
         <script>
             $(function () {
                 // 使用constructor建立資料
+                /*
                 function a2t(target) {
                     this.target = target;
                     this.on = function (name, desc) {
                         $(this.target).append("<tr><td>" + name + "</td><td>" + desc + "</td></tr>");
                     }
                 }
-                var me=new a2t("#mouseEvent");
+                var me = new a2t("#mouseEvent");
                 me.on("onclick", "點擊左鍵時");
                 me.on("oncontextmenu", "呼叫右鍵選單時");
+                me.on("ondblclick", "雙擊左鍵時");
+                me.on("onmousedown", "");
+                me.on("onmousecenter", "");
+                me.on("onmousemove", "");
+                me.on("onmouseover", "");
+                me.on("onmouseout", "");
+                me.on("onmouseup", "");
+                */
+                // constructor 2
+                function Table() {
+                    this.init = function (parent, id) {
+                        this.id = "#" + id;
+                        $(parent).append("<table id=" + id + "></table>")
+                    };
 
+                    this.rowHead = function (data) {
+                        var tHeader = "<th>#cont</th>",
+                            tRow = "<tr>#tData</tr>",
+                            temp = "";
+                        i = 0;
+                        for (i = 0; i < data.length; i++) {
+                            temp += tHeader.replace("#cont", data[i]);
+                        }
+                        cont = tRow.replace("#tData", temp);
+                        $(this.id).append(cont);
+                        this.colNum = data.length;
+                    };
+                    this.rowData = function (data) {
+                        var tData = "<td>#cont</td>",
+                            tRow = "<tr>#cont</tr>",
+                            temp = "",
+                            i = 0;
+                        for (i = 0; i < this.colNum; i++) {
+                            temp += tData.replace("#cont", data[i]);
+                        }
+                        cont = tRow.replace("#cont", temp);
+                        $(this.id).append(cont);
+                    };
+                };
+
+                var test = new Table();
+                test.init("#mouseEventDemo", "test01");
+                test.rowHead(["item1", "item2"]);
+                test.rowData(["data1", "data2"]);
+                test.rowData(["data1", "data2"]);
+                test.rowData(["data1", "data2"]);
+                test.rowData(["data1", "data2"]);
             });
         </script>
+
     </article>
+
 </body>
 
 </html>
