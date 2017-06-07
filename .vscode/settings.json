@@ -8,5 +8,6 @@
         "**/*.gitignore":true,
         "**/chrome":true,
         "**/*.bat":true
-    }
+    },
+    "vs-color-picker:autoLaunch": false
 }

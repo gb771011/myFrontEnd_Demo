@@ -1,139 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    </script>
-    <title>007-mouse event</title>
     <style>
-        @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-        * {
-            font-family: "Noto Sans TC", "Source Sans Pro", "Arial", sans-serif;
-            box-sizing: border-box;
+        .demo {
+            width: 95%;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            background-color: #b0d8ff;
+            box-shadow: 10px 10px #0066cc;
+            position: relative;
         }
 
-        body {
-            width: 100%;
-            /*height: 100%;*/
-            margin: 0 auto;
-            /*overflow-x: hidden;*/
-            background-color: #ccffcc;
-            /*, #33cc33)*/
-        }
-
-        article {
-            /*border: 1px solid red;*/
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-        }
-
-        table,
-        td,
-        th {
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
-
-        table {
-            width: calc(100% - 20px);
-            margin: 0 10px;
-        }
-
-        h2 {
-            text-align: center;
-            text-transform: capitalize;
-        }
-
-        th {
+        .demo h2 {
+            display: inline-block;
+            margin: 0 auto 1rem 3rem;
             padding: 10px;
-            font-size: 1.5rem;
+            border: 3px solid #0000a0;
+            text-align: left;
+            font-size: 1.75rem;
         }
 
-        th:first-child {
-            width: 30%;
+        .demo section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #0000a0;
         }
 
-        td {
-            padding: 0 0.5rem;
+        .demo span {
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid red;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .demo div {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            line-height: 2rem;
+            /*background-color: red;*/
+        }
+
+        button {
+            font-size: 1.2rem
+        }
+
+        footer {
+            width: 90%;
+            margin: 5px auto 10px auto;
+            padding: 5px;
+            background-color: #b0d8ff;
         }
     </style>
+    <title>007-DOM mouse event</title>
 </head>
 
 <body>
-    <h1></h1>
-    <header>
-        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">w3c-js reference-DOM event</a>
-    </header>
-    <article id="mouseEventDemo">
-        <h2>mouse event</h2>
-        <script>
-            $(function () {
-                // 使用constructor建立資料
-                /*
-                function a2t(target) {
-                    this.target = target;
-                    this.on = function (name, desc) {
-                        $(this.target).append("<tr><td>" + name + "</td><td>" + desc + "</td></tr>");
-                    }
-                }
-                var me = new a2t("#mouseEvent");
-                me.on("onclick", "點擊左鍵時");
-                me.on("oncontextmenu", "呼叫右鍵選單時");
-                me.on("ondblclick", "雙擊左鍵時");
-                me.on("onmousedown", "");
-                me.on("onmousecenter", "");
-                me.on("onmousemove", "");
-                me.on("onmouseover", "");
-                me.on("onmouseout", "");
-                me.on("onmouseup", "");
-                */
-                // constructor 2
-                function Table() {
-                    this.init = function (parent, id) {
-                        this.id = "#" + id;
-                        $(parent).append("<table id=" + id + "></table>")
-                    };
+    <h1>DOM mouse event</h1>
+    <hr>
 
-                    this.rowHead = function (data) {
-                        var tHeader = "<th>#cont</th>",
-                            tRow = "<tr>#tData</tr>",
-                            temp = "";
-                        i = 0;
-                        for (i = 0; i < data.length; i++) {
-                            temp += tHeader.replace("#cont", data[i]);
-                        }
-                        cont = tRow.replace("#tData", temp);
-                        $(this.id).append(cont);
-                        this.colNum = data.length;
-                    };
-                    this.rowData = function (data) {
-                        var tData = "<td>#cont</td>",
-                            tRow = "<tr>#cont</tr>",
-                            temp = "",
-                            i = 0;
-                        for (i = 0; i < this.colNum; i++) {
-                            temp += tData.replace("#cont", data[i]);
-                        }
-                        cont = tRow.replace("#cont", temp);
-                        $(this.id).append(cont);
-                    };
-                };
+    <article id="me01" class="demo">
+        <h2>onclick</h2>
+        <section>
+            <span>觸發條件</span>
+            <div>
+                當指標在指定元素上點擊左鍵時<br>
+            </div>
+        </section>
+        <section>
+            <span>範例</span>
+            <div>
+                <button type="button">Click me</button><br> 動作:按下按鈕時，挑出提示視窗(alert)
+            </div>
+        </section>
+        <!--
+        -->
+        <div class="prettyprint">
 
-                var test = new Table();
-                test.init("#mouseEventDemo", "test01");
-                test.rowHead(["item1", "item2"]);
-                test.rowData(["data1", "data2"]);
-                test.rowData(["data1", "data2"]);
-                test.rowData(["data1", "data2"]);
-                test.rowData(["data1", "data2"]);
-            });
-        </script>
-
+        </div>
     </article>
 
+    <script>
+        $(function () {
+            // console.log($("article")[0]);
+
+        });
+    </script>
+    <hr>
+    <footer>
+        <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">HTML DOM Events</a>
+    </footer>
+    <script>
+        $(function () {
+            // 使用constructor建立表格
+            function Table() {
+                var tRow = "<tr>#tData</tr>",
+                    tData = "<td>#cont</td>",
+                    tHeader = "<th>#cont</th>",
+                    temp = "",
+                    i = 0;
+
+                this.init = function (parent, id) {
+                    this.id = "#" + id;
+                    $(parent).append("<table id=" + id + "></table>");
+                };
+
+                this.rowHead = function (data) {
+
+                    for (i = 0; i < data.length; i++) {
+                        temp += tHeader.replace("#cont", data[i]);
+                    }
+                    cont = tRow.replace("#tData", temp);
+                    $(this.id).append(cont);
+                    this.colNum = data.length;
+                };
+                this.rowData = function (data) {
+                    for (i = 0; i < this.colNum; i++) {
+                        temp += tData.replace("#cont", data[i]);
+                    }
+                    cont = tRow.replace("#cont", temp);
+                    $(this.id).append(cont);
+                };
+            }
+
+        });
+    </script>
 </body>
 
 </html>
