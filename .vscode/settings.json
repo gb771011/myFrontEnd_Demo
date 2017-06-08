@@ -9,5 +9,6 @@
         "**/chrome":true,
         "**/*.bat":true
     },
-    "vs-color-picker:autoLaunch": false
+    "vs-color-picker:autoLaunch": false,
+    "files.associations": {"*.ejs":"javascript"}
 }
