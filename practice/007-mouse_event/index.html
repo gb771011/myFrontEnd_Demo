@@ -22,7 +22,7 @@
     <article id="demo01" class="demo">
         <h2><b>onclick</b>點擊左鍵時</h2>
         <section>
-            <b>Code</b>
+            <h3>Code</h3>
             <i>js</i>
             <pre class="prettyprint">
 // #demo01
@@ -44,7 +44,7 @@ function btn1(){
     <article id="demo2" class="demo">
         <h2><b>oncontextmenu</b>點擊右鍵時</h2>
         <section>
-            <b>code</b>
+            <h3>code</h3>
             <i>js</i>
             <pre class="prettyprint">
 // #demo02
@@ -120,7 +120,129 @@ function btn04up() {
             }
         </script>
     </article>
-    <!--article#demo4.demo>(h2>b)+(section>h3{Code}+i{js}+pre.prettyprint+i{html}+pre.prettyprint+i{output}+p#demo4code)-->
+    <article id="demo5" class="demo">
+        <h2> <b>onmouse<i>enter</i></b> </h2>
+        <h2> <b>onmouse<i>over</i></b> </h2>
+        <h2> <b>onmouse<i>move</i></b> </h2>
+        <section>
+            <h3>Note</h3>
+            <div>
+                觸發條件:
+                <ul>
+                    <li>(靈敏度最低)onmousementer: <br> 游標從元素外移到目標元素內的瞬間觸發，移到子元素裡不會觸發
+                    </li>
+                    <li>(靈敏度中等)onmouseover: <br> 游標從元素外移到目標元素內或
+                        <b>從該移到任一子元素內</b>的瞬間觸發</li>
+                    <li>(靈敏度最高)onmousemove: <br> 游標在DOM內移動時觸發
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <i>js</i>
+        <pre class="prettyprint lang-js">
+function btn05enter() {
+    iE += 1;
+    $("#demo5enter").text("onmouseenter:" + iE);
+}
+function btn05move() {
+    iM += 1;
+    $("#d5move").text(" ,onmousemove:" + iM);
+}
+function btn05over() {
+    iO += 1;
+    $("#d5over").text(" ,onmouseover:" + iO);
+}            
+        </pre>
+        <i>html</i>
+        <pre class="prettyprint lang-html">
+        <div style="background-color:red" onmouseenter="btn05enter()" onmousemove="btn05move()" onmouseover="btn05over()">
+            #parent here
+            <p style="background-color:yellow;margin:20px 0">child here</p>
+            #parent here
+        </div>            
+        </pre>
+        <div style="background-color:red" onmouseenter="btn05enter()" onmousemove="btn05move()" onmouseover="btn05over()">
+            #parent here
+            <p style="background-color:yellow;margin:20px 0">child here</p>
+            #parent here
+        </div>
+        <i>output</i>
+        <span id="demo5enter">0</span>
+        <span id="d5over">0</span>
+        <span id="d5move">0</span>
+    </article>
+    <article id="demo06" class="demo">
+        <h2> <b>onmouse<i>leave</i></b> </h2>
+        <h2> <b>onmouse<i>out</i></b> </h2>
+        <section>
+            <h3>Note</h3>
+            <div>
+                觸發條件:
+                <ul>
+                    <li>(靈敏度最低)onmousemleave: <br> 游標從目標元素內的移到元素外瞬間觸發，只要未離開目標元素都不會觸發
+                    </li>
+                    <li>(靈敏度中等)onmouseout: <br> 游標從目標元素內移到元素外或
+                        <b>從任一子元素內移出(未超出目標元素)</b>的瞬間觸發</li>
+                </ul>
+            </div>
+        </section>
+        <pre class="prettyprint">
+            // demo06
+            var iL = 0, iU = 0, iO = 0;
+            function btn06leave() {
+                iL += 1;
+                $("#d6leave").text("onmouseleave:" + iL);
+            }
+            function btn06out() {
+                iU += 1;
+                $("#d6out").text(" ,onmouseout:" + iU);
+            }            
+        </pre>
+        <pre class="prettyprint lang-html">
+        <div style="background-color:red" onmouseleave="btn06leave()" onmouseout="btn06out()">
+            #parent here
+            <p style="background-color:yellow;margin:20px 0">child here</p>
+            #parent here
+        </div>            
+        </pre>
+        <div style="background-color:red" onmouseleave="btn06leave()" onmouseout="btn06out()">
+            #parent here
+            <p style="background-color:yellow;margin:20px 0">child here</p>
+            #parent here
+        </div>
+        <i>output</i>
+        <span id="d6leave">0</span>
+        <span id="d6out">0</span>
+    </article>
+
+    <script>
+            // demo05
+            var iE = 0, iM = 0, iO = 0;
+            function btn05enter() {
+                iE += 1;
+                $("#demo5enter").text("onmouseenter:" + iE);
+            }
+            function btn05move() {
+                iM += 1;
+                $("#d5move").text(" ,onmousemove:" + iM);
+            }
+            function btn05over() {
+                iO += 1;
+                $("#d5over").text(" ,onmouseover:" + iO);
+            }
+            // demo06
+            var iL = 0, iU = 0, iO = 0;
+            function btn06leave() {
+                iL += 1;
+                $("#d6leave").text("onmouseleave:" + iL);
+            }
+            function btn06out() {
+                iU += 1;
+                $("#d6out").text(" ,onmouseout:" + iU);
+            }
+    </script>
+
+
     <footer>
         <hr>
         <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">HTML DOM Events</a>

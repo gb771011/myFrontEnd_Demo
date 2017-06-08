@@ -63,13 +63,13 @@ pre {
 
 .demo h2>b {
     display: inline-block;
-    margin: 0 10px 0 30px;
+    /*margin: 0 10px 0 30px;*/
     padding: 5px;
     border: 3px solid #0000a0;
     /*border-radius: 10px;*/
     text-align: left;
     /*text-transform: capitalize;*/
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 .demo section {
@@ -90,18 +90,18 @@ pre {
 .demo div {
     margin: 0.5rem 0;
     padding-left: 1rem;
-    line-height: 2rem;
+    line-height: 1.5rem;
     /*background-color: red;*/
 }
 
-.demo p {
+.demo section>p {
     height: 100px;
     border: 1px solid black;
     /*padding: 15px;*/
     text-align: center;
 }
 
-.demo i {
+.demo>i {
     display: block;
 }
 
