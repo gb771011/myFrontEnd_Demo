@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="../src/js/main.js">
+        
+    </script>
+
+    <title>gcptest</title>
+</head>
+
+<body>
+    <b>Code</b>
+    <p>轉換前</p>
+    <pre class="prettyprint lang-html">
+        
+        <section>
+            <b>範例</b>
+            <p onclick="btn1()">在這裡按下左鍵，看看會發生什麼</p>
+        </section>
+    </pre>
+    <p>轉換後</p>
+    <pre class="prettyprint lang-html">
+    </pre>
+    <div id="result"></div>
+    <p>同區塊轉換替代</p>
+    <pre class="prettyprint lang-html">        
+<section>
+    <b>範例3</b>
+    <p onclick="btn1()">在這裡按下左鍵，看看會發生什麼</p>
+</section>
+    </pre>
+
+</body>
+<script>
+    // function htmlconvert() {
+        var langHtml = document.getElementsByClassName("lang-html"), i;
+        i=0;
+        console.log(langHtml[i].innerHTML);
+        for (i = 0; i < langHtml.length; i++) {
+            langHtml[i].innerHTML = langHtml[i].innerHTML.replace(/</g, "&lt;");
+        }
+    
+
+
+</script>
+
+</html>

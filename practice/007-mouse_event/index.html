@@ -7,56 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="../src/js/main.js"></script>
+
     <style>
-        .demo {
-            width: 95%;
-            margin: 0 auto 30px auto;
-            padding: 20px;
-            background-color: #b0d8ff;
-            box-shadow: 10px 10px #0066cc;
-            position: relative;
-        }
 
-        .demo h2 {
-            display: inline-block;
-            margin: 0 auto 1rem 3rem;
-            padding: 10px;
-            border: 3px solid #0000a0;
-            text-align: left;
-            font-size: 1.75rem;
-        }
-
-        .demo section {
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed #0000a0;
-        }
-
-        .demo span {
-            margin-bottom: 10px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid red;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .demo div {
-            margin: 0.5rem 0;
-            padding-left: 1rem;
-            line-height: 2rem;
-            /*background-color: red;*/
-        }
-
-        button {
-            font-size: 1.2rem
-        }
-
-        footer {
-            width: 90%;
-            margin: 5px auto 10px auto;
-            padding: 5px;
-            background-color: #b0d8ff;
-        }
     </style>
     <title>007-DOM mouse event</title>
 </head>
@@ -64,72 +19,128 @@
 <body>
     <h1>DOM mouse event</h1>
     <hr>
-
-    <article id="me01" class="demo">
-        <h2>onclick</h2>
+    <article id="demo01" class="demo">
+        <h2><b>onclick</b>點擊左鍵時</h2>
         <section>
-            <span>觸發條件</span>
-            <div>
-                當指標在指定元素上點擊左鍵時<br>
-            </div>
+            <b>Code</b>
+            <i>js</i>
+            <pre class="prettyprint">
+// #demo01
+function btn1(){ 
+    alert("Hello World;") 
+}
+        </pre>
+            <i>html</i>
+            <pre class="prettyprint lang-html">
+<p onclick="btn1()">在這裡按下左鍵</p>
+        </pre>
         </section>
         <section>
-            <span>範例</span>
-            <div>
-                <button type="button">Click me</button><br> 動作:按下按鈕時，挑出提示視窗(alert)
-            </div>
+            <b>output</b>
+            <p onclick="btn1()">在這裡按下左鍵</p>
         </section>
-        <!--
-        -->
-        <div class="prettyprint">
-
-        </div>
     </article>
 
-    <script>
-        $(function () {
-            // console.log($("article")[0]);
+    <article id="demo2" class="demo">
+        <h2><b>oncontextmenu</b>點擊右鍵時</h2>
+        <section>
+            <b>code</b>
+            <i>js</i>
+            <pre class="prettyprint">
+// #demo02
+function btn2() {
+    var date = new Date();
+    alert("You occurs 'oncontextmenu' event at<br> " + date.toTimeString());
+}
+            </pre>
+            <i>html</i>
+            <pre class="prettyprint lang-html">
+<p id="demo2code" oncontextmenu="btn2()">在這裡按下右鍵</p>
+            </pre>
+        </section>
+        <section>
+            <b>output</b>
+            <p id="demo2code" oncontextmenu="btn2()">在這裡按下右鍵</p>
+        </section>
+    </article>
 
-        });
-    </script>
-    <hr>
+    <article id="demo3" class="demo">
+        <h2><b>ondblclick</b>雙擊左鍵</h2>
+        <section>
+            <h3>Code</h3>
+            <i>js</i>
+            <pre class="prettyprint lang-js">
+// #demo03
+function btn3() {
+    var date = new Date();
+    $("#demo3code").html("You occurs 'ondblclick' event at<br> " + date.toString());
+}
+        </pre>
+            <i>html</i>
+            <pre class="prettyprint lang-html">
+<p id="demo3code" ondblclick="btn3()">123</p>
+        </pre>
+            <i>output</i>
+            <p id="demo3code" ondblclick="btn3()" style="height:100px">在這裡按兩次左鍵</p>
+        </section>
+    </article>
+    <article id="demo4" class="demo">
+        <h2><b>onmousedown</b>在DOM上按住左鍵時</h2>
+        <h2><b>onmouseup</b>在DOM上放開左鍵時</h2>
+        <section>
+            <h3>Code</h3>
+            <i>js</i>
+            <pre class="prettyprint">
+// btn04down
+function btn04down() {
+    $("#demo4code").css({ "font-size": "1.5rem", "color": "red" });
+}
+// btn04down
+function btn04up() {
+    $("#demo4code").css({ "font-size": "1rem", "color": "black" });
+}
+            </pre>
+            <i>html</i>
+            <pre class="prettyprint lang-html">
+<p id="demo4code" onmousedown="btn04down()" onmouseup="btn04up()">
+    在這裡按下左鍵<br>注意按住與放開時的變化
+</p>
+            </pre>
+            <i>output</i>
+            <p id="demo4code" onmousedown="btn04down()" onmouseup="btn04up()">在這裡按下左鍵<br>注意按住與放開時的變化</p>
+        </section>
+        <script>
+            // btn04down
+            function btn04down() {
+                $("#demo4code").css({ "font-size": "1.5rem", "color": "red" });
+            }
+            // btn04down
+            function btn04up() {
+                $("#demo4code").css({ "font-size": "1rem", "color": "black" });
+            }
+        </script>
+    </article>
+    <!--article#demo4.demo>(h2>b)+(section>h3{Code}+i{js}+pre.prettyprint+i{html}+pre.prettyprint+i{output}+p#demo4code)-->
     <footer>
+        <hr>
         <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">HTML DOM Events</a>
     </footer>
     <script>
-        $(function () {
-            // 使用constructor建立表格
-            function Table() {
-                var tRow = "<tr>#tData</tr>",
-                    tData = "<td>#cont</td>",
-                    tHeader = "<th>#cont</th>",
-                    temp = "",
-                    i = 0;
-
-                this.init = function (parent, id) {
-                    this.id = "#" + id;
-                    $(parent).append("<table id=" + id + "></table>");
-                };
-
-                this.rowHead = function (data) {
-
-                    for (i = 0; i < data.length; i++) {
-                        temp += tHeader.replace("#cont", data[i]);
-                    }
-                    cont = tRow.replace("#tData", temp);
-                    $(this.id).append(cont);
-                    this.colNum = data.length;
-                };
-                this.rowData = function (data) {
-                    for (i = 0; i < this.colNum; i++) {
-                        temp += tData.replace("#cont", data[i]);
-                    }
-                    cont = tRow.replace("#cont", temp);
-                    $(this.id).append(cont);
-                };
+            prettifyHtmlConvert();
+            // #demo01
+            function btn1() {
+                alert("Hello World;")
             }
-
-        });
+            // #demo02
+            function btn2() {
+                var date = new Date();
+                alert("You occurs 'oncontextmenu' event at<br> " + date.toTimeString());
+            }
+            // #demo03
+            function btn3() {
+                var date = new Date();
+                $("#demo3code").html("You occurs 'ondblclick' event at<br> " + date.toLocaleString());
+            }
     </script>
 </body>
 
