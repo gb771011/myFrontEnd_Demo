@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+    <title>008-AJAX&google sheet api</title>
+</head>
+
+<body>
+    <h1>AJAX&google sheet API</h1>
+
+    <h2>feed:list讀取測試</h2>
+    <p id="test">123</p>
+    <hr>
+    <footer>
+        <b>資源連結</b>
+        <ul>
+            <li><a href="https://docs.google.com/spreadsheets/d/1uTu1SNGKgkrYzygETQlMVqejIIFs3EuGBNNUMGFF2js/pubhtml" target="_blank">source(read only)</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1uTu1SNGKgkrYzygETQlMVqejIIFs3EuGBNNUMGFF2js/edit#gid=0" target="_blank">source(editable)</a></li>
+            <li><a href="https://developers.google.com/gdata/samples/spreadsheet_sample" target="_blank">Google Sheet API</a></li>
+        </ul>
+        <b>Google Sheet API 使用說明</b>
+        <ol>
+            <li>使用前須先將作為來源的google試算表發佈至網路上，不然即使有key有無法連結</li>
+            <li>來源url格式:https://spreadsheets.google.com/feeds/{feed}/{key}/{sheet index}/public/values <br> 其中被{}包起來的為自訂參數:
+                <ol>
+                    <li><b>{feed}</b>:決定每筆的回傳值的單位(list:行,cells"格")</li>
+                    <li><b>{key}</b>:試算表的ID,即每個google試算表的網址中的那串亂碼</li>
+                    <li><b>{sheet index}</b>:從第幾個工作表中取資料,起始值為1</li>
+                </ol>
+            </li>
+            <li>主要預設回傳格式為xml，若要json則須在連結後加?alt=json即可</li>
+            <li>回傳資料可從data.feed.entry[i].content(後面簡稱data)</li>
+            <li>大部分資料都在"回傳變數.feed"裡(以下簡稱feed)</li>
+            <li>
+                資料數量及格式依指定feed而有所不同:
+                <ul>
+                    <li><b>list</b>:回傳值以"行"為單位($t : "age: 188, weight: 65, 中文: 阿花")</li>
+                    <li><b>cells</b>:回傳值以"格"為單位($t : "age") </li>
+
+                </ul>
+            </li>
+            <li><b>下面範例會以feed:list為主</b></li>
+        </ol>
+    </footer>
+</body>
+<script>
+    var key = "1uTu1SNGKgkrYzygETQlMVqejIIFs3EuGBNNUMGFF2js", sheetIndex = 1, feed = "list";
+    var entry, i, temp;
+
+    var input = "";
+    // function:轉規律字串為jsone
+    function strTojson(content) {
+        var jsonstr = '"key":"value"', result = "{";
+        var temp = content.split(", ");
+        for (var i in temp) {
+            var s1st = temp[i].split(": ")
+            for (j in s1st) {
+                var s2nd = jsonstr.replace("key", s1st[0]).replace("value", s1st[1]);
+            }
+            if (parseInt(i) === temp.length - 1) {
+                result += s2nd;
+            } else {
+                result += s2nd + ",";
+            }
+        }
+        return result += "}";
+        /*
+                var d2=d1[0];
+                console.log("3.","\n",d2);
+        
+                var d3=jsonstr.replace("key",d2[0]).replace("value",d2[1]);
+                console.log(d3);
+        
+                var d4=JSON.parse("{"+d3+"}");
+                console.log(d4);
+        */
+
+    }
+
+    function success1(e) {
+        var id = 0, title, content;
+        title = e[0].title.$t;
+        content = e[0].content.$t;
+
+        // console.log(strTojson(content));
+        title = JSON.parse(strTojson(content));
+        console.log(title);
+
+    }
+    $.ajax({
+        url: "https://spreadsheets.google.com/feeds".concat("/", feed, "/", key, "/", sheetIndex, "/public/values?alt=json"),
+        dataType: "json",
+        // data:{"alt":"json"},
+        success: function (e, status) {
+            console.log(e);
+            success1(e.feed.entry);
+        },
+        error: function () {
+            console.log("error");
+        }
+
+    });
+
+</script>
+
+</html>
