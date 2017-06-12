@@ -15,17 +15,30 @@
             width: 90%;
             margin: 0 auto;
         }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: center;
+        }
     </style>
-    <title>008-AJAX&google sheet api</title>
+    <title>008-AJAX&google sheet apiV3</title>
 </head>
 
 <body>
     <h1>AJAX&google sheet API</h1>
-
-    <h2>feed:list讀取測試</h2>
-    <p id="test">123</p>
-    <hr>
-    <footer>
+    <header>
         <b>資源連結</b>
         <ul>
             <li><a href="https://docs.google.com/spreadsheets/d/1uTu1SNGKgkrYzygETQlMVqejIIFs3EuGBNNUMGFF2js/pubhtml" target="_blank">source(read only)</a></li>
@@ -33,30 +46,17 @@
             <li><a href="https://developers.google.com/gdata/samples/spreadsheet_sample" target="_blank">Google Sheet API</a></li>
             <li><a href="http://www.ioa.tw/google-sheets-api-note.html" target="_blank">把 Google 試算表當資料庫，並取得 API 實作心得</a></li>
         </ul>
-        <b>Google Sheet API 使用說明</b>
-        <ol>
-            <li>使用前須先將作為來源的google試算表發佈至網路上，不然即使有key有無法連結</li>
-            <li>來源url格式:https://spreadsheets.google.com/feeds/{feed}/{key}/{sheet index}/public/values <br> 其中被{}包起來的為自訂參數:
-                <ol>
-                    <li><b>{feed}</b>:決定每筆的回傳值的單位(list:行,cells"格")</li>
-                    <li><b>{key}</b>:試算表的ID,即每個google試算表的網址中的那串亂碼</li>
-                    <li><b>{sheet index}</b>:從第幾個工作表中取資料,起始值為1</li>
-                </ol>
-            </li>
-            <li>主要預設回傳格式為xml，若要json則須在連結後加?alt=json即可</li>
-            <li>回傳資料可從data.feed.entry[i].content(後面簡稱data)</li>
-            <li>大部分資料都在"回傳變數.feed"裡(以下簡稱feed)</li>
-            <li>
-                資料數量及格式依指定feed而有所不同:
-                <ul>
-                    <li><b>list</b>:回傳值以"行"為單位($t : "age: 188, weight: 65, 中文: 阿花")</li>
-                    <li><b>cells</b>:回傳值以"格"為單位($t : "age") </li>
+    </header>
 
-                </ul>
-            </li>
-            <li><b>下面範例會以feed:list為主</b></li>
-        </ol>
-    </footer>
+    <h2>feed(list)讀取，資料直接顯示結果</h2>
+    <div id="test1"></div>
+    <hr>
+
+    <h2>feed(list)讀取，資料表格化</h2>
+    <table id="test2">
+
+    </table>
+
 </body>
 <script>
     var key = "1uTu1SNGKgkrYzygETQlMVqejIIFs3EuGBNNUMGFF2js", sheetIndex = 1, feed = "list";
@@ -79,17 +79,6 @@
             }
         }
         return result += "}";
-        /*
-                var d2=d1[0];
-                console.log("3.","\n",d2);
-        
-                var d3=jsonstr.replace("key",d2[0]).replace("value",d2[1]);
-                console.log(d3);
-        
-                var d4=JSON.parse("{"+d3+"}");
-                console.log(d4);
-        */
-
     }
 
     function success1(e) {
@@ -102,13 +91,51 @@
         console.log(title);
 
     }
+
+    function readContent(e) {
+        //輸出所有資料至#test裡
+        var i;
+        for (i = 0; i < e.length; i++) {
+            $("#test1").append('<p>title.$t : ' + e[i].title.$t + " ,content.$t : " + e[i].content.$t + "</p>");
+        }
+    }
+
+    function readToTable(e) {
+        console.log(e);
+        var rowData, t1, t2, i, j;
+
+        //讀取表頭
+        rowData = "<tr>";
+        for (i in e[0]) {
+            if (i.indexOf("$") > 0) {
+                rowData += "<th>" + i.slice(i.indexOf("$") + 1) + '</th>';
+            }
+        }
+        rowData += "</tr><tr>";
+
+        //讀取資料
+        for (j = 0; j < e.length; j++) {
+            rowData += '<td>' + e[j].title.$t + '</td>';
+            t1 = e[j].content.$t.split(", ");
+            for (i = 0; i < t1.length; i++) {
+                t2 = t1[i].split(": ");
+                rowData += '<td>' + t2[1] + '</td>';
+            }
+            rowData += '</tr>';
+        }
+        $("#test2").append(rowData);
+        console.log(rowData);
+
+    }
+
     $.ajax({
         url: "https://spreadsheets.google.com/feeds".concat("/", feed, "/", key, "/", sheetIndex, "/public/values?alt=json"),
         dataType: "json",
         // data:{"alt":"json"},
         success: function (e, status) {
-            console.log(e);
-            success1(e.feed.entry);
+            // console.log("e:",e);
+            readContent(e.feed.entry);
+            readToTable(e.feed.entry);
         },
         error: function () {
             console.log("error");
