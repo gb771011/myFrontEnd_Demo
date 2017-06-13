@@ -1,24 +1,5 @@
-## 練習題連結    
 
-1. [簡單時鐘](https://gb771011.github.io/myFrontEnd/practice/001-Date()_object_test)   
-2. [簡單計算機](https://gb771011.github.io/myFrontEnd/practice/002-calculator_v1)    
-3. [當月日曆](https://gb771011.github.io/myFrontEnd/practice/003-calendar_v1) 
-4. [JS表單元素一覽](https://gb771011.github.io/myFrontEnd/practice/004-HTML_form_Elements)
-5. [JS顏色變換](https://gb771011.github.io/myFrontEnd/practice/005-HTML_color_change)
-6. [jQuery特效Demo](https://gb771011.github.io/myFrontEnd/practice/006-jQuary_effect_demo) 
-7. [mouse事件Demo](https://gb771011.github.io/myFrontEnd/practice/007-mouse_event) 
-
-<!-----
-
-## 更新紀錄
-
-* 17/5/11-完成001 & 002，新增[GitHub Page](https://gb771011.github.io/myFrontEnd/)功能
-* 17/5/18-完成003
-* 17/6/1- -->
-
----
-
-## 外部函式庫
+## Library/framework
 * [jQuery](https://jquery.com/) : 最多人用的JS-Library
 
     匯入:
@@ -27,7 +8,7 @@
     2. 從CDN匯入:
 
         ```
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         ```
     
     [W3C-jQuery Tutorial](https://www.w3schools.com/jquery/default.asp)

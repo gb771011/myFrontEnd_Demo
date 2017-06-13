@@ -26,7 +26,7 @@
                     ]
                 },
                 {
-                    "name": "Launch via port8080",
+                    "name": "Launch via port9222",
                     "type": "chrome",
                     "request": "launch",
                     "url": "http://localhost:8080/${fileBasename}",
