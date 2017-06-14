@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>009-HTML5 FileReaderAPI</title>
+</head>
+
+<body>
+    <h1>hello 009-HTML5 FileReaderAPI</h1>
+    <nav>
+        <ul>
+            <li><a href="http://html5index.org/" target="_blank">html5index</a></li>
+            <li> <a href="https://www.thoughtco.com/g00/mime-types-by-content-type-3469108?i10c.referrer=">A List of MIME Types by Content Type</li>
+    </ul>
+</a>
+    </nav>
+    <hr>
+    <h3>ReadAsText:</h3>
+    <input id="fileInput" type="file" value="123">
+    <div id="result">
+        <button id="state" type="button">Show State</button>
+        <button id="cont" type="button">Show content</button>
+        <p id="reCont"></p>
+    </div>
+    <script>
+        $(function () {
+            var reader = new FileReader();
+            $("#fileInput").change(function () {
+                var file = $("#fileInput").prop("files")[0];
+                reader.readAsText(file,"UTF-8");
+            });
+               
+            $("#state").click(function () {
+                console.log("123");
+            });
+            $("#cont").click(function () {
+                $("#reCont").html(reader.result.replace(/\n/g,"<br>"));
+            });
+        });
+
+        /*
+        reader.onloadstart = function () {
+            alert("Loading Start");
+        }
+        reader.onloadend = function () {
+            alert("Loading Finish");
+        }
+
+        function readText() {
+            var file = $("#fileInput").prop("files")[0],
+                reader = new FileReader(),
+                encodeing = "UTF-8",
+                cont;
+
+            reader.readAsText(file, encodeing);
+            console.dir(reader);
+
+            reader.onloadstart = function (e) {
+                console.log("Start");
+                $("#reType").html("Loading...");
+                $("#reCont").html("Loading...");
+            }
+
+            reader.onload = function () {
+                cont = this.result.replace(/\n/g, "br>");
+                $("#reType").html(file.type);
+                $("#reCont").html(cont);
+            };
+            cont = reader.result;
+            console.log(cont.length);
+        }
+        */
+        // console.dir(reader);
+    </script>
+</body>
+
+</html>

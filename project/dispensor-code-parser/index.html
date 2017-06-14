@@ -22,18 +22,24 @@
             var file = $("#fileInput").prop("files")[0],
                 reader = new FileReader(),
                 cont;
-                // console.log(file);
-            $("#reType").html("Loading...")
-            $("#reCont").html("Loading...");
 
-            reader.readAsText(file, 'UTF-8');
-            
+            reader.readAsText(file, 'big5');
+            console.dir(reader);
+
+            reader.onloadstart = function (e) {
+                console.log("Start");
+                $("#reType").html("Loading...")
+                $("#reCont").html("Loading...");
+            }
+
             reader.onload = function () {
-                cont=this.result.replace("\n","<br>");
-
+                cont = this.result.replace(/\n/g, "<br>");
                 $("#reType").html(file.type);
-                $("#reCont").html(this.result.replace(/\n/g,"<br>"));
+                // $("#reCont").html(this.result.replace(/\n/g,"<br>"));
+                $("#reCont").html(cont);
             };
+            cont = reader.result;
+            console.log(cont.length);
         }
     </script>
 </body>
