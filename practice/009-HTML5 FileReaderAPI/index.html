@@ -11,56 +11,59 @@
 
 <body>
     <h1>hello 009-HTML5 FileReaderAPI</h1>
-    <nav>
-        <ul>
-            <li><a href="http://html5index.org/" target="_blank">html5index</a></li>
-            <li> <a href="https://www.thoughtco.com/g00/mime-types-by-content-type-3469108?i10c.referrer=">A List of MIME Types by Content Type</li>
-            <li><a href="http://blog.webgolds.com/view/193" target="_blank">jQuery-使用.attr()還是.prop()</a></li>
-            <li><a href="https://segmentfault.com/a/1190000002680303" target="blank">jQuery中attr()和prop()方法的一些区别理解- SegmentFault</a></li>
-        </ul>
-        </a>
-    </nav>
     <hr>
-    <div id="controlPanel">
-        <h2>Different Read Result</h2>
+    <div id="readAsText">
+        <h2>Read as "Text"</h2>
         <p>
-            <i>Read As "Text": </i><input id="asText" type="file">
+            <i>Read As Text: </i><input id="asText" type="file">
         </p>
-
-        <p>
+        <h3>In &lt;textarea> or &lt;pre></h3>
+        <div>
+            <p>因為兩者都可以顯示已格式化的文字，所以可以不用替換換行符號("\n" to "&lt;br>")</p>
+            <button id="showInArea" type="button">Show Content</button>
+            <br>
+            <textarea class="resultInArea" readonly style="width:100%;max-width:100%;max-height:200px;"></textarea>
+            <pre class="resultInArea" style="max-height:200px;overflow:auto"></pre>
+        </div>
+        <h3>in other tag</h3>
+        <div>
+            <p>其他tag無法顯示已格式化的文字，要正確顯示的話，需要將result裡的斷行符號(\n)替換成(&lt;br>) </p>
+            <div class="resultInArea" style="border:1px solid black"></div>
+        </div>
+    </div>
+    <hr>
+    <div id="readAsDataURL">
+        <h2>Read as DataUrl</h2>
+        <div>
+            <i>Read As "DataURL": </i><input id="asUrl" type="file"><br>
+            <button id="showUrlImg" type="button">Show content in img</button>
+            <br>
+            <img id="resultUrlImg" src="" alt="No picture..."><br>
+            <button id="showUrlAudio" type="button">Show content in audio</button>
+            <br>
+            <audio id="resultUrlAudio" style="width:100%" controls loop></audio>
+        </div>
+    </div>
+    <hr>
+    <div id="readAsArrayBuffer">
+        <h2>Read as ArrayBuffer</h2>
+        <div>
             <i>Read As "ArrayBuffer": </i><input id="asArray" type="file">
             <progress id="progress" value="0" max="100"></progress>
-        </p>
-        <p>
+            <br>
             <i>Abort:</i> <button id="abort" type="button">Abort File</button>
-        </p>
+            <br>
+        </div>
+    </div>
 
     </div>
-    <hr>
-    <div id="showText">
-        <h2>Show text in Different Way</h2>
-        <h3>1.In &lt;textarea> or &lt;pre></h3>
-        <p>因為兩者都可以顯示已格式化的文字，所以可以不使用string.replace去將換行符號做替換("\n" to "&lt;br>")</p>
-        <button id="showInArea" type="button">Show Content</button><br>
-        <textarea class="resultInArea" readonly style="width:100%;height:200px;"></textarea>
-        <pre class="resultInArea" style="height:200px;overflow:auto"></pre>
-    </div>
-    <div id="url">
-        <h2>Show Url</h2>
-        <p>
-            <i>Read As "DataURL": </i><input id="asUrl" type="file">
-        </p>
-        <button id="showUrl" type="button">Show img</button>
-        <img id="resultUrl" src="123.jpg" alt="">
-    </div>
-    <hr>
     <script>
         $(function () {
             var reader = new FileReader(), file;
             //read way
             $("#asText").change(function () {
                 file = this.files[0];
-                reader.readAsText(file);
+                reader.readAsText(file, "big5");
                 reader.onloadend = function () {
                     console.log("read as Text", "\n", reader);
                 }
@@ -79,7 +82,7 @@
                 file = this.files[0];
                 reader.readAsArrayBuffer(file);
                 reader.onloadend = function () {
-                    alert("read as ArrayBuffer", "\n", reader.result);
+                    // alert("read as ArrayBuffer", "\n", reader.result);
                 }
                 reader.onprogress = function (e) {
                     var percentage = (e.loaded / file.size).toFixed(3) * 100;
@@ -100,13 +103,22 @@
                 }
 
             });
-            $("#cont").click(function () {
-                $("#reCont").html(reader.result.replace(/\n/g, "<br>"));
+            // url
+            $("#showUrlImg").click(function () {
+                $("#resultUrlImg").attr({ "src": reader.result, "width": "100%" });
             });
-            $("#showUrl").click(function () {
-                $("#resultUrl").attr({ "src": reader.result, "width": "100%" });
-                // alert($("#resultUrl").attr("src"));
+            $("#showUrlAudio").click(function () {
+                $("#resultUrlAudio").attr({ "src": reader.result });
             });
+
+            // ArrayBuffer
+            $("#showArrImg").click(function () {
+                $("#resultArrImg").attr({ "src": reader.result, "width": "100%" });
+            });
+            $("#showArrAudio").click(function () {
+                $("#resultArrAudio").attr({ "src": reader.result });
+            });
+
         });
 
         /*
