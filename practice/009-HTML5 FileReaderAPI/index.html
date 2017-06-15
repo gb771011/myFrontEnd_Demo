@@ -22,28 +22,38 @@
     </nav>
     <hr>
     <div id="controlPanel">
-        <h3>Different Read Result</h3>
+        <h2>Different Read Result</h2>
         <p>
             <i>Read As "Text": </i><input id="asText" type="file">
         </p>
-        <p>
-            <i>Read As "DataURL": </i><input id="asUrl" type="file">
-        </p>
+
         <p>
             <i>Read As "ArrayBuffer": </i><input id="asArray" type="file">
             <progress id="progress" value="0" max="100"></progress>
         </p>
+        <p>
+            <i>Abort:</i> <button id="abort" type="button">Abort File</button>
+        </p>
 
     </div>
     <hr>
-    <div>
-        <h3>Show text in Different Way</h3>
-        <h4>1.In &lt;textarea> or &lt;pre></h4>
+    <div id="showText">
+        <h2>Show text in Different Way</h2>
+        <h3>1.In &lt;textarea> or &lt;pre></h3>
         <p>因為兩者都可以顯示已格式化的文字，所以可以不使用string.replace去將換行符號做替換("\n" to "&lt;br>")</p>
         <button id="showInArea" type="button">Show Content</button><br>
         <textarea class="resultInArea" readonly style="width:100%;height:200px;"></textarea>
-        <pre class="resultInArea"></pre>
+        <pre class="resultInArea" style="height:200px;overflow:auto"></pre>
     </div>
+    <div id="url">
+        <h2>Show Url</h2>
+        <p>
+            <i>Read As "DataURL": </i><input id="asUrl" type="file">
+        </p>
+        <button id="showUrl" type="button">Show img</button>
+        <img id="resultUrl" src="123.jpg" alt="">
+    </div>
+    <hr>
     <script>
         $(function () {
             var reader = new FileReader(), file;
@@ -52,7 +62,10 @@
                 file = this.files[0];
                 reader.readAsText(file);
                 reader.onloadend = function () {
-                    console.log("read as Text", "\n", reader.result);
+                    console.log("read as Text", "\n", reader);
+                }
+                reader.onabort = function (e) {
+                    console.log(e);
                 }
             });
             $("#asUrl").change(function () {
@@ -66,13 +79,17 @@
                 file = this.files[0];
                 reader.readAsArrayBuffer(file);
                 reader.onloadend = function () {
-                    console.log("read as ArrayBuffer", "\n", reader.result);
+                    alert("read as ArrayBuffer", "\n", reader.result);
                 }
                 reader.onprogress = function (e) {
                     var percentage = (e.loaded / file.size).toFixed(3) * 100;
                     $("#progress").attr("value", percentage);
                     // console.log($("#progress").attr("value"));
                 }
+            });
+            $("#abort").click(function () {
+                reader.abort();
+                console.log(reader);
             });
             //show text
             $("#showInArea").click(function () {
@@ -85,6 +102,10 @@
             });
             $("#cont").click(function () {
                 $("#reCont").html(reader.result.replace(/\n/g, "<br>"));
+            });
+            $("#showUrl").click(function () {
+                $("#resultUrl").attr({ "src": reader.result, "width": "100%" });
+                // alert($("#resultUrl").attr("src"));
             });
         });
 
