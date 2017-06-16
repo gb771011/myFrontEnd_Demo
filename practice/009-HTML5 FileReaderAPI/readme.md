@@ -6,3 +6,23 @@
 [jQuery中attr()和prop()方法的一些区别理解- SegmentFault](https://segmentfault.com/a/1190000002680303)  
 
 # 筆記
+
+## FileReaderAPI:檔案格式
+
+FileReaderAPI可以從將從客戶端讀取到的檔案變成下列格式:
+
+1. Text(readAsText):
+
+    回傳結果為文字  
+    簡單來說就是用記事本打開後的內容  
+    但須注意讀進來的編碼對不對(預設為UTF-8)
+
+2. DataURL(readAsDataURL):
+
+    回傳結果為DataURL
+    可以將結果帶入`<img>` , `<audio>` , `<video>` 等標籤的src裡操作
+    
+3. ArrayBuffer(readAsArrayBuffer):
+
+    回傳結果為Arraybuffer
+    無法直接使用，需再透過dataview()
