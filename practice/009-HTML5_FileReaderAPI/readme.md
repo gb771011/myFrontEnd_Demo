@@ -1,4 +1,4 @@
-[Demo](https://gb771011.github.io/myFrontEnd/practice/009-HTML5 FileReaderAPI)
+[Demo](https://gb771011.github.io/myFrontEnd/practice/009-HTML5_FileReaderAPI)
 
 # 參考
 
