@@ -1,3 +1,5 @@
+[Demo](009-HTML5 FileReaderAPI)
+
 # 參考
 
 [html5index](http://html5index.org/)    
@@ -15,7 +17,7 @@ FileReaderAPI可以從將從客戶端讀取到的檔案變成下列格式:
 
     回傳結果為文字  
     簡單來說就是用記事本打開後的內容  
-    但須注意讀進來的編碼對不對(預設為UTF-8)
+    但須注意讀進來的編碼是否正確(預設為UTF-8)
 
 2. DataURL(readAsDataURL):
 
@@ -25,4 +27,4 @@ FileReaderAPI可以從將從客戶端讀取到的檔案變成下列格式:
 3. ArrayBuffer(readAsArrayBuffer):
 
     回傳結果為Arraybuffer
-    無法直接使用，需再透過dataview()
+    無法直接使用，需透過其他函式編碼後再轉換成DataURL使用
