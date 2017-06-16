@@ -1,6 +1,6 @@
 [home]:https://gb771011.github.io/myFrontEnd/ 
 
-[test](/123)
+[test](practice/src)
 
 # Library/framework
 * [jQuery](https://jquery.com/) : 最多人用的JS-Library
