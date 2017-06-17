@@ -3,6 +3,15 @@
     "version": "0.1.0",
     "tasks": [
         {
+            "taskName": "echo",
+            "command": "live-server",
+            "args": [
+                // "${fileDirname}"
+                "--open=${relativeFile}"
+            ],
+            "isShellCommand": true
+        },
+        {
             "taskName": "Launch via chrome",
             "command": "chrome",
             "windows": {

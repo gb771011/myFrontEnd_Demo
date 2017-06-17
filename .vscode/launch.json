@@ -42,9 +42,9 @@
                     ]
                 },
                 {
+                    "name": "Node Debug",
                     "type": "node",
                     "request": "launch",
-                    "name": "Node Debug",
                     "program": "${file}"
                 }
             ]
