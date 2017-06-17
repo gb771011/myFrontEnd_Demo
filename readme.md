@@ -1,39 +1,33 @@
-[home]:https://gb771011.github.io/myFrontEnd/ 
+# Sourse
+## [jQuery](https://jquery.com/)
 
-[test](practice/src)
+### CDN:
 
-# Library/framework
-* [jQuery](https://jquery.com/) : 最多人用的JS-Library
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    匯入:
+---
 
-    1. 從官網下載js檔，再匯入到html內
-    2. 從CDN匯入:
+## [google-code-prettify](https://github.com/google/code-prettify)
 
-        ```
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        ```
-    
-    [W3C-jQuery Tutorial](https://www.w3schools.com/jquery/default.asp)
+程式碼高亮工具#1
 
-* [google-code-prettify](https://github.com/google/code-prettify): 可以在網頁上顯示程式碼     
+### CDN
 
-使用方法 :      
-1. 從CDN匯入: 
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
-    ```
-        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    ```
+### How to Use:
 
-2. 將要嵌入程式碼的位置用 &lt;pre&gt;包起來，並加上class="prettyprint"
-    ```
-    <pre class="prettyprint">
-        <!--code here-->
-    </pre>
-    ```
+匯入google-code-prettify後，將程式碼放到 &lt;pre&gt;裡即可
 
-1. 若為程式碼格式為html，需將程式碼內的```<```用```&lt;```取代，這樣才能在程式碼內正確顯示tag，否則.prettyprint內的程式碼還是會被轉為網頁
-    ```
+        <pre class="prettyprint">
+            <!--code here-->
+        </pre>
+
+### Note:
+
+若為程式碼格式為html，需將所有標籤的`<`用`&lt;`取代，這樣才能在程式碼內正確顯示tag，否則`<pre>`內的程式碼還是會被轉為網頁
+
+
         <pre class="prettyprint">
         &lt;div>
             &lt;h3>&lt;/h3>
@@ -44,6 +38,18 @@
         &lt;/div>
         </pre>
 
-    ```
+亦可以在頁面里寫script做自動轉換
+
+流程:
+    
+1. 取得`<pre>`裡的innerText
+2. 使用 _string_ .replace()將所有的`<`替換成`&lt;`
+
+    >.replace()預設只會換掉"第一個被找到"的目標，若要一次全部換掉，需使用正規表達式`/</g`
+    
+3. 若使用CDN載入，則轉換的script盡量不要用到其他函式庫的語法(ex:jQuery)
+
+    >因CDN會在讀取完畢後自動轉換`<pre>`裡的程式碼，轉換用script若用到其他函式庫的語法會"來不及"轉換
+
 
 ---
