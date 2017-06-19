@@ -10,5 +10,6 @@
         "**/*.bat":true
     },
     "vs-color-picker:autoLaunch": false,
-    "files.associations": {"*.ejs":"javascript"}
+    "files.associations": {"*.ejs":"javascript"},
+     "vs-color-picker:autoLaunch": false,
 }

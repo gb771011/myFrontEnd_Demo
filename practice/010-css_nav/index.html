@@ -6,12 +6,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>010-css_nav</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .title {
+            /*margin-bottom: 10px;*/
+            border-bottom: 3px solid red;
+            background-color: yellow;
+            color: red;
+            text-align: center;
+        }
+
+        nav{
+            border: 1px dotted black;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li:hover{
+            cursor: pointer
+        }
+
+        .nav1 li {
+            background-color: red;
+            display: inline-block;
+            width: calc( (100% - 20px) / 5);
+            text-align: center;
+        }
+
+        .nav2 ul {
+            overflow: auto
+        }
+
+        .nav2 li {
+            background-color: #00acff;
+            display: block;
+            float: left;
+            width: 20%;
+            text-align: center;
+            /*clear: auto;*/
+        }
+    </style>
+    <title>010-my_nav_style1</title>
 </head>
 
 <body>
-    <h1>Hello 010</h1>
-    <h2>test</h2>
+    <h1 class="title">Hello 010</h1>
+
+    <h2>Method 1</h2>
+    <div>
+        <ul>
+            <li><b>Child:</b> display:inline-block</li>
+        </ul>
+    </div>
+    <nav class="nav1">
+        <ul>
+            <li>about</li>
+            <li>gallery</li>
+            <li>article</li>
+            <li>link</li>
+            <li>contact us</li>
+        </ul>
+        <p>para here</p>
+        <article>
+            <h2>article here</h2>
+        </article>
+    </nav>
+
+    <h2>Method 2</h2>
+    <ul>
+        <li>
+            <b>Parent:</b> overflow:auto
+        </li>
+        <li>
+            <b>Child:</b> display:block + float:left
+        </li>
+    </ul>
+    <nav class="nav2">
+        <ul>
+            <li>about</li>
+            <li>gallery</li>
+            <li>article</li>
+            <li>link</li>
+            <li>contact us</li>
+        </ul>
+        <p>para here</p>
+        <article>
+            <h2>article here</h2>
+        </article>
+    </nav>
 </body>
 
 </html>
