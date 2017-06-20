@@ -24,19 +24,19 @@
             text-align: center;
         }
 
-        nav{
+        nav {
             border: 1px dotted black;
         }
 
         ul {
             padding: 0;
         }
-
-        li:hover{
+        /*li:hover{
             cursor: pointer
-        }
+        }*/
 
         .nav1 li {
+            border: 1px solid #9d0000;
             background-color: red;
             display: inline-block;
             width: calc( (100% - 20px) / 5);
@@ -48,6 +48,7 @@
         }
 
         .nav2 li {
+            border: 1px solid #005e8a;
             background-color: #00acff;
             display: block;
             float: left;
@@ -70,26 +71,22 @@
     </div>
     <nav class="nav1">
         <ul>
-            <li>about</li>
-            <li>gallery</li>
-            <li>article</li>
-            <li>link</li>
-            <li>contact us</li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#gallery">gallery</a> </li>
+            <li><a href="#article">article</a></li>
+            <li><a href="#link">link</a></li>
+            <li><a href="#contact_us">contact us</a></li>
         </ul>
-        <p>para here</p>
+        <span>span here</span>
         <article>
-            <h2>article here</h2>
+            <h3>article here</h3>
         </article>
     </nav>
 
     <h2>Method 2</h2>
     <ul>
-        <li>
-            <b>Parent:</b> overflow:auto
-        </li>
-        <li>
-            <b>Child:</b> display:block + float:left
-        </li>
+        <li><b>Parent:</b> overflow:auto</li>
+        <li><b>Child:</b> display:block + float:left</li>
     </ul>
     <nav class="nav2">
         <ul>
@@ -99,9 +96,28 @@
             <li>link</li>
             <li>contact us</li>
         </ul>
-        <p>para here</p>
+        <span>span here</span>
         <article>
-            <h2>article here</h2>
+            <h3>article here</h3>
+        </article>
+    </nav>
+    <hr>
+    <h2>Method 3:Flexbox</h2>
+    <ul>
+        <li><b>Parent:</b> overflow:auto</li>
+        <li><b>Child:</b> display:block + float:left</li>
+    </ul>
+    <nav class="nav2">
+        <ul>
+            <li>about</li>
+            <li>gallery</li>
+            <li>article</li>
+            <li>link</li>
+            <li>contact us</li>
+        </ul>
+        <span>span here</span>
+        <article>
+            <h3>article here</h3>
         </article>
     </nav>
 </body>
