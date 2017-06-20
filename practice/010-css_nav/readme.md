@@ -1,5 +1,5 @@
 # reference
-[配色網站:coolors.co](https://coolors.co/)
+[配色網站:coolors.co](https://coolors.co/app)
 [配色網站:colorsupplyyy](http://colorsupplyyy.com/app/)
 
 
