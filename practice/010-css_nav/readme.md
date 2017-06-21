@@ -1,3 +1,8 @@
+# reference
+[配色網站:coolors.co](https://coolors.co/app)
+[配色網站:colorsupplyyy](http://colorsupplyyy.com/app/)
+
+
 # note
 
 * (css)display:inline-block之間會有4px的間距存在，且無法透過設margin/padding的方式消除該間距
