@@ -7,7 +7,9 @@
 
 * (css)display:inline-block之間會有4px的間距存在，且無法透過設margin/padding的方式消除該間距
 
-### Method 1 : display:inline-block
+--
+
+## Method 1 : display:inline-block
 
 * child:**display:inline-block**
 
@@ -19,7 +21,7 @@
 
 ---
 
-### Method 2: float:left
+## Method 2: float:left
 
 * Parent: **overflow**
 * child: **display:block** + **float:left**
