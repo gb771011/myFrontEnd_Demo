@@ -2,6 +2,8 @@
 
 * 代辦事項-todoList(前端)
 * 使用jQuery重做日曆&計算機
+* HTML5/CSS
+* 小遊戲(OX，)
 * 把vue,react 跟angular都試過一遍
 * layout
 * jQuery特效

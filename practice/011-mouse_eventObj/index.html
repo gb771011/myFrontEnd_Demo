@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>011-Mouse Event 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 100%;
+            /*height: 95vh;*/
+            margin: 0 auto;
+            background-color: lime;
+            /*border: 1px solid black;*/
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello Mouse_Event_Object</h1>
+    <h2 id="title"></h2>
+    <div id="container">
+        <!--Click Time-->
+        <h2>You Click <span id="clickTime"></span> Time at Same Place</h2>
+        <!--Coordinate-->
+        <div>
+            <h2>Coordinate</h2>
+            <p id="coordinate"> </p>
+        </div>
+        <hr>
+        <!--Other Key-->
+        <div>
+            <h2>shift/alt/alt/META key</h2>
+            <p id="isKeyPressed"></p>
+        </div>
+        <hr>
+        <!--buttons-->
+        <div>
+            <h2>Button</h2>
+            <p id="whichButton"></p>
+        </div>
+        <!--target-->
+    </div>
+</body>
+<script>
+    var container = $("#container"),
+        title = $("#title")
+        ;
+    title.html(function (i, old) {
+        return "Full_Screen_Size:" + screen.width + "x" + screen.height;
+    });
+    container.mousedown(function (e) {
+        console.dir(e.target.localName + "#" + e.target.id);
+
+        // click time
+        $("#clickTime").text(e.detail);
+
+        // Coordinate
+        $("#coordinate").html(
+            "<b>Screen: </b>"
+            + "X: " + e.screenX + ",Y: " + e.screenY
+            + "<br><b>Client: </b>"
+            + "X: " + e.clientX + ",Y: " + e.clientY
+            + "<br><b>Page: </b>"
+            + "X: " + e.pageX + ",Y: " + e.pageY
+        );
+
+        $("#posScreen").text(
+            "X: " + e.screenX + ",Y: " + e.screenY
+        );
+        $("#posClient").text(
+            "X: " + e.clientX + ",Y: " + e.clientY
+        );
+        // Other Key
+        $("#isKeyPressed").html(
+            "<b>Shift</b>: " + e.shiftKey +
+            "<br><b>Ctrl</b>: " + e.ctrlKey +
+            "<br><b>Alt</b>: " + e.altKey +
+            "<br><b>Meta(Win)</b>: " + e.metaKey
+        );
+        // button
+        $("#whichButton").html(
+            "button: " + e.button
+            + "<br>buttons: " + e.buttons
+            + "<br>which: " + e.which
+        );
+    });
+
+</script>
+
+</html>
