@@ -34,11 +34,11 @@
     <div id="container">
         <!--target-->
         <h2>Target</h2>
-        <p>You Click on <span id="targetText">empty</span></p>
+        <p>You Click on <b id="targetText">empty</b></p>
         <hr>
         <!--Click Time-->
         <h2>ClickTime</h2>
-        <p>You Click <span id="clickTime">0</span> Time at Same Place</p>
+        <p>You Click <b id="clickTime">0</b> Time at Same Place</p>
         <hr>
         <!--Coordinate-->
         <div>
@@ -111,10 +111,10 @@
             var i,
                 result = "",
                 arr_key = {
-                    "shiftKey": e.shiftKey,
-                    "ctrlKey": e.ctrlKey,
-                    "altKey": e.altKey,
-                    "metaKey": e.metaKey
+                    "shift": e.shiftKey,
+                    "ctrl": e.ctrlKey,
+                    "alt": e.altKey,
+                    "meta": e.metaKey
                 }
             // console.log(arr_key);
 
