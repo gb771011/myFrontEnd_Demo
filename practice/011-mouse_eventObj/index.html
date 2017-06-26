@@ -18,11 +18,12 @@
         }
 
         #container {
-            width: 100%;
-            /*height: 95vh;*/
+            width: 90%;
             margin: 0 auto;
             background-color: lime;
-            /*border: 1px solid black;*/
+        }
+        p,li{
+            color:red;
         }
     </style>
 </head>
@@ -31,26 +32,31 @@
     <h1>Hello Mouse_Event_Object</h1>
     <h2 id="title"></h2>
     <div id="container">
+        <!--target-->
+        <h2>Target</h2>
+        <p>You Click on <span id="targetText">empty</span></p>
+        <hr>
         <!--Click Time-->
-        <h2>You Click <span id="clickTime"></span> Time at Same Place</h2>
+        <h2>ClickTime</h2>
+        <p>You Click <span id="clickTime">0</span> Time at Same Place</p>
+        <hr>
         <!--Coordinate-->
         <div>
             <h2>Coordinate</h2>
-            <p id="coordinate"> </p>
+            <ul id="coordinate"> </ul>
         </div>
         <hr>
         <!--Other Key-->
         <div>
             <h2>shift/alt/alt/META key</h2>
-            <p id="isKeyPressed"></p>
+            <ul id="isKeyPressed"></ul>
         </div>
         <hr>
         <!--buttons-->
         <div>
             <h2>Button</h2>
-            <p id="whichButton"></p>
+            <ul id="whichButton"></ul>
         </div>
-        <!--target-->
     </div>
 </body>
 <script>
@@ -61,39 +67,87 @@
         return "Full_Screen_Size:" + screen.width + "x" + screen.height;
     });
     container.mousedown(function (e) {
-        console.dir(e.target.localName + "#" + e.target.id);
+
+        // target
+        function targetText_text(e){
+            var result;
+            if(e.target.id===""){
+                result=e.target.localName;
+            }else{
+                result=e.target.localName+"#"+e.target.id;
+            }
+            return result;
+        }
+
+        $("#targetText").text(targetText_text(e));
 
         // click time
         $("#clickTime").text(e.detail);
 
         // Coordinate
+        function coordinate_html(e) {
+            var i,
+                result = "",
+                arr_coord = {
+                    "Screen": "X:" + e.screenX + " , Y:" + e.screenY,
+                    "Client": "X:" + e.clientX + " , Y:" + e.clientY,
+                    "Page": "X:" + e.pageX + " , Y:" + e.pageY
+                };
+
+            for (i in arr_coord) {
+                result += "<li>"
+                    + i + " : "
+                    + arr_coord[i]
+                    + "</li>"
+            }
+            return result;
+        }
         $("#coordinate").html(
-            "<b>Screen: </b>"
-            + "X: " + e.screenX + ",Y: " + e.screenY
-            + "<br><b>Client: </b>"
-            + "X: " + e.clientX + ",Y: " + e.clientY
-            + "<br><b>Page: </b>"
-            + "X: " + e.pageX + ",Y: " + e.pageY
+            coordinate_html(e)
         );
 
-        $("#posScreen").text(
-            "X: " + e.screenX + ",Y: " + e.screenY
-        );
-        $("#posClient").text(
-            "X: " + e.clientX + ",Y: " + e.clientY
-        );
         // Other Key
+        function isKeyPressed_html(e) {
+            var i,
+                result = "",
+                arr_key = {
+                    "shiftKey": e.shiftKey,
+                    "ctrlKey": e.ctrlKey,
+                    "altKey": e.altKey,
+                    "metaKey": e.metaKey
+                }
+            // console.log(arr_key);
+
+            for (i in arr_key) {
+                result += "<li>"
+                    + i + " : "
+                    + arr_key[i]
+                    + "</li>"
+            }
+            return result
+        }
         $("#isKeyPressed").html(
-            "<b>Shift</b>: " + e.shiftKey +
-            "<br><b>Ctrl</b>: " + e.ctrlKey +
-            "<br><b>Alt</b>: " + e.altKey +
-            "<br><b>Meta(Win)</b>: " + e.metaKey
+            isKeyPressed_html(e)
         );
         // button
+        function whichButton_html(e) {
+            var i, result = "", arr_button;
+            arr_button = {
+                "button": e.button,
+                "buttons": e.buttons,
+                "which": e.which
+            }
+            for (i in arr_button) {
+                result += "<li>"
+                    + i + ":"
+                    + arr_button[i]
+                    + "</li>"
+            }
+            return result;
+        }
+
         $("#whichButton").html(
-            "button: " + e.button
-            + "<br>buttons: " + e.buttons
-            + "<br>which: " + e.which
+            whichButton_html(e)
         );
     });
 
