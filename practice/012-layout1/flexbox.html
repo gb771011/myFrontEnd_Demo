@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style-flex.css">
+    <title>012-form_layout(flexbox)</title>
+    <style>
+        .f-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .f-data {
+            flex:1 1 0;
+            display: inline-flex;
+            border: 1px dashed black;
+        }
+        .f-data>span{
+            flex:1 1 0;
+            text-align: center;
+        }
+        .f-data>input{
+            flex:4 1 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Title+input</h1>
+    <div class="f-row">
+
+        <div class="f-data">
+            <span>Title1</span>
+            <input type="text" name="" value="" placeholder="input">
+        </div>
+        <div class="f-data">
+            <span>Title1</span>
+            <input type="text" name="" value="" placeholder="input">
+        </div>
+        <div class="f-data">
+            <span>Title1</span>
+            <input type="text" name="" value="" placeholder="input">
+        </div>
+        
+
+    </div>
+    <!--
+
+    <h1>---</h1>
+    <article>
+
+        <section class="container">
+            <div title="料號" class="item2">
+                <input type="text" name="" value="">
+            </div>
+            <div title="料號" class="item2">
+                <input type="text" name="" value="">
+            </div>
+            <div title="版次" class="item1">
+                <input type="text" name="" value="">
+            </div>
+
+        </section>
+
+    </article>
+    <hr>
+    <section class="container">
+        <div title="工程要求" class="item2">
+            123
+        </div>
+    </section>
+    <hr>
+
+    </section>
+    <section class="container">
+        <div title="engineer_request" class=" item1">
+
+        </div>
+    -->
+    <hr>
+    <footer>
+        <button id="imgTaggle" type="button">show sample img</button>
+        <img id="imgSample" src="sample.png" alt="No picture" style="display:none;width:100%;border:1px solid black">
+    </footer>
+    <script>
+        $("#imgTaggle").click(function () {
+            $("#imgSample").slideToggle();
+        });
+    </script>
+</body>
+
+</html>

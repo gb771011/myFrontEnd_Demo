@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style-table.css">
+    <title>012</title>
+    <style>
+        * {
+            /*margin: 0;
+            padding: 0;*/
+            box-sizing: border-box
+        }
+
+        body {
+            width: 90%;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Use Table</h1>
+
+    <table>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+            </tr>
+        
+    </table>
+    <hr>
+    <!--
+    -->
+    <button id="imgTaggle" type="button">show sample img</button>
+    <img id="imgSample" src="sample.png" alt="No picture" style="display:none;width:100%;border:1px solid black">
+    <script>
+        $("#imgTaggle").click(function () {
+            $("#imgSample").slideToggle();
+        });
+    </script>
+</body>
+
+</html>
