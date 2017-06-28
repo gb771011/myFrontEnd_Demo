@@ -17,41 +17,123 @@
 
         body {
             width: 90%;
-            max-width: 210mm;
             margin: 0 auto;
+            /*border: 1px solid black;*/
+        }
+
+        #frame {
+            position: relative;
+            width: 210mm;
+            height: 279mm;
+            margin: 0 auto;
+            border: 1px solid black;
         }
 
         input {
+            /*-webkit-appearance: none;*/
             width: 100%;
+        }
+
+        table,
+        tr,
+        th,
+        td,
+        p,
+        div {
+            border: 1px solid darkred;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 3px;
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .last {
+            position: absolute;
+            height: 100px;
         }
     </style>
 </head>
 
 <body>
-
     <h1>Use Table</h1>
+    <div id="frame">
 
-    <table>
+        <table>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <td>客戶</td>
+                <td><input type="text" name="" value=""></td>
+                <td>料號</td>
+                <td><input type="text" name="" value=""></td>
+                <td>版次</td>
+                <td><input type="text" name="" value=""></td>
+            </tr>
+        </table>
+        <p>工程要求</p>
+        <table>
+            <tr>
+                <td style="width:15%" class="title">材料</td>
+                <td style="width:25%" class="title">規格</td>
+                <td class="title">備註</td>
             </tr>
             <tr>
-                <td>2</td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
             </tr>
             <tr>
-                <td>3</td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
             </tr>
             <tr>
-                <td>4</td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
             </tr>
-        
-    </table>
-    <hr>
+
+            <!--
+        -->
+        </table>
+        <p>圖面</p>
+        <div>
+            <img src="path.png" alt="Please Upload Drawing" style="width:100%">
+        </div>
+        <table>
+            <tr>
+                <!--針頭  氣壓  速度  延時  拉磁-->
+                <td>針頭</td>
+                <td>氣壓</td>
+                <td>速度</td>
+                <td>延時</td>
+                <td>拉磁</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+                <td><input type="text" name="" value=""></td>
+            </tr>
+        </table>
+        <p>注意事項</p>
+    <textarea style="width:100%;resize:none" rows="14"></textarea>
+    </div>
+
     <!--
+
     -->
+    <hr>
     <button id="imgTaggle" type="button">show sample img</button>
     <img id="imgSample" src="sample.png" alt="No picture" style="display:none;width:100%;border:1px solid black">
     <script>
