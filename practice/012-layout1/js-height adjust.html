@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         :root {
+            --boundary: 12.7mm;
+        }
+
+        body {
+            width: 90%;
+            margin: 0 auto;
+            background-color: aquamarine;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: calc(210mm - 2 * var(--boundary));
+            height: calc(294mm - 2 * var(--boundary));
+            padding: 10px;
+            margin: var(--boundary) auto 0 auto;
+            background-color: lightgray;
+        }
+
+        textarea {
+            border: 0px;
+            padding: 0px;
+            /*resize: none;*/
+            width: 100%;
+            height: 100px;
+            overflow: auto;
+        }
+
+        .item {
+            width: 100%;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        .item2 {
+            height: 300px;
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>auto fill</h1>
+        <div class="item">1</div>
+        <div class="item2">2</div>
+        <textarea id="ta">123</textarea>
+    </div>
+    <script>
+        var container = document.getElementsByClassName("container"),
+            container_padding = parseInt(getComputedStyle(container[0]).padding),
+            ta = document.getElementById("ta"),
+            container_h = 0,
+            blocks_h_sum = 0,
+            ta_h = 0,
+            i;
+
+        // 取得不含padding的container高度
+        container_h = parseInt(container[0].clientHeight) - (2 * container_padding);
+        console.log(container_h);
+
+        // 取得前面ta之前所有區塊的高度總和
+        console.log(container[0].children);
+        for (i = 0; i < container[0].children.length - 1; i++) {
+            blocks_h_sum += parseInt(container[0].children[i].clientHeight);
+            console.log(i);
+        }
+        console.log(blocks_h_sum);
+
+        //計算剩餘高度並套用
+        ta_h = container_h - blocks_h_sum -42.8 + "px";
+        container[0].lastElementChild.style.height  = ta_h;
+        console.log(ta_h);
+    </script>
+</body>
+
+</html>

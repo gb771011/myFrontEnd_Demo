@@ -5,82 +5,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="style-flex.css">-->
+    <title>012-form_layout(flexbox)</title>
     <style>
          :root {
-            --boundary: 12.7mm;
+            --boundary: 12.7mm
         }
 
-        body {
-            width: 90%;
-            margin: 0 auto;
-            background-color: aquamarine;
+        * {
             box-sizing: border-box;
         }
 
-        .container {
-            width: calc(210mm - 2 * var(--boundary));
-            height: calc(294mm - 2 * var(--boundary));
-            padding: 10px;
-            margin: var(--boundary) auto 0 auto;
-            background-color: lightgray;
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        article {
+            width: 95%;
+            width: 210mm;
+            height: 295mm;
+            margin: 0 auto;
+            /*padding: var(--boundary);*/
+            border: 1px solid blueviolet;
+        }
+
+        section {
+            border-bottom: 1px solid blueviolet;
+        }
+
+        div {
+            padding: 0.25rem;
+        }
+
+        input {
+            width: 100%;
+            font-size: 1.25rem;
+            text-align: center;
         }
 
         textarea {
-            border: 0px;
-            padding: 0px;
-            /*resize: none;*/
+            padding: 0;
             width: 100%;
-            height: 100px;
-            overflow: auto;
+            resize: none;
         }
 
-        .item {
-            width: 100%;
-            height: 200px;
+        table,
+        tr,
+        td,
+        th {
             border: 1px solid black;
+            border-collapse: collapse;
         }
 
-        .item2 {
-            height: 300px;
+        table {
             width: 100%;
-            border: 1px solid black;
+            table-layout: fixed;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th:first-child {
+            width: 6rem;
+        }
+
+        th:nth-child(2) {
+            width: 7rem;
+        }
+        /*flex-setting*/
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /*align-items: center;*/
+        }
+
+        .flex-row {
+            display: inline-flex;
+            justify-content: center;
+        }
+
+        .item-7 {
+            flex: 6 1 0;
+        }
+
+        .item-6 {
+            flex: 6 1 0;
+        }
+
+        .item-5 {
+            flex: 5 1 0;
+        }
+
+        .item-4 {
+            flex: 4 1 0;
+        }
+
+        .item-3 {
+            flex: 3 1 0;
+        }
+
+        .item-2 {
+            flex: 2 1 0;
+        }
+
+        .item-1 {
+            flex: 1 1 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>auto fill</h1>
-        <div class="item">1</div>
-        <div class="item2">2</div>
-        <textarea id="ta">123</textarea>
-    </div>
+    <article class="flex-col">
+        <secton>
+            <span>天賣科技</span>
+            <br>
+            <span>工程規格單</span>
+        </secton>
+        <!--日期/製表/審核-->
+        <section class=" flex-row">
+            <div style="flex:5"></div>
+            <span>製錶</span>
+            <div style="flex:1"><input type="text"></div>
+            <span>審核</span>
+            <div style="flex:1"><input type="text"></div>
+            <span>日期</span>
+            <div style="flex:1"><input type="date"></div>
+        </section>
+        <!--Customer/PN/ver-->
+        <section class=" flex-row">
+            <!--<div style="width:3rem;">客戶</div>-->
+            <span>客戶</span>
+            <div style="flex:2"><input type="text"></div>
+            <span>廖浩</span>
+            <div style="flex:4"><input type="text"></div>
+            <span>版次</span>
+            <div style="flex:1"><input type="text"></div>
+            <!--            <div class="item-2">
+                <b>客戶</b>
+                <input type="text" name="" value="1">
+            </div>
+            <div class="item-3">
+                <b>料號</b>
+                <input type="text" name="" value="1">
+            </div>
+            <div class="item-1">
+                <b>版次</b>
+                <input type="text" name="" value="1">
+            </div>-->
+        </section>
+        <!--加工要求*5-->
+
+        <section class="flex-col">
+            <table>
+                <caption>Hello Table</caption>
+                <tr>
+                    <th>加工方式</th>
+                    <th>材料</th>
+                    <th>尺寸</th>
+                    <th>備註</th>
+                </tr>
+                <tr>
+                    <td>FIP</td>
+                    <td>F9304</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/-0.1mm</td>
+                    <td>點交路徑上不可有雜物不可有雜物不可有雜物</td>
+                </tr>
+                <tr>
+                    <td>Pad</td>
+                    <td>M9310-20123</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/H1.5 +/-0.1mm,W1.5 +/</td>
+                    <td>黏貼位置如圖瑣事</td>
+                </tr>
+
+
+            </table>
+            <!--
+
+            <div class="flex-row">
+                <div class="item-2">材料</div>
+                <div class="item-4">規格</div>
+                <div class="item-6">備註</div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            -->
+
+        </section>
+
+        <!--<section class="item-5" style="background-image:url(path.png);    background-size:contain;  background-position: center; background-repeat: no-repeat;">-->
+        <section class="item-1 flex-col">
+            <img id="imgSample" src="path.png" alt="No picture" style="width:100%;background-color:yellow;">
+        </section>
+        <section class="flex-col">
+            <caption>Note</caption>
+            <textarea rows="10" cols=""></textarea>
+        </section>
+    </article>
+    <footer style="display:none">
+        <hr>
+        <button id="imgTaggle" type="button">show sample img</button>
+        <img id="imgSample" src="sample.png" alt="No picture" style="display:none;width:100%;border:1px solid black">
+    </footer>
     <script>
-        var container = document.getElementsByClassName("container"),
-            container_padding = parseInt(getComputedStyle(container[0]).padding),
-            ta = document.getElementById("ta"),
-            container_h = 0,
-            blocks_h_sum = 0,
-            ta_h = 0,
-            i;
-
-        // 取得不含padding的container高度
-        container_h = parseInt(container[0].clientHeight) - (2 * container_padding);
-        console.log(container_h);
-
-        // 取得前面ta之前所有區塊的高度總和
-        console.log(container[0].children);
-        for (i = 0; i < container[0].children.length - 1; i++) {
-            blocks_h_sum += parseInt(container[0].children[i].clientHeight);
-            console.log(i);
-        }
-        console.log(blocks_h_sum);
-
-        //計算剩餘高度並套用
-        ta_h = container_h - blocks_h_sum -42.8 + "px";
-        container[0].lastElementChild.style.height  = ta_h;
-        console.log(ta_h);
+        $("#imgTaggle").click(function () {
+            $("#imgSample").slideToggle();
+        });
     </script>
 </body>
 

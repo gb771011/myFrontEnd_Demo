@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            width: 100%;
+            height: 600px;
+
+            background-color: yellow;
+        }
+
+        .item {
+            flex: 1;
+            margin: 10px;
+            background-color: aqua;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table{
+            width: 100%;
+            /*table-layout: fixed;*/
+        }
+        td{
+            text-align: center;
+        }
+        th:first-child,th:nth-child(2){
+            /*background-color: red;*/
+            width: 7rem;
+        }
+        img{
+            height: initial;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="path.png" alt="">
+        </div>
+        <div class="item">
+            <table>
+                <caption>Hello Table</caption>
+                <tr>
+                    <th>加工方式</th>
+                    <th>材料</th>
+                    <th>尺寸</th>
+                    <th>備註</th>
+                </tr>
+                <tr>
+                    <td>FIP</td>
+                    <td>F9304</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/-0.1mm</td>
+                    <td>點交路徑上不可有雜物不可有雜物不可有雜物</td>
+                </tr>
+                <tr>
+                    <td>Pad</td>
+                    <td>M9310-20123</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/H1.5 +/-0.1mm,W1.5 +/</td>
+                    <td>黏貼位置如圖瑣事</td>
+                </tr>
+                <tr>
+                    <td>T-Jelly</td>
+                    <td>GPEF7126</td>
+                    <td>H0.2mm(conpressed )</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
