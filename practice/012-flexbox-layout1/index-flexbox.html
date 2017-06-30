@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>012-form_layout(flexbox)</title>
+    <style>
+         :root {
+            --boundary: 12.7mm
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        article {
+            width: 95%;
+            width: 210mm;
+            height: 295mm;
+            margin: 0 auto;
+            /*padding: var(--boundary);*/
+            border: 1px solid blueviolet;
+        }
+
+        section {
+            border-bottom: 1px solid blueviolet;
+        }
+
+        div {
+            padding: 0.25rem;
+        }
+
+        input {
+            width: 100%;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        textarea {
+            padding: 0;
+            width: 100%;
+            resize: none;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th:first-child {
+            width: 6rem;
+        }
+
+        th:nth-child(2) {
+            width: 7rem;
+        }
+        /*flex-setting*/
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /*align-items: center;*/
+        }
+
+        .flex-row {
+            display: inline-flex;
+            justify-content: center;
+        }
+
+        .item-7 {
+            flex: 6 1 0;
+        }
+
+        .item-6 {
+            flex: 6 1 0;
+        }
+
+        .item-5 {
+            flex: 5 1 0;
+        }
+
+        .item-4 {
+            flex: 4 1 0;
+        }
+
+        .item-3 {
+            flex: 3 1 0;
+        }
+
+        .item-2 {
+            flex: 2 1 0;
+        }
+
+        .item-1 {
+            flex: 1 1 0;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="flex-col">
+        <secton>
+            <span>天賣科技</span>
+            <br>
+            <span>工程規格單</span>
+        </secton>
+        <!--日期/製表/審核-->
+        <section class=" flex-row">
+            <div style="flex:5"></div>
+            <span>製錶</span>
+            <div style="flex:1"><input type="text"></div>
+            <span>審核</span>
+            <div style="flex:1"><input type="text"></div>
+            <span>日期</span>
+            <div style="flex:1"><input type="date"></div>
+        </section>
+        <!--Customer/PN/ver-->
+        <section class=" flex-row">
+            <!--<div style="width:3rem;">客戶</div>-->
+            <span>客戶</span>
+            <div style="flex:2"><input type="text"></div>
+            <span>廖浩</span>
+            <div style="flex:4"><input type="text"></div>
+            <span>版次</span>
+            <div style="flex:1"><input type="text"></div>
+            <!--            <div class="item-2">
+                <b>客戶</b>
+                <input type="text" name="" value="1">
+            </div>
+            <div class="item-3">
+                <b>料號</b>
+                <input type="text" name="" value="1">
+            </div>
+            <div class="item-1">
+                <b>版次</b>
+                <input type="text" name="" value="1">
+            </div>-->
+        </section>
+        <!--加工要求*5-->
+
+        <section class="flex-col">
+            <table>
+                <caption>Hello Table</caption>
+                <tr>
+                    <th>加工方式</th>
+                    <th>材料</th>
+                    <th>尺寸</th>
+                    <th>備註</th>
+                </tr>
+                <tr>
+                    <td>FIP</td>
+                    <td>F9304</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/-0.1mm</td>
+                    <td>點交路徑上不可有雜物不可有雜物不可有雜物</td>
+                </tr>
+                <tr>
+                    <td>Pad</td>
+                    <td>M9310-20123</td>
+                    <td>H1.5 +/-0.1mm,W1.5 +/H1.5 +/-0.1mm,W1.5 +/</td>
+                    <td>黏貼位置如圖瑣事</td>
+                </tr>
+
+
+            </table>
+            <!--
+
+            <div class="flex-row">
+                <div class="item-2">材料</div>
+                <div class="item-4">規格</div>
+                <div class="item-6">備註</div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            <div class="flex-row">
+                <div class="item-2"><input type="" name="" value=""></div>
+                <div class="item-4"><input type="" name="" value=""></div>
+                <div class="item-6"><input type="" name="" value=""></div>
+            </div>
+            -->
+
+        </section>
+
+        <!--<section class="item-5" style="background-image:url(path.png);    background-size:contain;  background-position: center; background-repeat: no-repeat;">-->
+        <section class="item-1 flex-col">
+            <img id="imgSample" src="path.png" alt="No picture" style="width:100%;background-color:yellow;">
+        </section>
+        <section class="flex-col">
+            <caption>Note</caption>
+            <textarea rows="10" cols=""></textarea>
+        </section>
+    </article>
+    <footer style="display:none">
+        <hr>
+        <button id="imgTaggle" type="button">show sample img</button>
+        <img id="imgSample" src="sample.png" alt="No picture" style="display:none;width:100%;border:1px solid black">
+    </footer>
+    <script>
+        $("#imgTaggle").click(function () {
+            $("#imgSample").slideToggle();
+        });
+    </script>
+</body>
+
+</html>
