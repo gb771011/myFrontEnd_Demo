@@ -5,97 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>014_css_position</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 90%;
-            margin: 0 auto;
-            background-color: lemonchiffon;
-        }
-        div::before{
-            content: attr(class);
-            display: inline;
-        }
-        .container {
-            padding: 10px;
-            position: relative;
-            width: 100%;
-            height: 300px;
-            border: 8px solid blue;
-        }
-
-        .relative {
-            position: relative;
-            border: 8px solid red;
-            width: 30%;
-            height: 30%;
-            top:0;
-        }
-
-        .absolute {
-            position: absolute;
-            border: 8px solid gray;
-            width: 30%;
-            height: 30%;
-            /*top:0;*/
-        }
-        .fixed {
-            position: fixed;
-            border: 8px solid darkgoldenrod;
-            width: 30%;
-            height: 30%;
-            bottom:0;
-            right:0;
-        }
-    </style>
+    <title>Move Block By Keyboard</title>
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-<body>
-    <h1><a href="https://www.w3schools.com/css/css_positioning.asp" target="_blank">Hello css position</a></h1>
-    <hr>
-    <h2>Relative</h2>
-    <div>
-        <span>top</span>
-        <input type="number" placeholder="top" oninput='positionChange("relative","top",this.value+"px")' value=0>
-        <span>left</span>
-        <input type="number" placeholder="left" oninput='positionChange("relative","left",this.value+"px")' value=0>
-    </div>
-    <div class="container">
-        <div class="relative">
-        </div>
-    </div>
-    <h2>Absolate</h2>
-    <div>
-        <span>top</span>
-        <input type="number" placeholder="top" oninput='positionChange("absolute","top",this.value+"px")' value=0>
-        <span>left</span>
-        <input type="number" placeholder="left" oninput='positionChange("absolute","left",this.value+"px")' value=0>
-    </div>
-    <div class="container">
-        <div class="absolute">
-        </div>
-    </div>
-    <h2>Fixed</h2>
-    <div>
-        <span>bottom</span>
-        <input type="number" placeholder="bottom" oninput='positionChange("fixed","bottom",this.value+"px")' value=0>
-        <span>right</span>
-        <input type="number" placeholder="right" oninput='positionChange("fixed","right",this.value+"px")' value=0>
-    </div>
-    <div class="container">
-        <div class="fixed">
-        </div>
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-color: seagreen;
+        border: 10px solid greenyellow;
+    }
+
+    #player {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body id="stage">
+    <div id="player">
     </div>
     <script>
-        function positionChange(targetId, key, value) {
-            var target = document.getElementsByClassName(targetId)[0];
-            console.dir(target);
-            target.style[key] = value;
+        var player = document.getElementById("player"),
+            stage = document.getElementById("stage"),
+            n_top="", n_left="";
+        function playMove(e) {
+            console.dir(e.code);
+            // player.style.top="100px";
+            // player.style.left="100px";
+            console.log(typeof player.style.top, player.style.left);
         }
+        stage.addEventListener("keydown", function (e) { playMove(e) });
     </script>
 </body>
 
