@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>013_keyboard_obj</title>
+</head>
+
+<body>
+    <h1>hello keyboard obj</h1>
+    <ul id="info">
+        <!--<li><b>key</b>:value</li>-->
+    </ul>
+    <script>
+        var body = document.getElementsByTagName("body"),
+            info = document.getElementById("info"),
+            i, result;
+        function keyDown(e) {
+            console.dir(e);
+            result = "";
+            for (i in e) {
+                result += "<li><b>" + i + " </b> : " + e[i] + "</li>";
+            }
+            info.innerHTML = result;
+        }
+
+        body[0].addEventListener("keydown", function (e) { keyDown(e) });
+    </script>
+</body>
+
+</html>
