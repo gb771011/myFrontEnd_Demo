@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>test</title>
+    <style>
+         :root {
+            --m1: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            border: 10px solid blue;
+        }
+
+        #stage {
+            flex: 1;
+            display: flex;
+            background-color: yellow;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #stage>h1 {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stage">
+        <h1 id="size">test</h1>
+    </div>
+    <script>
+        function showSize() {
+            $("#size").html("Width:" + $("#stage").width() + "<br>Height:" + $("#stage").height());
+        }
+
+        showSize();
+        $(window).resize(function () {
+            showSize();
+        });
+    </script>
+</body>
+
+</html>

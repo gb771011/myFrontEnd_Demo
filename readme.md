@@ -14,7 +14,7 @@
 * LESS(js-based css預處理器)
 * 把vue,react 跟angular都試過一遍
 * layout練習
-    * 公司表單（工單，ＦＡＩ，樣品報告）
+    * 公司表單（工單，FAI，樣品報告）
     * github page homepage
 * JS libraty
     * jQueryUI
