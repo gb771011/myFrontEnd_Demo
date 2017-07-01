@@ -2,16 +2,32 @@
 
 * 代辦事項-todoList(前端)
 * 使用jQuery重做日曆&計算機
-* HTML5/CSS
-* 小遊戲(OX，)
+* HTML5 API
+    * Canvas
+    * web socket
+    * ...etc
+* 小遊戲
+    * OOXX  
+    * 走迷宮   
+    * ...etc    
+* ES6(javascript預處理器：ES6 轉 ES5)
+* LESS(js-based css預處理器)
 * 把vue,react 跟angular都試過一遍
-* layout
-* jQuery特效
-* markdown.js
-* 模板引擎
-* 資料庫
-* node
-* electron
+* layout練習
+    * 公司表單（工單，ＦＡＩ，樣品報告）
+    * github page homepage
+* JS libraty
+    * jQueryUI
+    * electron : 桌面程式開發
+    * ...etc
+* HTML Template
+    * EJS(JS-based)
+    * markdown
+* 後端
+    * node  
+    * 資料庫   
+
+---
 
 # Sourse
 ## [jQuery](https://jquery.com/)
