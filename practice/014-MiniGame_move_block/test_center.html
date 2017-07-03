@@ -21,15 +21,19 @@
         body {
             display: flex;
             position: relative;
+            flex-direction: column;
             width: 100vw;
             height: 100vh;
-            border: 10px solid blue;
+        }
+
+        body>div {
+            flex: 1;
         }
 
         #stage {
-            flex: 1;
             display: flex;
             background-color: yellow;
+            border: 10px solid blue;
             align-items: center;
             justify-content: center;
         }

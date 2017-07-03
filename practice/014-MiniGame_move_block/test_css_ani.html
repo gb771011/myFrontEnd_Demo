@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>smooth test</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            /*position: relative;*/
+            width: 90vw;
+            height: 90vh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: sandybrown;
+            border: 10px solid yellowgreen;
+        }
+
+        @keyframes example {
+            0% {
+                width: 0;
+                height: 0;
+            }
+            50% {
+                width: 50vw;
+                height: 50vh;
+            }
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        .trans {
+            width: 50vw;
+            height: 50vh;
+        }
+
+        .ani {
+            animation-name: example;
+            animation-timing-function: linear;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        #player {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transition: all 5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>smooth test</h1>
+    <div id="player" class="trans"></div>
+    <script>
+        var player = document.getElementById("player");
+        // console.log(player.style);
+        console.dir($("#player")[0]);
+    </script>
+</body>
+
+</html>
