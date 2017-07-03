@@ -40,7 +40,8 @@
         top: 0;
         left: 0;
     }
-    #note{
+
+    #setting {
         z-index: 2;
     }
 </style>
@@ -48,55 +49,72 @@
 <body>
     <div id="stage">
         <div id="player"></div>
-        <h1 id="note">方向鍵:操作紅色方塊上下左右</h1>
+        <div id="setting">
+            <h1>使用方向鍵操作紅色方塊移動</h1>
+            <br><input type="number" placeholder="Speed" min="1" max="" 20>
+        </div>
     </div>
     <script>
-        var player=document.getElementById("player");
-        var tt=window.getComputedStyle(player);
-    console.dir(tt);
-    console.dir($("#player")[0].style);
-
         function playerMove(e) {
-            var step = 10;
-
-            var player_top = parseInt($("#player").css("top")),
-                player_left = parseInt($("#player").css("left")),
-                border_bottom = $("#stage").innerHeight() - $("#player").height()-step,
-                border_right = $("#stage").innerWidth() - $("#player").width()-step;
+            // 設定
+            var setting = {
+                step: 15.594
+            }
+            // 玩家位置(上下左右)
+            var player = {
+                width: parseInt($("#player").css("width")),
+                height: parseInt($("#player").css("height")),
+                top: parseInt($("#player").css("top")),
+                bottom: parseInt($("#player").css("top")) + parseInt($("#player").css("height")),
+                left: parseInt($("#player").css("left")),
+                right: parseInt($("#player").css("left")) + parseInt($("#player").css("width"))
+            }
+            // 邊界最大值
+            var border = {
+                bottom: $("#stage").innerHeight(),
+                right: $("#stage").innerWidth(),
+            }
             switch (e.keyCode) {
-                // up:top+1
+                // Up
                 case 38:
-                    if (player_top > 0) {
-                        $("#player").css("top", (player_top - step));
+                    if (player.top - setting.step > 0) {
+                        $("#player").css("top", (player.top - setting.step));
+                    } else {
+                        $("#player").css("top", 0);
                     }
                     break;
-                // down:top-1
+                // Down 
                 case 40:
-                    if (player_top < border_bottom) {
-                        $("#player").css("top", (player_top) + step);
+                    if (border.bottom - player.bottom > setting.step) {
+                        $("#player").css("top", (player.top) + setting.step);
+                    } else {
+                        $("#player").css("top", (border.bottom - player.height));
                     }
                     break;
-                // left:left-1
+                // left
                 case 37:
-                    if (player_left > 0) {
-                        $("#player").css("left", (player_left - step));
+                    if (player.left - setting.step > 0) {
+                        $("#player").css("left", (player.left - setting.step));
+                    } else {
+                        $("#player").css("left", 0);
                     }
                     break;
-                // right:left+1
+                // right
                 case 39:
-                    if (player_left < border_right) {
-                        $("#player").css("left", (player_left + step));
+                     if (border.right - player.right > setting.step) {
+                        $("#player").css("left", (player.left) + setting.step);
+                    } else {
+                        $("#player").css("left", (border.right - player.width));
                     }
                     break;
                 default:
                     console.log("wrong key");
                     break;
             }
-
         }
         $("body").keydown(function (e) {
             playerMove(e);
-        })
+        });
     </script>
 </body>
 
