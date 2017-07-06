@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="nav1.css">
+    <!--<link rel="stylesheet" type="text/css" href="nav21.css">-->
     <title>015</title>
     <style>
         * {
@@ -23,54 +24,55 @@
             border-bottom: 5px solid grey;
         }
 
-        div {
-            padding-bottom: 10px;
-            border-bottom: 1px solid black;
+        #nav1 {
+            display: none
         }
 
         #nav2 ul {
-            margin: 0;
-            padding: 0;
             display: flex;
-            align-content: center;
-            justify-content: flex-start;
-            background-color: lightgreen;
+            padding: 0;
+            margin: 0;
             list-style-type: none;
+            background-color: lightblue;
         }
-
 
         #nav2 li {
-            display: block;
-            text-align: center;
+            position: relative;
+            background-color: inherit
         }
 
-        #nav2 li a {
-            padding: 10px;
+        #nav2 a {
             display: inline-block;
+            padding: 10px;
+            width: 100%;
             text-decoration: none;
             color: black;
             transition: all 0.2s;
         }
 
-        #nav2 li:hover * {
-            background-color: green;
+        #nav2 a:hover {
+            background-color: blue;
             color: white;
         }
 
-        #nav2 .space {
-            margin: 0;
-            padding: 0;
-            flex: 1;
-        }
-
-        .dropdownList {
+        #nav2 .dropdownList {
             display: none;
+            opacity: 0;
+            position: absolute;
+            width: initial;
+            background-color: inherit
         }
 
-        .dropdown:hover .dropdownList {
-            display: block;
-            font-size: 2rem;
+        #nav2 .dropdownList>* {
+            white-space: nowrap;
         }
+
+        #nav2 .dropdown:hover .dropdownList {
+            display: block;
+            opacity: 1;
+            /*background-color: yellow;*/
+        }
+
     </style>
 </head>
 
@@ -82,8 +84,8 @@
         <li><a href=" http://www.oxxostudio.tw/articles/201501/css-flexbox.html" target="_blank">Flexbox1 reference2</a></li>
         <li><a href="https://www.w3schools.com/css/css_navbar.asp" target="_blank">sample</a></li>
     </ul>
-    <h2>#nav1</h2>
     <div id="nav1">
+        <h2>#nav1</h2>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -97,17 +99,25 @@
         <ol>
             <li>no dropdown</li>
         </ol>
-
     </div>
+    <hr>
     <h2>#nav2</h2>
     <div id="nav2">
-        <ul class="bg">
-            <li><a href="#">001</a></li>
-            <li><a href="#">001</a></li>
-            <li><a href="#">001</a></li>
-
+        <ul>
+            <li><a href="#">btn</a></li>
+            <li class="dropdown">
+                <a href="#">dropdown</a>
+                <div class="dropdownList">
+                    <a href="">drop-item1drop-item1drop-item1drop-item1</a>
+                    <a href="">drop-item2</a>
+                    <a href="">drop-item3</a>
+                </div>
+                <!--
+                -->
+            </li>
         </ul>
     </div>
+    <p>contect</p>
 </body>
 <!--
                 <li class="btn"><a  href="#">Home</a></li>
