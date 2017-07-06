@@ -28,7 +28,7 @@
 
 ### Transistion
 
-* 用於讓元素平滑的改變狀態(w3c school)
+* 用於讓元素平滑的改變狀態
 * 需要trigger才會執行  
     * _:hover_,_:active_
 * 只能設定開始/結束畫面的顯示設定

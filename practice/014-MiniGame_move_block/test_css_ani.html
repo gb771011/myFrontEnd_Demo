@@ -24,16 +24,13 @@
 
         @keyframes example {
             0% {
-                width: 0;
-                height: 0;
+                width: 2vw;
+                height: 2vh;
             }
-            50% {
+
+            100% {
                 width: 50vw;
                 height: 50vh;
-            }
-            100% {
-                width: 0;
-                height: 0;
             }
         }
 
@@ -45,8 +42,9 @@
         .ani {
             animation-name: example;
             animation-timing-function: linear;
-            animation-duration: 5s;
+            animation-duration: 3s;
             animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
         #player {
@@ -60,12 +58,11 @@
 </head>
 
 <body>
-    <h1>smooth test</h1>
-    <div id="player" class="trans"></div>
+    <h1>animation test</h1>
+    <div id="player" class="ani"></div>
     <script>
         var player = document.getElementById("player");
-        // console.log(player.style);
-        console.dir($("#player")[0]);
+        console.dir($("#player")[0].style);
     </script>
 </body>
 
