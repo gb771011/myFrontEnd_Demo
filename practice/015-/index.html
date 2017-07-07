@@ -5,131 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="nav1.css">
-    <!--<link rel="stylesheet" type="text/css" href="nav21.css">-->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>015</title>
     <style>
-        * {
-            box-sizing: border-box
+         :root {
+            --color_bg: darkred;
+            --color_font: white;
+            --color_font_hover: blue;
         }
 
-        body {
-            width: 90vw;
-            margin: 0 auto;
-            background-color: wheat;
-        }
-
-        h1 {
-            padding-bottom: 10px;
-            border-bottom: 5px solid grey;
-        }
-
-        #nav1 {
-            display: none
-        }
-
-        #nav2 ul {
+        .nav {
             display: flex;
-            padding: 0;
-            margin: 0;
             list-style-type: none;
-            background-color: lightblue;
+            padding-left: 0;
+            background-color: var(--color_bg);
         }
 
-        #nav2 li {
-            position: relative;
-            background-color: inherit
-        }
-
-        #nav2 a {
-            display: inline-block;
-            padding: 10px;
-            width: 100%;
+        .nav a {
+            display: block;
             text-decoration: none;
-            color: black;
+            padding: 12px;
+            color: var(--color_font);
             transition: all 0.2s;
         }
 
-        #nav2 a:hover {
-            background-color: blue;
-            color: white;
+        .nav a:hover {
+            background-color: tomato;
+            color: var(--color_font);
+        }
+        /*Right Align Setting*/
+
+        .nav .last {
+            margin-left: auto;
+        }
+        /*dropdown*/
+
+        .nav .dropdown {
+            position: relative;
         }
 
-        #nav2 .dropdownList {
-            display: none;
+        .nav .dropdown .drop-content {
+            padding: 0;
+            list-style-type: none;
+            visibility: hidden;
             opacity: 0;
             position: absolute;
-            width: initial;
-            background-color: inherit
+            background-color: var(--color_bg);
+            transition: all .3s;
         }
 
-        #nav2 .dropdownList>* {
+        .nav .dropdown .drop-content a {
             white-space: nowrap;
+            padding-left: 24px;
         }
 
-        #nav2 .dropdown:hover .dropdownList {
-            display: block;
+        .nav .dropdown:hover .drop-content {
+            visibility: visible;
             opacity: 1;
-            /*background-color: yellow;*/
         }
-
     </style>
 </head>
 
 <body>
     <h1>Nav effect with pure CSS</h1>
-    <ul>
-        <li><a href="https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwigvfjmn_TUAhWGEpQKHb32CusQFgglMAA&url=http%3A%2F%2Fzh-tw.learnlayout.com%2Fflexbox.html&usg=AFQjCNG8h108yYloRgR2f98EauF1-u7atA"
-                target="_blank">Flexbox1 reference</a></li>
-        <li><a href=" http://www.oxxostudio.tw/articles/201501/css-flexbox.html" target="_blank">Flexbox1 reference2</a></li>
-        <li><a href="https://www.w3schools.com/css/css_navbar.asp" target="_blank">sample</a></li>
-    </ul>
-    <div id="nav1">
-        <h2>#nav1</h2>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Post</a></li>
-            <li><a href="#">Group</a></li>
-            <p class="space"></p>
-            <li><a href="#">Contact Us</a></li>
+
+    <h2>Navigation Bar</h2>
+    <nav>
+        <ul class="nav">
+            <li><a href="">item1</a></li>
+            <li><a href="">item2</a></li>
+            <li><a href="">item3</a></li>
+            <li><a href="">item4</a></li>
+            <li><a href="">item5</a></li>
+            <li><a href="">item6</a></li>
+            <li class="last"><a href="">item last</a></li>
         </ul>
-        <p>Note</p>
-        <ol>
-            <li>no dropdown</li>
-        </ol>
-    </div>
+    </nav>
+    <h2>Dropdown List</h2>
+    <nav>
+        <ul class="nav">
+            <li class="dropdown">
+                <a href="#">Menu-right</a>
+                <ul class="drop-content">
+                    <li><a href="">sub-item1sub-item1</a></li>
+                    <li><a href="">sub-item1</a></li>
+                    <li><a href="">sub-item1</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <hr>
-    <h2>#nav2</h2>
-    <div id="nav2">
+    <footer>
+        <h2>Reference</h2>
         <ul>
-            <li><a href="#">btn</a></li>
-            <li class="dropdown">
-                <a href="#">dropdown</a>
-                <div class="dropdownList">
-                    <a href="">drop-item1drop-item1drop-item1drop-item1</a>
-                    <a href="">drop-item2</a>
-                    <a href="">drop-item3</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="#">dropdown</a>
-                <div class="dropdownList">
-                    <a href="">drop-item1drop-item1drop-item1drop-item1</a>
-                    <a href="">drop-item2</a>
-                    <a href="">drop-item3</a>
-                </div>
-                <!--
-                -->
-            </li>
+            <li><a href="https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwigvfjmn_TUAhWGEpQKHb32CusQFgglMAA&url=http%3A%2F%2Fzh-tw.learnlayout.com%2Fflexbox.html&usg=AFQjCNG8h108yYloRgR2f98EauF1-u7atA"
+                    target="_blank">Flexbox1 reference</a></li>
+            <li><a href=" http://www.oxxostudio.tw/articles/201501/css-flexbox.html" target="_blank">Flexbox1 reference2</a></li>
+            <li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_navbar" target="_blank">sample</a></li>
         </ul>
-    </div>
-    <p>contect</p>
-        <script>
-            var tt=location;
-            console.dir(tt);
-        </script>
+    </footer>
 </body>
 
 

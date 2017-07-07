@@ -1,0 +1,74 @@
+/*bar設定*/
+
+.navbar {
+    /*cancel default setting*/
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    /**/
+    background-color: palegreen;
+}
+
+
+/*一般選項設定*/
+
+.navbar li a {
+    /*cancel default setting*/
+    color: black;
+    text-decoration: none;
+    /**/
+    display: block;
+    padding: 10px;
+    transition: all 0.2s
+}
+
+.navbar a:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+
+/*附選單設定*/
+
+.navbar .drop {
+    position: relative;
+    background-color: inherit;
+}
+
+.navbar .drop-list {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    /**/
+    background-color: inherit;
+    max-width: 600%;
+    box-shadow: 2px 2px gray;
+    overflow: auto;
+    transition: opacity 0.2s;
+}
+
+.navbar .drop-list>* {
+    padding-left: 20px;
+}
+
+.navbar .drop:hover .drop-list {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*靠右選項/附選單設定*/
+
+.navbar .btn-right {
+    margin-left: auto;
+}
+
+.navbar .list-reverse {
+    right: 0;
+}
+
+.navbar .list-reverse>* {
+    padding: 10px;
+    padding-right: 20px;
+    text-align: right;
+}
