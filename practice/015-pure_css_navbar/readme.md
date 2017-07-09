@@ -1,3 +1,5 @@
+[Demo here](https://gb771011.github.io/myFrontEnd/practice/015-pure_css_navbar)
+
 # 參考
 [CSS“隐藏”元素的几种方法的对比](http://luopq.com/2016/02/15/css-tricks-of-hide-element/)
 
