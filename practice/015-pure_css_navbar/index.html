@@ -35,7 +35,7 @@
         }
         /*Right Align Setting*/
 
-        .nav .last {
+        .nav .right {
             margin-left: auto;
         }
         /*dropdown*/
@@ -44,7 +44,7 @@
             position: relative;
         }
 
-        .nav .dropdown .drop-content {
+        .nav .drop-content {
             padding: 0;
             list-style-type: none;
             visibility: hidden;
@@ -54,12 +54,12 @@
             transition: all .3s;
         }
 
-        .nav .dropdown .drop-content a {
+        .nav .drop-content a {
             white-space: nowrap;
             padding-left: 24px;
         }
 
-        .nav .dropdown:hover .drop-content {
+        .nav .dropdown:hover>.drop-content {
             visibility: visible;
             opacity: 1;
         }
@@ -78,7 +78,7 @@
             <li><a href="">item4</a></li>
             <li><a href="">item5</a></li>
             <li><a href="">item6</a></li>
-            <li class="last"><a href="">item last</a></li>
+            <li class="right"><a href="">item last</a></li>
         </ul>
     </nav>
     <h2>Dropdown List</h2>
@@ -94,6 +94,25 @@
             </li>
         </ul>
     </nav>
+    <h2>Double Dropdown</h2>
+    <nav>
+        <ul class="nav">
+            <li class="dropdown">
+                <a href="">Menu1-item1</a>
+                <ul class="drop-content">
+                    <li class="dropdown">
+                        <a href="">Menu2-item1</a>
+                        <ul class="drop-content">
+                            <li><a href="">Menu3-item1</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Menu2-item2</a></li>
+                </ul>
+            </li>
+            <li><a href="">Menu1-item2</a></li>
+        </ul>
+    </nav>
+
     <hr>
     <footer>
         <h2>Reference</h2>
