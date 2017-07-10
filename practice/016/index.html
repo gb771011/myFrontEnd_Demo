@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>016</title>
 </head>
+
 <body>
-    
+    <h1>Web Counter</h1>
+    <div class="container">
+        <div id="display">
+            <input type="number" id="dis_hour" value="0" min="0" max="99"></input>
+            <p>:</p>
+            <input type="number" id="dis_min" value="10" min="0" max="59"></input>
+            <p>:</p>
+            <input type="number" id="dis_sec" value="3" min="0" max="59"></input>
+        </div>
+        <!--
+    <div id="timeset">
+        <input type="number" id="dis_hour" value="1" min="0" max="99"></input>
+        <p>:</p>
+        <input type="number" id="dis_min" value="22" min="0" max="59"></input>
+        <p>:</p>
+        <input type="number" id="dis_sec" value="33" min="0" max="59"></input>
+    </div>
+    -->
+        <div id="btns">
+            <button id="btn_set" type="button">設定</button>
+            <button type="button">開始</button>
+            <button type="button">暫停</button>
+            <button type="button">取消</button>
+        </div>
+    </div>
+    <div id="console"> </div>
+    <script src="main.js"></script>
+    <script>
+        function tt() {
+            var t, t0, t1, td, td_h;
+            t = new Date();
+            t0 = t.valueOf()
+            // console.log("start(ms):", t0);
+            t1 = t.setHours(17, 43, 49);
+            // t1 = t.setMinutes(35);
+            // t1 = t.setMinutes(59);
+            // console.log("end(ms):", t1);
+            td = (t1 - t0) / 1000;
+            // console.log("diff(ms):", td);
+
+            td_h = Math.floor(td / 3600);
+            td -= (3600 * td_h);
+            td_m = Math.floor(td / 60);
+            td -= (60 * td_m);
+            console.log(td_h, td_m, td);
+        }
+        setInterval(function () { tt() }, 1000);
+    </script>
 </body>
+
 </html>
