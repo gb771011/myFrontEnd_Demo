@@ -2,7 +2,7 @@
 
 # Idea list
 
-* 代辦事項-todoList(前端)
+* todoList(前端)
 * 使用jQuery重做日曆&計算機
 * HTML5 API
     * Canvas
@@ -20,7 +20,6 @@
     * github page homepage
 * JS libraty
     * jQueryUI
-    * electron : 桌面程式開發
     * ...etc
 * HTML Template
     * EJS(JS-based)
@@ -28,10 +27,11 @@
 * 後端
     * node  
     * 資料庫   
+* electron : 桌面程式開發
 
 ---
 
-# Sourse
+# Library
 ## [jQuery](https://jquery.com/)
 
 ### CDN:
