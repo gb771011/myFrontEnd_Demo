@@ -42,7 +42,7 @@ function time_set() {
     $("#console").html(
         "t0:" + JSON.stringify(dis.origin) + "<br>" + "t1:" + JSON.stringify(dis.goal));
 }
-$("#btn_set").click(function () { time_set(); });
+// $("#btn_set").click(function () { time_set(); });
 
 // start
 /*秒-1，
@@ -68,6 +68,20 @@ function start(launch) {
     }
 }
 start(false);
+
+function tt() {
+    var t, t0, t1, td, td_h;
+    t = new Date();
+    t0 = t.valueOf();
+    t1 = t.setHours(17, 43, 49);
+    td = (t1 - t0) / 1000;
+
+    td_h = Math.floor(td / 3600);
+    td -= (3600 * td_h);
+    td_m = Math.floor(td / 60);
+    td -= (60 * td_m);
+    console.log(td_h, td_m, td);
+}
 
 /*
 var i, date, now = {};
