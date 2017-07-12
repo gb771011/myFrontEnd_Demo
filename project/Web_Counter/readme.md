@@ -17,3 +17,18 @@
         * 計時中
         * 設定中
 
+## 按鈕
+* set   
+    1. 設定倒數時間
+* start
+    1. 啟動倒數(counter.active(_id_))
+    2. 倒數期間，將自己設定為disabled`.prop(disabled:true)`
+* pause
+    1. 暫停計時
+    2. 恢復start`.prop(disabled:false)`
+* stop
+    1. 停止計時
+    2. 恢復start`.prop(disabled:false)`
+* reset(記憶功能)
+    1. 重設之前的時間
+    
