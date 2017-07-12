@@ -42,10 +42,11 @@
             ss -= hh * 3600;
             mm = Math.floor(ss / 60);
             ss -= mm * 60;
-            result = [hh,mm,ss];
+            result = [hh, mm, ss];
             return result;
         }
 
+        // 計時器物件設計
         function Counter() {
             this.times = [],
                 this.times_last = [],
@@ -87,8 +88,8 @@
                     console.log("Times:", this.times);
                 }
         }
-        var counter = new Counter();
 
+        // 頁面初始化
         function counterInit(id_template, id_container, times) {
             var i;
             //  資料初始化
@@ -102,8 +103,22 @@
             }
         }
 
-        // 計時器初始化
+        // 初始化
+        var counter = new Counter();
         counterInit("#template", "#container", 5);
+
+        // 按鍵狀態切換
+        function btnStatusChange(id, status) {
+            // console.log((typeof status === "object") ? "Yes" : "No");
+            // console.log(!(typeof status==="object"));
+            var length;
+            if ((typeof status === "object")) {
+                // console.log($("#" + id).children("button"));
+                length = $("#" + id).children("button");
+            }
+        }
+        btnStatusChange(1, [1, 0, 0, 1, 1]);
+
         // 按鈕動作
         $(".btn_set").click(function () {
             var parentId = this.parentNode.id,
@@ -133,7 +148,7 @@
             var parentId = e.currentTarget.parentElement.id;
             counter.reset(parentId);
         });
-        setInterval(function () { counter.run(); }, 1000);
+        // setInterval(function () { counter.run(); }, 1000);
     </script>
 </body>
 
