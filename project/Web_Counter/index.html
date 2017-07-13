@@ -17,7 +17,7 @@
             <span style="display:inline-block;width:2rem;">#id</span>
             <input class="hh" type="number" value="" placeholder="hh" min="0" max="99">
             <input class="mm" type="number" value="" placeholder="mm" min="0" max="59">
-            <input class="ss" type="number" value="1" placeholder="ss" min="0" max="59">
+            <input class="ss" type="number" value="10" placeholder="ss" min="0" max="59">
             <button class="btn_set" type="button">Set</button>
             <button class="btn_start" type="button">Start</button>
             <button class="btn_pause" type="button">Pause</button>
@@ -48,44 +48,48 @@
 
         // 計時器物件設計
         function Counter() {
-            this.times = [],
+            this.step = 0,
+                this.times = [],
                 this.times_last = [],
                 this.mode = [],
-                this.init = function (count) {
+
+                this.set = function (id, hh, mm, ss) {
+                    this.times[id] = hms2s(hh, mm, ss);
+                    this.times_last[id] = hms2s(hh, mm, ss);
+                    console.log("set:", id, hms2s(hh, mm, ss));
+                },
+                this.start = function (id) {
+                    this.mode[id] = 1;
+                    console.log("start:", id);
+                },
+                this.mode_pause = function (id) {
+                    this.mode[id] = 0;
+                    console.log("mode_pause:", id);
+                },
+                this.mode_stop = function (id) {
+                    this.times[id] = 0;
+                    this.mode[id] = 0;
+                    console.log("mode_stop:", id);
+                },
+                this.mode_reset = function (id) {
+                    this.times[id] = this.times_last[id];
+                    console.log("mode_reset:", id);
+                },
+                this.init = function (count, stepms) {
+                    this.step = stepms;
                     for (i = 0; i < count; i++) {
                         this.times[i] = 0;
                         this.mode[i] = 0;
+
                     }
                     // console.log("counter.init");
-                },
-                this.set_times = function (id, hh, mm, ss) {
-                    this.times[id] = hms2s(hh, mm, ss);
-                    this.times_last[id] = hms2s(hh, mm, ss);
-                    console.log("set_times:", id, hms2s(hh, mm, ss));
-                },
-                this.active = function (id) {
-                    this.mode[id] = 1;
-                    console.log("active:", id);
-                },
-                this.pause = function (id) {
-                    this.mode[id] = 0;
-                    console.log("pause:", id);
-                },
-                this.stop = function (id) {
-                    this.times[id] = 0;
-                    this.mode[id] = 0;
-                    console.log("stop:", id);
-                },
-                this.reset = function (id) {
-                    this.times[id] = this.times_last[id];
-                    console.log("Reset:", id);
                 },
                 this.run = function () {
                     var i;
                     for (i = 0; i < this.times.length; i++) {
-                        (this.times[i] > 0) ? this.times[i] -= this.mode[i] : 0;
+                        (this.times[i] > 0 && this.mode[i]>0) ? this.times[i] -= (this.step / 1000) : 0;
                     }
-                    console.log("Times:", this.times);
+                    console.log(this.times);
                 }
         }
 
@@ -93,7 +97,7 @@
         function counterInit(id_template, id_container, times) {
             var i;
             //  資料初始化
-            counter.init(times);
+            counter.init(times, 1000);
 
             // UI初始化
             for (i = 0; i < times; i++) {
@@ -117,38 +121,36 @@
                 length = $("#" + id).children("button");
             }
         }
-        btnStatusChange(1, [1, 0, 0, 1, 1]);
 
         // 按鈕動作
         $(".btn_set").click(function () {
             var parentId = this.parentNode.id,
                 inputs = $("#" + parentId).children("input");
-            counter.set_times(parentId, inputs[0].value, inputs[1].value, inputs[2].value);
+            counter.set(parentId, inputs[0].value, inputs[1].value, inputs[2].value);
         });
         $(".btn_start").click(function () {
             var parentId = this.parentNode.id;
             if (counter.times[parentId] > 0) {
-                counter.active(parentId);
+                counter.start(parentId);
             } else {
                 alert("Set Time First,Please");
             }
-            $(this).prop("disabled", true);
+            // $(this).prop("disabled", true);
         });
         $(".btn_pause").click(function () {
             var parentId = this.parentNode.id;
-            counter.pause(parentId);
-            $(".btn_start").prop("disabled", false);
+            counter.mode_pause(parentId);
+            // $(".btn_start").prop("disabled", false);
         });
         $(".btn_stop").click(function (i) {
             var parentId = this.parentNode.id;
-            counter.stop(parentId);
-            console.log(i);
+            counter.mode_stop(parentId);
         });
         $(".btn_reset").on("click", function (e) {
             var parentId = e.currentTarget.parentElement.id;
-            counter.reset(parentId);
+            counter.mode_reset(parentId);
         });
-        // setInterval(function () { counter.run(); }, 1000);
+        setInterval(function () { counter.run(); }, 1000);
     </script>
 </body>
 
