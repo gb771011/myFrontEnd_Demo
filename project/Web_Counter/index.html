@@ -14,9 +14,9 @@
     <!--<textarea id="console" rows="5" cols="" style="width:100%;resize:none"></textarea>-->
     <div id="template" style="display:none">
         <section id="#id">
-            <span style="display:inline-block;width:2rem;">#id</span>
-            <input class="hh" type="number" value="" placeholder="hh" min="0" max="99">
-            <input class="mm" type="number" value="" placeholder="mm" min="0" max="59">
+            <span class="mode" style="display:inline-block;width:2rem;height:2rem;line-height:2rem;text-align:center">#id</span>
+            <input class="hh" type="number" value="1" placeholder="hh" min="0" max="99">
+            <input class="mm" type="number" value="2" placeholder="mm" min="0" max="59">
             <input class="ss" type="number" value="10" placeholder="ss" min="0" max="59">
             <button class="btn_set" type="button">Set</button>
             <button class="btn_start" type="button">Start</button>
@@ -29,13 +29,34 @@
         <p>Please open console to check </p>
     </article>
     <script>
-        // 轉換時分秒(hh:mm:ss)為秒(s)
+        // function:轉換時分秒(hh:mm:ss)為秒(s)
+        /*
+        */
         function hms2s(hh, mm, ss) {
             var hh = (hh === "") ? 0 : parseInt(hh),
                 mm = (mm === "") ? 0 : parseInt(mm),
                 ss = (ss === "") ? 0 : parseInt(ss);
             return hh * 3600 + mm * 60 + ss;
         }
+        // object:轉換時分秒(hh:mm:ss)為秒(s)
+        /*
+        */
+        var hms2ss = {
+            hms: [1230, 423, 69],
+            times: [3600, 60, 1],
+            ans: 0,
+            total: function () {
+                var ans = 0;
+                //  array.forEach
+                this.hms.forEach(function (val, i) {
+                    // console.log(val, i, this.times[i]);
+                    ans += val * this.times[i];
+                }, this);
+                this.ans = ans;
+                return ans;
+            }
+        };
+        // console.log(hms2ss.hms);
         // 轉換秒(s)為時分秒[hh,mm,ss]
         function s2hms(ss) {
             var hh, mm, result;
@@ -54,26 +75,32 @@
                 this.times = [],
                 this.times_last = [],
                 this.mode = [],
-
+                /*
                 this.set = function (id, hh, mm, ss) {
                     this.times[id] = hms2s(hh, mm, ss);
                     this.times_last[id] = hms2s(hh, mm, ss);
                     console.log("set:", id, hms2s(hh, mm, ss));
                 },
+                */
+                this.set = function (id, ans) {
+                    this.times[id] = ans;
+                    this.times_last[id] = ans;
+                    console.log("set:", id, ans);
+                },
                 this.start = function (id) {
                     this.mode[id] = 1;
                     console.log("start:", id);
                 },
-                this.mode_pause = function (id) {
+                this.pause = function (id) {
                     this.mode[id] = 0;
                     console.log("mode_pause:", id);
                 },
-                this.mode_stop = function (id) {
+                this.stop = function (id) {
                     this.times[id] = 0;
                     this.mode[id] = 0;
                     console.log("mode_stop:", id);
                 },
-                this.mode_reset = function (id) {
+                this.reset = function (id) {
                     this.times[id] = this.times_last[id];
                     console.log("mode_reset:", id);
                 },
@@ -82,14 +109,13 @@
                     for (i = 0; i < count; i++) {
                         this.times[i] = 0;
                         this.mode[i] = 0;
-
                     }
                     // console.log("counter.init");
                 },
                 this.run = function () {
                     var i;
                     for (i = 0; i < this.times.length; i++) {
-                        (this.times[i] > 0 && this.mode[i]>0) ? this.times[i] -= (this.step / 1000) : 0;
+                        (this.times[i] > 0 && this.mode[i] > 0) ? this.times[i] -= (this.step / 1000) : 0;
                     }
                     console.log(this.times);
                 }
@@ -110,8 +136,9 @@
         }
 
         // 初始化
-        var counter = new Counter();
-        counterInit("#template", "#container", 5);
+        var counter = new Counter(),
+            counterNumber = 3 + Math.ceil(Math.random() * 3);
+        counterInit("#template", "#container", counterNumber);
 
         // 按鍵狀態切換
         function btnStatusChange(id, status) {
@@ -124,35 +151,36 @@
             }
         }
 
-        // 按鈕動作
-        $(".btn_set").click(function () {
-            var parentId = this.parentNode.id,
-                inputs = $("#" + parentId).children("input");
-            counter.set(parentId, inputs[0].value, inputs[1].value, inputs[2].value);
-        });
-        $(".btn_start").click(function () {
-            var parentId = this.parentNode.id;
-            if (counter.times[parentId] > 0) {
-                counter.start(parentId);
-            } else {
-                alert("Set Time First,Please");
+        // 按鈕動作(統一偵測>>依id,class分流)
+        $("button").click(function () {
+            var pid = $(this).parent("section").attr("id")
+                , commend = $(this).attr("class").slice(4)
+                , inputs = $(this).siblings("input")
+                ;
+            console.log("pid:", pid, "\n", "commend:", commend);
+
+            var inputs = $(this).siblings("input");
+
+            // console.log(tt.length);
+
+            /**/
+            switch (commend) {
+                case "set":
+                    for (i in inputs) {
+                        if (!isNaN(parseInt(i))) {
+                            hms2ss.hms[i] = parseInt( inputs[i].value);
+                        }
+                    }
+
+                    counter.set(pid, hms2ss.total());
+                    break;
+                default:
+                    break;
             }
-            // $(this).prop("disabled", true);
+            // console.log(counter[commend]);
+            // counter[commend](1);
         });
-        $(".btn_pause").click(function () {
-            var parentId = this.parentNode.id;
-            counter.mode_pause(parentId);
-            // $(".btn_start").prop("disabled", false);
-        });
-        $(".btn_stop").click(function (i) {
-            var parentId = this.parentNode.id;
-            counter.mode_stop(parentId);
-        });
-        $(".btn_reset").on("click", function (e) {
-            var parentId = e.currentTarget.parentElement.id;
-            counter.mode_reset(parentId);
-        });
-        setInterval(function () { counter.run(); }, 1000);
+        // setInterval(function () { counter.run(); }, 1000);
     </script>
 </body>
 

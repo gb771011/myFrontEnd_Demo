@@ -97,3 +97,55 @@ setInterval(function () {
     }
 }, 1000);
 */
+
+ /*
+         // 個別按鈕動作 
+         // pid = $(this).parent("section").attr("id")
+                 /       $(".btn_set").click(function () {
+                    var parentId = parseInt(1 + this.parentNode.id),
+                        inputs = $("#" + parentId).children("input");
+                    counter.set(parentId, inputs[0].value, inputs[1].value, inputs[2].value);
+                    // $("span.mode").css("backgroundColor", "red");
+                    $("span.mode")[parentId + 1].style.backgroundColor = "red";
+                    console.log($("span.mode")[parentId].style.backgroundColor);
+        
+                });
+        $(".btn_set").click(function () {
+            
+            // 1. 將時間(inputs)的值輸入到counter裡
+            
+        var pid = $(this).parent("section").attr("id"),
+            inputs = $(this).siblings("input[type=number]")
+            ;
+
+        for (i in inputs) {
+            if (!isNaN(parseInt(i))) {
+                hms2s.hms[i] = parseInt(inputs[i].value);
+            }
+        }
+        console.log("id:", pid, "set:", hms2s.total());
+        });
+
+        $(".btn_start").click(function () {
+            var parentId = this.parentNode.id;
+            if (counter.times[parentId] > 0) {
+                counter.start(parentId);
+            } else {
+                // alert("Set Time First,Please");
+            }
+            // $(this).prop("disabled", true);
+        });
+        $(".btn_pause").click(function () {
+            var parentId = this.parentNode.id;
+            counter.mode_pause(parentId);
+            // $(".btn_start").prop("disabled", false);
+        });
+        $(".btn_stop").click(function (i) {
+            var parentId = this.parentNode.id;
+            counter.mode_stop(parentId);
+        });
+        $(".btn_reset").on("click", function (e) {
+            var parentId = e.currentTarget.parentElement.id;
+            counter.mode_reset(parentId);
+        });
+*/
