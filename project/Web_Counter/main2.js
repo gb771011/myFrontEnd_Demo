@@ -1,17 +1,18 @@
+console.log("main2.js loaded");
+
 // function:轉換時分秒(hh:mm:ss)為秒(s)
 /*
-*/
 function hms2s(hh, mm, ss) {
     hh = (hh === "") ? 0 : parseInt(hh);
     mm = (mm === "") ? 0 : parseInt(mm);
     ss = (ss === "") ? 0 : parseInt(ss);
     return hh * 3600 + mm * 60 + ss;
 }
-// object:轉換時分秒(hh:mm:ss)為秒(s)
-/*
 */
-var hms2ss = {
-    hms: [1230, 423, 69],
+// object:轉換時分秒(hh:mm:ss)為秒(s)
+
+var hms2s = {
+    hms: [0, 0, 0],
     times: [3600, 60, 1],
     ans: 0,
     total: function () {
@@ -25,7 +26,8 @@ var hms2ss = {
         return ans;
     }
 };
-// console.log(hms2ss.hms);
+/*
+*/
 // 轉換秒(s)為時分秒[hh,mm,ss]
 function s2hms(ss) {
     var hh, mm, result;
@@ -44,13 +46,6 @@ function Counter() {
         this.times = [],
         this.times_last = [],
         this.mode = [],
-        /*
-        this.set = function (id, hh, mm, ss) {
-            this.times[id] = hms2s(hh, mm, ss);
-            this.times_last[id] = hms2s(hh, mm, ss);
-            console.log("set:", id, hms2s(hh, mm, ss));
-        },
-        */
         this.set = function (id, ans) {
             this.times[id] = ans;
             this.times_last[id] = ans;
@@ -62,16 +57,16 @@ function Counter() {
         },
         this.pause = function (id) {
             this.mode[id] = 0;
-            console.log("mode_pause:", id);
+            console.log("pause:", id);
         },
         this.stop = function (id) {
             this.times[id] = 0;
             this.mode[id] = 0;
-            console.log("mode_stop:", id);
+            console.log("stop:", id);
         },
         this.reset = function (id) {
             this.times[id] = this.times_last[id];
-            console.log("mode_reset:", id);
+            console.log("reset:", id);
         },
         this.init = function (count, stepms) {
             this.step = stepms;
@@ -81,7 +76,7 @@ function Counter() {
             }
             // console.log("counter.init");
         },
-        this.run = function () {
+        this.loop = function () {
             for (var i = 0; i < this.times.length; i++) {
                 if ((this.times[i] > 0) && (this.mode[i] > 0)) {
                     this.times[i] -= (this.step / 1000);
@@ -92,60 +87,123 @@ function Counter() {
             console.log(this.times);
         };
 }
-
+var counter = new Counter();
 // 頁面初始化
 function counterInit(id_template, id_container, times) {
-    var i;
     //  資料初始化
     counter.init(times, 1000);
 
     // UI初始化
-    for (i = 0; i < times; i++) {
+    for (var i = 0; i < times; i++) {
         $(id_container).html(function (index, last) {
             return last + $(id_template).html().replace(/#id/g, i);
         });
+        UIrender(i, "init");
     }
+    // 按鈕狀態:default
+
 }
 
 // 初始化
-var counter = new Counter(),
-    counterNumber = 3 + Math.ceil(Math.random() * 3);
+
+var counterNumber = 3 + Math.ceil(Math.random() * 3);
 counterInit("#template", "#container", counterNumber);
 
-// 按鍵狀態切換
-function btnStatusChange(id, status) {
-    // console.log((typeof status === "object") ? "Yes" : "No");
-    // console.log(!(typeof status==="object"));
-    var length;
-    if ((typeof status === "object")) {
-        // console.log($("#" + id).children("button"));
-        length = $("#" + id).children("button");
-    }
-}
-
-// 按鈕動作(統一偵測>>依id,class分流)
-$("button").click(function () {
-    var pid = $(this).parent("section").attr("id"),
-        commend = $(this).attr("class").slice(4),
-        inputs = $(this).siblings("input");
-    console.log("pid:", pid, "\n", "commend:", commend);
-
-    // console.log(tt.length);
-
-    /**/
-    switch (commend) {
-        case "set":
-            for (var i in inputs) {
-                if (!isNaN(parseInt(i))) {
-                    hms2ss.hms[i] = parseInt(inputs[i].value);
-                }
+// UI變更
+function UIrender(id, status) {
+    var i, ans,
+        hint = $("#" + id).children(".hint"),
+        btn_g1 = $("#" + id + " .g1"),
+        btn_g2 = $("#" + id + " .g2");
+    switch (status) {
+        case "init":
+            /*
+             deafult or 待機 (counter.mode[id]=0):
+               .g2(start,pause,stop) >> disabled="ture"
+               #hint : backgroungColor="green"
+            */
+            // console.log("hint", hint.css("backgroundColor"));
+            hint.css("backgroundColor", "lime");
+            // console.log(id,btn_g2);
+            for (i = 0; i < btn_g2.length; i++) {
+                btn_g2[i].disabled = true;
             }
-            counter.set(pid, hms2ss.total());
+            break;
+        case "set":
+            /*
+            設定:
+                btn_start: disabled=false                
+            */
+            btn_g2[0].disabled = false;
+
+            break;
+        case "start":
+            /*
+            set,reset >> disabled=true
+            hint.bgcolor>>red
+            */
+            hint.css("backgroundColor", "red");
+            btn_g1[0].disabled = true;
+            btn_g1[1].disabled = true;
+            btn_g2[1].disabled = false;
+            btn_g2[2].disabled = false;
+            break;
+        case "pause":
+            btn_g2[1].disabled = true;
+            break;
+        case "stop":
+            btn_g1[0].disabled = false;
+            btn_g1[1].disabled = false;
             break;
         default:
             break;
     }
-    // console.log(counter[commend]);
-    // counter[commend](1);
+
+}
+
+
+// 按鈕動作(統一偵測>>依id,class分流)
+$("button").click(function () {
+    var pid = $(this).parent("section").attr("id"),
+        commend = this.classList[1].slice(4),
+        group = this.classList[0],
+        inputs = $(this).siblings("input"),
+        buttons = $(this).siblings("button");
+
+    // UIrender(pid, "default");
+
+
+    switch (commend) {
+        case "set":
+            for (var i in inputs) {
+                if (!isNaN(parseInt(i))) {
+                    hms2s.hms[i] = parseInt(inputs[i].value);
+                }
+            }
+            counter.set(pid, hms2s.total());
+            UIrender(pid, "set");
+            break;
+        case "start":
+            counter.start(pid);
+            UIrender(pid, "start");
+            break;
+        case "pause":
+            counter.pause(pid);
+            UIrender(pid, "pause");
+            break;
+        case "stop":
+            counter.stop(pid);
+            UIrender(pid, "init");
+            break;
+        case "reset":
+            counter.reset(pid);
+            break;
+        default:
+            console.log("none");
+            break;
+    }
+    /*
+    */
 });
-        // setInterval(function () { counter.run(); }, 1000);
+
+// setInterval(function () { counter.loop(); }, 1000);
