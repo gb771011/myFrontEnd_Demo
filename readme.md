@@ -19,18 +19,18 @@ date | description
     * web socket
     * ...etc
 * 小遊戲
-    * OOXX  
-    * 走迷宮   
-    * ...etc    
+    * OOXX      
+    * 走迷宮   
+    * ...etc    
 * ES6(javascript預處理器：ES6 轉 ES5)
 * LESS(js-based css預處理器)
 * 把vue,react 跟angular都試過一遍
-* layout練習
-    * 公司表單（工單，FAI，樣品報告）
-    * github page homepage
+* layout練習  
+    * 公司表單（工單，FAI，樣品報告）     
+    * github page homepage
 * JS libraty
     * jQueryUI
-    * ...etc
+    * ...etc
 * HTML Template
     * EJS(JS-based)
     * markdown
@@ -96,3 +96,8 @@ date | description
 
 
 ---
+## [LESS](http://lesscss.org/#getting-started)
+### CDN
+```
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+```
