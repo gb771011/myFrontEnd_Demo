@@ -1,5 +1,15 @@
 [Github page](https://gb771011.github.io/myFrontEnd/)
 
+# Log
+date | description
+--|--
+17/7/15 | 將practice與project分成兩個repo`*1`，避免搞混
+
+>`*1`       
+**practice** : 單一功能 or API之自學用作業  
+**project** : 功能完整的作品
+
+
 # Idea list
 
 * todoList(前端)
