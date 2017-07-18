@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tt": "echo Hello",
-    "preinstall": "npm install live-server -g"
+    "echoTest": "echo Hello"
   },
   "repository": {
     "type": "git",
@@ -19,7 +18,7 @@
   },
   "homepage": "https://github.com/gb771011/myFrontEnd_Demo#readme",
   "devDependencies": {
-    "less":"^2.7.2",
-    "live-sevrer":"^1.2.0"
+    "gulp": "^3.9.1",
+    "less": "^2.7.2"
   }
 }
