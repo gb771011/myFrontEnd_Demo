@@ -5,7 +5,7 @@
         "**/.svn": true,
         "**/.hg": true,
         "**/.DS_Store": true,
-        "**/*.gitignore": true,
+        // "**/*.gitignore": true,
         "**/chrome": true,
         "**/*.bat": true,
         "debug.log":true
