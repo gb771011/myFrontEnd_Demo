@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gb771011/myFrontEnd_Demo#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
     "less": "^2.7.2"
   }
 }
