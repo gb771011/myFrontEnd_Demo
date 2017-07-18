@@ -28,7 +28,7 @@ date | description
 * layout練習  
     * 公司表單（工單，FAI，樣品報告）     
     * github page homepage
-* JS libraty
+* JS librity
     * jQueryUI
     * ...etc
 * HTML Template
@@ -42,15 +42,26 @@ date | description
 ---
 
 # Library
-## [jQuery](https://jquery.com/)
+
+Name|Usage|CDN
+--|--|--
+[jQuery](https://jquery.com/)|DOM操作|`<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>`
+[google-code-prettify](https://github.com/google/code-prettify)|網頁端程式碼高亮|`<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>`
+[highlight.js](https://highlightjs.org/)|網頁端程式碼高亮|`<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">``<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>`
+[LESS](http://lesscss.org/#getting-started) | JS-based CSS processor|`<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>`
+
+`<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">`
+`<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>`
+
+## 
 
 ### CDN:
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 
 ---
 
-## [google-code-prettify](https://github.com/google/code-prettify)
+## 
 
 程式碼高亮工具#1
 
@@ -96,8 +107,8 @@ date | description
 
 
 ---
-## [LESS](http://lesscss.org/#getting-started)
+## 
 ### CDN
 ```
-<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+
 ```
