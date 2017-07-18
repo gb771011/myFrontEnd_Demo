@@ -1,4 +1,4 @@
-#*.bat
+*.bat
 *.url
 \.vscode\chrome
 \node_modules

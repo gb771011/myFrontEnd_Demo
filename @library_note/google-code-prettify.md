@@ -1,4 +1,5 @@
-# How to use:
+# gcp
+## How to use:
 
 匯入google-code-prettify後，將程式碼放到 &lt;pre&gt;裡即可
 
@@ -6,7 +7,7 @@
             <!--code here-->
         </pre>
 
-# Note:
+## Note:
 
 若為程式碼格式為html，需將所有標籤的`<`用`&lt;`取代，這樣才能在程式碼內正確顯示tag，否則`<pre>`內的程式碼還是會被轉為網頁
 

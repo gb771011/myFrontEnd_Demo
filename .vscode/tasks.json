@@ -2,7 +2,7 @@
     // 說明見:https://code.visualstudio.com/docs/editor/tasks
     "version": "0.1.0",
     "tasks": [
-        {
+        /*        {
             "taskName": "echo",
             "command": "live-server",
             "args": [
@@ -10,7 +10,7 @@
                 "--open=${relativeFile}"
             ],
             "isShellCommand": true
-        },
+        },*/
         {
             "taskName": "Launch via chrome",
             "command": "chrome",
@@ -26,6 +26,12 @@
             "args": [
                 "${file}"
             ]
+        },
+        {
+            "taskName": "less convert",
+            "isShellCommand": true,
+            "windows": {},
+            "command": "echo ${file} & echo Hello"
         }
     ]
 }
