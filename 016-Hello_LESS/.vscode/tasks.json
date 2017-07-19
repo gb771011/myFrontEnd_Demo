@@ -5,15 +5,10 @@
     "tasks": [
         {
             "type": "gulp",
-            "task": "less",
+            "task": "less-compiler",
             "problemMatcher": [
                 "$gulp-tsc"
             ]
-        },
-        {
-            "type": "gulp",
-            "task": "tt",
-            "problemMatcher": []
         }
     ]
 }
