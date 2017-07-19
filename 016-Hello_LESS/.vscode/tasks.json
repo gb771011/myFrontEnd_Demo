@@ -5,14 +5,15 @@
     "tasks": [
         {
             "type": "gulp",
-            "task": "default",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },{
-            "taskName":"test2",
-            "command": ""
+            "task": "less",
+            "problemMatcher": [
+                "$gulp-tsc"
+            ]
+        },
+        {
+            "type": "gulp",
+            "task": "tt",
+            "problemMatcher": []
         }
     ]
 }

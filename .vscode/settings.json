@@ -8,7 +8,8 @@
         // "**/*.gitignore": true,
         "**/chrome": true,
         "**/*.bat": true,
-        "debug.log":true
+        "debug.log":true,
+        "**/node_modules":true
     },
     "vs-color-picker:autoLaunch": false,
     "files.associations": {
