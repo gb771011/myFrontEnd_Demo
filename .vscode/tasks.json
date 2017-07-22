@@ -1,41 +1,33 @@
 {
     // 說明見:https://code.visualstudio.com/docs/editor/tasks
     "version": "2.0.0",
-
     "tasks": [
         {
-            "taskName": "echo",
-            "command": "echo",
-            "type":"shell",
+            "taskName": "gulp(custom)",
+            "command": "gulp",
             "args": [
-                "123"
+                "--cwd","${fileDirname}"
+            ],
+            "type": "shell",
+            "problemMatcher": [
+                "$gulp-tsc"
+            ]
+        },
+        {
+            "taskName": "gulp(workplace)",
+            "command": "gulp",
+            "args": [
+                /* 
+                 ucwd:cwd之目錄
+                 不可使用cwd，會與原生的引數相衝突
+                 */
+                "--utilCwd","${fileDirname}"
+            ],
+            "type": "shell",
+            "problemMatcher": [
+                "$gulp-tsc"
             ]
         }
-        /*        {
-"taskName": "echo",
-"command": "live-server",
-"args": [
-// "${fileDirname}"
-"--open=${relativeFile}"
-],
-"isShellCommand": true
-},
-{
-"taskName": "Launch via chrome",
-"command": "chrome",
-"windows": {
-"command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-"args": [
-    "--new-window",
-    "--disable-extensions", // 禁用擴充功能
-    "--disk-cache-size 0", // 將快取設為0
-    "--disable-translate " // 禁用翻譯功能
-]
-},
-"args": [
-"${file}"
-]
-},*/
     ]
 }
 /*            "taskName": "echo hello", // 顯示在命令選擇區裡的名稱
