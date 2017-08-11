@@ -2,12 +2,16 @@
     // 說明見:https://code.visualstudio.com/docs/editor/tasks
     "version": "2.0.0",
     "tasks": [
+ 
         {
             "taskName": "gulp",
             "type": "shell",
             "command": "gulp",
             "args": [
-                "--newcwd","${fileDirname}","--file","${fileBasename}"
+                "--newcwd",
+                "${fileDirname}",
+                "--file",
+                "${fileBasename}"
             ],
             "problemMatcher": [
                 "$gulp-tsc"
@@ -15,12 +19,17 @@
             "group": "build"
         },
         {
-            "taskName":"bulid-test",
+            "taskName": "bulid-test",
             "command": "echo",
             "args": [
                 "hello-world"
             ],
-            "group":"build"
+            "group": "build"
+        },
+        {
+            "type": "gulp",
+            "task": "less",
+            "problemMatcher": []
         }
     ]
 }

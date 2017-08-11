@@ -42,10 +42,12 @@
                     ]
                 },
                 {
-                    "name": "Node Debug",
                     "type": "node",
                     "request": "launch",
-                    "program": "${file}"
-                }
+                    "name": "node debug",
+                    "program": "${file}",
+                    "protocol": "auto",
+                    "cwd": "${fileDirname}"
+                },
             ]
         }
