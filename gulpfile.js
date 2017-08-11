@@ -1,40 +1,22 @@
-// 載入 package
-var process = require("process"),
-    path = require("path"),
-    // gulp & gulp plugin
+const path = require("path"),
     gulp = require('gulp'),
-    gulpUtil = require('gulp-util'),// 接收外部引數
+    gutil = require('gulp-util'),// 接收外部引數
     less = require('gulp-less');// LESS compiler
 
-console.log("cwd path:", gulpUtil.env.utilCwd);
+let root = gutil.env.newcwd;
+let file = path.parse(gutil.env.file);
 
-function pathCwd(files) {
-    return path.join(gulpUtil.env.utilCwd, (files === undefined) ? "" : files);
-}
-
-
-/* 
-// 確認cwd路徑為何
-gulp.task("cwdCheck", function () {
-    console.log("cwd path:", pathCwd("style.less"));
-});
- */
-
-// 手動轉換LESS成CSS
-gulp.task('less', function () {
-    gulp.src(pathCwd("style.less")) // 指定目標檔案
-        // .pipe(string):node原生指令，用以指定動作流程
-        .pipe(less())// 1. 用gulp-less將.less轉換成.css
-        .pipe(gulp.dest(pathCwd()));// 2.將轉換過的檔案放在同目錄下
-    // .dest(string):指定成品位置
+// 確認變數
+gulp.task("cwd", () => {
+    console.log(path.join(root, file.base));
 });
 
-// 自動轉換LESS成CSS
-// gulp.task("lessSync", function () {});
+// 轉換less為css
+gulp.task("less", () => {
+    gulp.src(path.join(root, file.base))
+        .pipe(less())
+        .pipe(gulp.dest(root));
+});
 
-/* 
-設定預設任務:透過cmd執行gulp時若後面未加引數，則會自動執行task:default
-會以陣列的順序執行前面設定好的任務
-*/
-
+// 預設
 gulp.task("default", ["less"]);
