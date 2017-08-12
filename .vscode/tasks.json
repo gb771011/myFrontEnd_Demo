@@ -2,9 +2,8 @@
     // 說明見:https://code.visualstudio.com/docs/editor/tasks
     "version": "2.0.0",
     "tasks": [
- 
         {
-            "taskName": "gulp",
+            "taskName": "gulp-1",
             "type": "shell",
             "command": "gulp",
             "args": [
@@ -29,6 +28,11 @@
         {
             "type": "gulp",
             "task": "less",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "gulp",
             "problemMatcher": []
         }
     ]
