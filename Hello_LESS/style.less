@@ -1,8 +1,27 @@
+// LESS教學:http://www.oxxostudio.tw/articles/201601/css-less-01.html
 @bg1:white;
-@bg2:yellow;
+@bg2:#ADAD36;
+@bd1:#34367D;
 @fz1:18px;
-div{
-    background-color:@bg1;
-    color: @bg2;
-    font-size: @fz1;
+// mixin (函數)
+.twiceFont(@v){
+    font-size : @v * 2; 
 }
+
+// 1
+#cont1{
+    border: 1px solid @bd1;
+    ul{
+        .twiceFont(12px);
+        padding-left: 60px;
+        li{
+            // padding: 5px;
+            background-color: #908080;
+            &:hover{
+                background-color: red;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+

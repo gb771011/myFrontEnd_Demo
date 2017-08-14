@@ -98,3 +98,8 @@ vscode的task只會執行工作目錄下的gulpfile.js
 
 **缺點**
 * 只能處裡共用的任務(檔案轉換...etc)，無法按個別專案需要做處裡
+
+## 任務
+* Less轉css: [gulp-less](https://www.npmjs.com/package/gulp-less)
+* 檔案監測: [browser-sync](http://www.cnblogs.com/woodyblog/p/6424111.html)
+/ [官方文檔](https://www.browsersync.io/docs)

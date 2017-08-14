@@ -1,5 +1,14 @@
-div {
-  background-color: white;
-  color: yellow;
-  font-size: 18px;
+#cont1 {
+  border: 1px solid #34367D;
+}
+#cont1 ul {
+  font-size: 24px;
+  padding-left: 60px;
+}
+#cont1 ul li {
+  background-color: #908080;
+}
+#cont1 ul li:hover {
+  background-color: red;
+  text-decoration: underline;
 }
