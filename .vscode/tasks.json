@@ -32,3 +32,34 @@
         }
     ]
 }
+/*
+{
+            "taskName": "gulp(locale)",
+            "command": "gulp",
+            "args": [
+                "--cwd",
+                "${fileDirname}"
+            ],
+            "type": "shell",
+            "problemMatcher": [
+                "$gulp-tsc"
+            ]
+        },
+        {
+            "taskName": "gulp(workplace)",
+            "command": "gulp",
+            "args": [
+                "--utilCwd",
+                "${fileDirname}"
+            ],
+            "type": "shell",
+            "problemMatcher": [
+                "$gulp-tsc"
+            ]
+        },
+        {
+            "type": "gulp",
+            "task": "less",
+            "problemMatcher": []
+        }
+*/
