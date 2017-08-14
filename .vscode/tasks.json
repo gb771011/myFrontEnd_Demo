@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "gulp-1",
+            "taskName": "gulp(from workplace)",
             "type": "shell",
             "command": "gulp",
             "args": [
@@ -18,22 +18,17 @@
             "group": "build"
         },
         {
-            "taskName": "bulid-test",
-            "command": "echo",
+            "taskName": "gulp(from folder)",
+            "type": "shell",
+            "command": "gulp",
             "args": [
-                "hello-world"
+                "--cwd",
+                "${fileDirname}"
+            ],
+            "problemMatcher": [
+                "$gulp-tsc"
             ],
             "group": "build"
-        },
-        {
-            "type": "gulp",
-            "task": "less",
-            "problemMatcher": []
-        },
-        {
-            "type": "npm",
-            "script": "gulp",
-            "problemMatcher": []
         }
     ]
 }

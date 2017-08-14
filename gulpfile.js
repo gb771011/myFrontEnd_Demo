@@ -4,11 +4,11 @@ const path = require("path"),
     less = require('gulp-less');// LESS compiler
 
 let root = gutil.env.newcwd;
-let file = path.parse(gutil.env.file);
+let file = gutil.env.file;
 
 // 確認變數
 gulp.task("cwd", () => {
-    console.log(path.join(root, file.base));
+    console.log(root, file);
 });
 
 // 轉換less為css
@@ -19,4 +19,4 @@ gulp.task("less", () => {
 });
 
 // 預設
-gulp.task("default", ["less"]);
+gulp.task("default", ["cwd"]);

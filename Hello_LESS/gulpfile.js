@@ -19,4 +19,4 @@ gulp.task("less", () => {
 });
 
 // 預設
-gulp.task("default", ["less"]);
+gulp.task("default", ["cwd"]);
