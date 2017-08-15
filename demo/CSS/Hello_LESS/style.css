@@ -1,3 +1,13 @@
+#p1 {
+  background-color: #E28383;
+  color: red;
+  font-size: 24px;
+}
+#p2 {
+  background-color: #2FA8F4;
+  color: #123B82;
+  font-size: 16px;
+}
 #cont1 {
   border: 1px solid #34367D;
 }

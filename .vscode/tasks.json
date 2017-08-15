@@ -29,6 +29,11 @@
                 "$gulp-tsc"
             ],
             "group": "build"
+        },
+        {
+            "type": "gulp",
+            "task": "default",
+            "problemMatcher": []
         }
     ]
 }

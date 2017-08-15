@@ -8,7 +8,26 @@
     font-size : @v * 2; 
 }
 
-// 1
+// 用mixin做的偽class
+.style1(){
+    background-color: #E28383;
+    color: red;
+    font-size: 24px;
+}
+.style2(){
+    background-color: #2FA8F4;
+    color: #123B82;
+    font-size: 16px;
+}
+
+#p1{
+    .style1()
+}
+#p2{
+    .style2()
+}
+
+// 
 #cont1{
     border: 1px solid @bd1;
     ul{
