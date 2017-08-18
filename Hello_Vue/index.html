@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Hello Vue.js</title>
+</head>
+
+<body>
+    <h1>Hello Vue</h1>
+    <div id="app">
+        <p v-bind:title="time">hover me</p>
+        <p v-if="seen">You See Me Now</p>
+        <ul>
+            <li v-for="item in list">
+                {{item.title}}:{{item.text}}
+            </li>
+        </ul>
+        <item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></item>
+    </div>
+
+    <script>
+        Vue.component("item", {
+            props: ['todo'],
+            template: '<p>{{todo.text}}</p>'
+        });
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue',
+                time: new Date(),
+                seen: true,
+                list: [
+                    { id: 0, text: "cotent001", title: "title001" },
+                    { id: 1, text: "cotent001", title: "title001" },
+                    { id: 2, text: "cotent001", title: "title001" },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
