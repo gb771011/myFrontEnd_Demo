@@ -10,33 +10,41 @@
 </head>
 
 <body>
-    <h1>Hello Vue</h1>
-    <div id="app">
-        <p v-bind:title="time">hover me</p>
-        <p v-if="seen">You See Me Now</p>
-        <ul>
-            <li v-for="item in list">
-                {{item.title}}:{{item.text}}
-            </li>
-        </ul>
-        <item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></item>
+    <h1>
+        <a href="https://cn.vuejs.org/v2/guide/index.html#起步">Hello Vue</a>
+    </h1>
+    <div id='app'>
+        <div>
+            <span>將數據渲染(rander)進頁面中</span>
+            <p><b>Msg:</b>{{msg}}</p>
+            <hr>
+        </div>
+        <div>
+            <span>透過v-bind</span>
+            <p v-bind:title="tle">check title</p>
+        </div>
+        <hr>
+        <div>
+            <span>使用v-for來重複渲染資料</span>
+            <ul=>
+                <caption><b>List from vue</b></caption>
+                <li v-for="item in list">
+                    {{item.text}}
+                </li>
+                </ul>
+        </div>
     </div>
-
+    <hr>
     <script>
-        Vue.component("item", {
-            props: ['todo'],
-            template: '<p>{{todo.text}}</p>'
-        });
-        let app = new Vue({
+        let vv = new Vue({
             el: '#app',
             data: {
                 msg: 'Hello Vue',
-                time: new Date(),
-                seen: true,
+                tle: 'v-bind: hello vue',
                 list: [
-                    { id: 0, text: "cotent001", title: "title001" },
-                    { id: 1, text: "cotent001", title: "title001" },
-                    { id: 2, text: "cotent001", title: "title001" },
+                    { text: '学习 JavaScript' },
+                    { text: '学习 Vue' },
+                    { text: '整个牛项目' }
                 ]
             }
         })
