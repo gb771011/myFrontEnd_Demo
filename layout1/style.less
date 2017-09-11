@@ -10,6 +10,10 @@ body{
 }
 a{
     text-decoration: none;
+    &:hover{
+        color:red;
+        text-decoration: underline;
+    }
 }
 
 header{
@@ -38,10 +42,11 @@ nav{
             display: inline-block;
             width:10%;
             text-align: center;
-        }
-        :hover{
+        
+        &:hover{
             background-color: green;
         }
+    }
     }
     // background-color: #C67BAE;
 }
@@ -68,7 +73,7 @@ section{
         padding: 1.33rem 0;
     }
     hr{
-        border-color: #1D573B;
+        border-color: #1D573B; 
     }
     #control{
         text-align: right;
@@ -83,15 +88,9 @@ aside{
         margin-bottom: 1rem;
         padding: 0 0.5rem;
         background-color: #fff;
-
     }
-    div:first-of-type h3{
+    div>h3{
         background-color: #212121;
         color: #fff;
-    }
-
-    h2:first-child{
-        font-size: 3rem;
-        color: red;
     }
 }
