@@ -15,8 +15,8 @@
         "debug.log":true,
         "**/node_modules":true
     },
-    "vs-color-picker:autoLaunch": false,
     "files.associations": {
-        "*.ejs": "javascript"
+        "*.ejs": "javascript",
+        "*.less":"css"
     }
 }
