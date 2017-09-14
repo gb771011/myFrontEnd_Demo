@@ -3,22 +3,24 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "gulp(from workplace)",
+            "taskName": "gulp-workplace",
             "type": "shell",
             "command": "gulp",
+            /* 
             "args": [
-                "--newcwd",
+                "--cwd",
                 "${fileDirname}",
                 "--file",
                 "${fileBasename}"
             ],
+            */
             "problemMatcher": [
                 "$gulp-tsc"
             ],
             "group": "build"
         },
         {
-            "taskName": "gulp(from folder)",
+            "taskName": "gulp-locale",
             "type": "shell",
             "command": "gulp",
             "args": [
@@ -31,9 +33,18 @@
             "group": "build"
         },
         {
-            "type": "gulp",
-            "task": "default",
-            "problemMatcher": []
+            "taskName": "gulp less",
+            "type": "shell",
+            "command": "gulp",
+            "args": [
+                "--cwd",
+                "${fileDirname}",
+                "less"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gulp-tsc"
+            ]
         }
     ]
 }

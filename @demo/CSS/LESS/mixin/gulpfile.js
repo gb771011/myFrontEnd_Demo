@@ -1,7 +1,7 @@
 const path = require('path'),
     gulp = require('gulp'),
     // 接收外部引數
-    gutil = require('gulp-util'),
+    // gutil = require('gulp-util'),
     // LESS compiler
     less = require('gulp-less'),
     // browser-sync
@@ -24,14 +24,12 @@ gulp.task('less', () => {
 });
 
 // 檔案監測
-gulp.task('browerSync', ['less'], () => {
+gulp.task('browerSync', () => {
     // console.log('gulp-watch');
     // 自動重刷頁面
     bs.init({
         'files': ['./**'],
-        'server': {
-            'baseDir': './'
-        },
+        'server': true,
         'port': 8080,
         'reloadDelay':1000,
     });

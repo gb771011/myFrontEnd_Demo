@@ -1,0 +1,19 @@
+// 漸層
+.bg_gradients(@color1,@color2){
+    background: linear-gradient(@color1,@color2);
+}
+// 區塊尺寸/被景色/文字色 快捷設定
+.block(@w,@bgcolor){
+    width:@w;
+    height: @w;
+    background-color:@bgcolor; 
+    color:255 - @bgcolor;
+}
+
+#cont1{
+    .bg_gradients(red, yellow);
+}
+
+#bk1{
+    .block(250px,red);
+}

@@ -1,0 +1,34 @@
+.flex-container(){
+
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    max-width: 500px;
+    margin:0 auto;
+}
+#main{
+    width: 100%;
+    background: linear-gradient(to right bottom, #3ca55c, #b5ac49);
+    // background: linear-gradient(to right bottom, #fff, #000,#fff);
+    display: flex;
+    flex-direction: column;
+    ul{
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+    li{
+        font-size: 2.2rem;
+    }
+    .task_cb{
+        margin: 0;
+        &:checked{
+            width: 2rem;height: 2rem;
+            +.task_lb{
+                color:red;
+                width: 50px;height: 50px;
+            }
+        }
+    }
+}
