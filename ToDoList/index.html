@@ -6,19 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" defer></script>
     <title>ToDo List 1</title>
 </head>
 
 <body>
     <h1>To-Do list</h1>
-    <div id='main'>
-        <ul>
+    <div id="new">
+        <input id='msg' type="text" placeholder="Please Input Your Msission">
+        <button id="add">Add Task</button>
+    </div>
+    <ul id="list">
+        <h2>Mission List</h2>
+        <!--     
             <li>
-                <input id="t1" class="task_cb" type="checkbox" name="" value="task1" checked> 
-                <label for="t1" class="task_lb">Task1</label>
+                <input id="t1" type="checkbox" checked>
+                <label for="t1">Wake up</label>
             </li>
-
-        </ul>
+            <li>
+                <input id="t2" type="checkbox">
+                <label for="t2">Wash dish</label>
+            </li>
+            <li>
+                <input id="t3" type="checkbox">
+                <label for="t3">Cooking Dinner</label>
+            </li>
+        -->
+    </ul>
+    <div id="newTask">
+        <li>
+            <input id=":id" type="checkbox" >
+            <label for=":id">:msg</label>
+        </li>
     </div>
 </body>
 

@@ -37,8 +37,9 @@ gulp.task('browerSync', () => {
     gulp.watch('./*.less', ['less']);
 
     // *.html /*.css / *.js 異動時: 自動刷新
-    gulp.watch(['*.html','*.css','*.js'],() => {
-        bs.reload();
+    gulp.watch(['*.html','*.css','*.js'],(e) => {
+        // console.log(e);
+        bs.reload(e.path);
     });
 });
 
