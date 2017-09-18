@@ -25,27 +25,35 @@ body {
     background: linear-gradient(to right bottom, #3ca55c, #b5ac49);
     // background: linear-gradient(to right bottom, #fff, #000,#fff);
     margin: 0;
-    margin-bottom: 2rem;
-    padding-left: 1.5rem;
+    padding-left: 0.5rem;
     li {
-        margin-bottom: 0.5rem;
+        // margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
         list-style-type: none;
         display: flex;
         align-items: center;
-        input[type='checkbox'] {
-            // display: none;
-            .square(1rem);
-            margin: 0;
-            padding: 0;
-            &:checked+label {
-                // font-size: 4rem;
-                color: lightgray;
-                text-decoration: line-through
+        label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            input[type='checkbox'] {
+                .square(1.75rem);
+                margin: 0;
+                padding: 0;
+                &:checked+span {
+                    // font-size: 4rem;
+                    color: lightgray;
+                    text-decoration: line-through
+                }
+            }
+            span {
+                font-size: 1.5rem;
+                padding: 0 1rem;
             }
         }
-        label {
-            cursor: pointer;
-            font-size: 1.5rem;
+        button {
+            float: right;
+            font-size: 1.25rem;
         }
     }
 }

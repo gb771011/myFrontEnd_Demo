@@ -12,28 +12,36 @@ body {
   width: 100%;
   background: linear-gradient(to right bottom, #3ca55c, #b5ac49);
   margin: 0;
-  margin-bottom: 2rem;
-  padding-left: 1.5rem;
+  padding-left: 0.5rem;
 }
 #list li {
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
   list-style-type: none;
   display: flex;
   align-items: center;
 }
-#list li input[type='checkbox'] {
-  width: 1rem;
-  height: 1rem;
+#list li label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+#list li label input[type='checkbox'] {
+  width: 1.75rem;
+  height: 1.75rem;
   margin: 0;
   padding: 0;
 }
-#list li input[type='checkbox']:checked + label {
+#list li label input[type='checkbox']:checked + span {
   color: lightgray;
   text-decoration: line-through;
 }
-#list li label {
-  cursor: pointer;
+#list li label span {
   font-size: 1.5rem;
+  padding: 0 1rem;
+}
+#list li button {
+  float: right;
+  font-size: 1.25rem;
 }
 #newTask {
   display: none;

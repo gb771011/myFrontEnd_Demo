@@ -13,33 +13,30 @@
 
 <body>
     <h1>To-Do list</h1>
+
+    <h2>Mission List</h2>
+    <ul id="list">
+        <li id=":id">
+            <label>
+                <input type="checkbox">
+                <span>MESSAGE</span>
+            </label>
+            <button type="button" onclick="hello(this.parentElement.id)">edit</button>
+        </li>
+    </ul>
     <div id="new">
         <input id='msg' type="text" placeholder="Please Input Your Msission">
         <button id="add">Add Task</button>
     </div>
-    <ul id="list">
-        <h2>Mission List</h2>
-        <!--     
-            <li>
-                <input id="t1" type="checkbox" checked>
-                <label for="t1">Wake up</label>
-            </li>
-            <li>
-                <input id="t2" type="checkbox">
-                <label for="t2">Wash dish</label>
-            </li>
-            <li>
-                <input id="t3" type="checkbox">
-                <label for="t3">Cooking Dinner</label>
-            </li>
-        -->
-    </ul>
-    <div id="newTask">
-        <li>
-            <input id=":id" type="checkbox" >
-            <label for=":id">:msg</label>
+    <template id="taskLi">
+        <li id=":id">
+            <label>
+                <input type="checkbox">
+                <span>:msg</span>
+            </label>
+            <button type="button" onclick="hello(this.parentElement.id)">edit</button>
         </li>
-    </div>
+    </template>
 </body>
 
 </html>
