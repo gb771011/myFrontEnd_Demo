@@ -8,6 +8,12 @@
     height: @l;
 }
 
+.font-size(@m: 1) {
+    font-size: 1.5rem * @m;
+}
+
+;
+// 
 * {
     box-sizing: border-box;
 }
@@ -27,8 +33,8 @@ body {
     margin: 0;
     padding-left: 0.5rem;
     li {
-        // margin-bottom: 0.5rem;
-        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem 0;
         list-style-type: none;
         display: flex;
         align-items: center;
@@ -41,7 +47,6 @@ body {
                 margin: 0;
                 padding: 0;
                 &:checked+span {
-                    // font-size: 4rem;
                     color: lightgray;
                     text-decoration: line-through
                 }
@@ -58,6 +63,14 @@ body {
     }
 }
 
-#newTask {
-    display: none;
+.newTask {
+    display: flex;
+    margin: 1rem 0;
+    * {
+        .font-size(1);
+    }
+    input[type='text'] {
+        flex: 1;
+        margin-left: 0.5rem;
+    }
 }

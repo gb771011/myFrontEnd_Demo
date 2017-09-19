@@ -6,65 +6,53 @@ class TodoList {
         // if with db:建立時自動先向db提取既有資料
     }
     // Create
-    create(msg) {
+    create(message) {
         let result;
-        let newTask = {
+        let data = {
             id: new Date().valueOf(),
-            msg: msg,
+            msg: message,
             isDone: false
         };
         // 將新資料加入到this.list裡
-        this.list.push(newTask);
+        this.list.push(data);
         // 顯示在頁面上
         result = this.template.replace(/:(\w+)/g, (...arg) => {
             let key = arg[1];
-            return newTask[key];
+            return data[key];
         });
-        console.log(JSON.stringify(this.list));
-        return result;
+        console.log('create:',data);
+        console.log(this.list);
+        $(this.container).append(result);
     }
     // Read
+    read(){
 
+    }
     // Update
-
+    update(iId,iKey,iValue){
+        this.list.forEach((val,i)=>{
+            if(val.id===parseInt(iId)){
+                val.isDone=!val.isDone;
+            }
+        });
+        console.log('update:',iId,iKey,iValue);
+    }
     // Delete
 }
 
-let mylist = new TodoList('#list', $('#taskLi').html());
+let mylist = new TodoList('#list', $('#task').html());
 
 $(function () {
+    // 自動新增其他任務
+    mylist.create('mission1');
+    mylist.create('mission2');
     // 在#list中加入一個新任務
     $('#add').click(function () {
-        let inMsg = $('#msg').val(),
-            newLi;
+        let inMsg = $('#msg').val();
         if (inMsg !== '') {
-            newLi = mylist.create(inMsg);
-            $('#list').append(newLi);
+            mylist.create(inMsg);
         } else {
             alert('please key something......');
         }
     });
 });
-
-function hello(e) {
-    console.dir(e);
-}
-// let newId, newLi, newMsg;
-/* 
-class oneTask {
-    constructor(msg, temp = $('#newTask').html()) {
-        this.id = new Date().valueOf().toString().slice(-8);
-        this.msg = msg;
-        this.isDone = false;
-        this.template = temp;
-    }
-    addTo() {
-        let result =
-        this.template.replace(/:(\w+)/g, (...arg) => {
-            // console.log(arg[1]);
-            return this[arg[1]];
-        });
-        return result;
-    }
-}
-*/
