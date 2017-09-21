@@ -1,65 +1,63 @@
 # Gulp 
-## Reference
-### offical Doc
+# Reference
 * [Gulp API](https://github.com/gulpjs/gulp/blob/master/docs/API.md)
-### Tutorial
 * [Tutorial:OXXOstudio](http://www.oxxostudio.tw/articles/201503/gulp-install-webserver.html)
 * [Other Tutorial1](http://www.ydcss.com/archives/34)
-### Other
 * [What is Glob?](https://amobiz.github.io/2015/11/14/gulp-glob/)
-/  [What is Glob?2](http://www.jianshu.com/p/fbf9871dc47a)
+* [What is Glob?2](http://www.jianshu.com/p/fbf9871dc47a)
 
+# Module
+* Less轉css: [gulp-less](https://www.npmjs.com/package/gulp-less)
+* 檔案監測: [browser-sync](https://www.browsersync.io/docs)
 
-## 如何在vscode裡跨資料夾執行gulp
-### 問題
-vscode的task只會執行工作目錄下的gulpfile.js       
-但要轉換的檔案通常都是放在個別資料夾中(如下)
+# 如何在vscode裡跨資料夾執行gulp(17/9/21更新)
+**vscode**的**task**的預設工作目錄為/.vscode的所在資料夾(workplace)
+
+假設資料夾與檔案的結構如下:
 
 ```
-+--(workspace) (vscode的工作區目錄)
-| `--demo01 
++--/my_workspace
+| `--/.vscode 
+| `--/demo01 
 |   +--style.less (要轉換的檔案)
 |   `--index.html
-|-gulpfile.js
+|--gulpfile.js
 ```
 
-因位置不同，若直接執行會因為找不到指定檔案而發生錯誤
+如上，要處裡的檔案都在`my_workspace/demo01`裡面，但`gulpfile.js`卻是在`/my_workspace`下
 
-故要讓 _vscode task_ 或是 _gulp_ 有可以判斷 **當前工作目錄(CWD)** 的能力
+若不修改`gulpfile.js`的路徑而直接執行gulp，gulp會因為找不到要處理的檔案而報錯
 
+## 改善方法1. 使用gulp原生參數`--env`切換當前工作目錄(17/9/21更新)
 
-### 方法1. 使用gulp原生參數`--env`切換當前工作目錄
+透過CLI執行gulp時可藉由設定引數(argument/flag)來改變原始設定，[Github:Gulp CLI](https://github.com/gulpjs/gulp/blob/master/docs/CLI.md)
 
-#### 步驟
-1. 在gulp的任務裡加入`"args":'--env','${fileDirname}`兩個引數
+其中`--cwd`引數可改變gulp執行時的工作資料夾，搭配vscode task的`${fileDirname}`變數，就可以在執行Gulp時根據當前檔案的位置修改CWD了
 
-        {
-            "taskName": "gulp-change_cwd",
-            "command": "gulp",
-            "args": [
-                "--cwd","${fileDirname}"
-            ]
-        }
-2. 在當前目錄下準備好`gulpfile.js`(任務依需求自訂)
+### 設定步驟
+1. 在vscode的`task.json`裡新建gulp的任務
+1. 在gulp任務裡`args`裡加入`'--cwd','${fileDirname}`兩個引數
+```
+{
+    "taskName": "gulp-locale",
+    "command": "gulp",
+    "args": [
+        "--cwd","${fileDirname}"
+    ]
+}
+```
+1. 若專案有特殊需求，可在當前資料夾下準備好`gulpfile.js`
 
-#### 執行結果
-1. task執行時，透過--cwd引數，gulp會自動將CWD從 **工作目錄** 暫時轉變為 **當前檔案的資料夾**(`${fileDirname}`)
-2. 執行該路徑下的gulpfile.js做轉換
-
-#### 分析
-
-**優點**
-* 不用花時間在處裡路徑問題上
-* 可針對個別資料夾需求設定gulpfile.js
-* 可讓vscode偵測gulpfile.js裡的任務並單獨執行
-
-**缺點**
-* 須在該目錄下先準備好gulpfile.js
+### 結果
+1. 透過vscode執行gulp時，透過--cwd引數，gulp會將CWD從 **工作目錄** 轉變為 **當前檔案的資料夾**(`${fileDirname}`)
+1. 執行當前資料夾下的`gulpfile.js`
+1. 若當前資料夾沒有`gulpfile.js`，gulp會自動繼續往上找`gulpfile.js`並執行
 
 
-### 方法2. 使用gulp-util模組
 
-#### 作法
+## 方法2. 使用gulp-util模組
+
+### 設定步驟
 
 1. 在工作區的gulpfile.js裡引入`gulp-util`模組(透過npm安裝gulp時會一併安裝，不用另外安裝)  
 
@@ -91,15 +89,9 @@ vscode的task只會執行工作目錄下的gulpfile.js
 
 1. 全部完成之後，就可以在 `gulpfile.js` 內透過引用變數的方式來設定路徑了
 
-#### 分析
-
-**優點**
+### 優點
 * 在工作區下就可以處裡其他資料夾裡的檔案
 
-**缺點**
+### 缺點
 * 只能處裡共用的任務(檔案轉換...etc)，無法按個別專案需要做處裡
 
-## 任務
-* Less轉css: [gulp-less](https://www.npmjs.com/package/gulp-less)
-* 檔案監測: [browser-sync](http://www.cnblogs.com/woodyblog/p/6424111.html)
-/ [官方文檔](https://www.browsersync.io/docs)
