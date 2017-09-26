@@ -1,7 +1,9 @@
-# Usage 
+# Features 
 * HTML
     * 新增任務
-    * 表示任務已完成
+    * 任務狀態變更
+        * 未完成: 黑字
+        * 完成: 灰字+刪除線
     * 刪除任務
 * js
     * 將所有任務的資訊(id,content,isDone)以json的形式儲存

@@ -20,12 +20,12 @@
     </div>
     <template id="task">
         <li class='taskList' id=":id">
-            <label>
+            <label class="taskConfirm">
                 <!-- <input type="checkbox" onclick="mylist.update(this.parentElement.parentElement.id,'isDone',checked)"> -->
                 <input type="checkbox">
                 <span>:msg</span>
             </label>
-            <button type="button" onclick="mylist.update(this.parentElement.id,'isDone',)">X</button>
+            <button type="button" onmousedown="mylist.updateIsDone(this.parentElement.id);console.dir(mylist.list)">X</button>
         </li>
     </template>
 </body>

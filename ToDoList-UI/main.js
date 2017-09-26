@@ -20,30 +20,29 @@ class TodoList {
             let key = arg[1];
             return data[key];
         });
-        console.log('create:',data);
+        console.log('create:', data);
         console.log(this.list);
         $(this.container).append(result);
     }
     // Read
-    read(){
-
-    }
+    // read() {}
     // Update
-    update(iId,iKey,iValue){
-        this.list.forEach((val,i)=>{
-            if(val.id===parseInt(iId)){
-                val.isDone=!val.isDone;
+    updateIsDone(iId) {
+        console.log(iId);
+        this.list.forEach((val) => {
+            if (val.id === parseInt(iId)) {
+                val.isDone = !val.isDone;
             }
+            console.log('update:isDone', iId, val.isDone);
         });
-        console.log('update:',iId,iKey,iValue);
     }
     // Delete
 }
 
 let mylist = new TodoList('#list', $('#task').html());
-
 $(function () {
-    // 自動新增其他任務
+
+    // (開發用)自動新增任務
     mylist.create('mission1');
     mylist.create('mission2');
     // 在#list中加入一個新任務
@@ -54,5 +53,8 @@ $(function () {
         } else {
             alert('please key something......');
         }
+    });
+    $('.taskConfirm').click(function () {  
+        console.dir(this.parentNode);
     });
 });
