@@ -10,10 +10,7 @@
 
 .font-size(@m: 1) {
     font-size: 1.5rem * @m;
-}
-
-;
-// 
+};
 * {
     box-sizing: border-box;
 }
@@ -28,13 +25,17 @@ body {
 // #list
 #list {
     width: 100%;
-    background: linear-gradient(to right bottom, #3ca55c, #b5ac49);
+    background-color: lime;
+    // background: linear-gradient(to right bottom, #3ca55c, #b5ac49);
     // background: linear-gradient(to right bottom, #fff, #000,#fff);
     margin: 0;
-    padding-left: 0.5rem;
+    padding-left:0;
+    padding: 0 0.5rem;
     li {
-        margin-bottom: 0.5rem;
-        padding: 0.5rem 0;
+        background-color: yellowgreen;
+        border-bottom: 1px dashed #000;
+        // margin-bottom: 0.5rem;
+        padding: 0.66rem 0 0.33rem 0;
         list-style-type: none;
         display: flex;
         align-items: center;

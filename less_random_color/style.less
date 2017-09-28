@@ -1,0 +1,31 @@
+.randomColor() {
+    //  建立(0x000000)~16777215(0xffffff)之間的亂數0
+    @randomColor: `Math.floor(Math.random()*16777215).toString(16)`;
+    //  將亂數的格式轉換成字串
+    @colorHex: e(@randomColor);
+    //  在字串前加#
+    @color: ~"#@{colorHex}";
+}
+
+@item:4;
+
+div {
+    .randomColor();
+    width: 100px;
+    height: 100px;
+    background-color: @color;
+    border: 1px solid #000;
+
+    .loop(@item)when(@item>0){
+        &:nth-of-type(@{item}){
+            // background-color: red;
+            .randomColor();
+            background-color: @color;
+        }
+        .loop(@item - 1);
+    }
+    .loop(@item);
+    &:after {
+        content: %(':%d', @color);
+    }
+}

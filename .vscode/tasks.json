@@ -37,9 +37,9 @@
             "type": "shell",
             "command": "gulp",
             "args": [
+                "less",
                 "--cwd",
                 "${fileDirname}",
-                "less"
             ],
             "group": "build",
             "problemMatcher": [

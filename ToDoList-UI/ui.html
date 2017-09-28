@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="main.js" defer></script> -->
+    <title>ToDo List UI</title>
+</head>
+
+<body>
+    <h1>To-Do list</h1>
+    <ul id="list">
+        <li class='taskList' id=":id">
+            <label class="taskConfirm">
+                    <input type="checkbox">
+                    <span>:msg</span>
+                </label>
+            <button type="button" onmousedown="mylist.updateIsDone(this.parentElement.id);console.dir(mylist.list)">X</button>
+        </li>
+        <li><label for=""><span>taks1</span></label></li>
+        <li><label for=""><span>taks2</span></label></li>
+        <li><label for=""><span>taks3</span></label></li>
+    </ul>
+    <div class="newTask">
+        <button id="add">+</button>
+        <input id='msg' type="text" placeholder="Please Input Your Mission">
+    </div>
+</body>
+
+</html>
