@@ -5,27 +5,25 @@
     @colorHex: e(@randomColor);
     //  在字串前加#
     @color: ~"#@{colorHex}";
+    
 }
 
 @item:4;
 
 div {
-    .randomColor();
     width: 100px;
     height: 100px;
-    background-color: @color;
     border: 1px solid #000;
 
     .loop(@item)when(@item>0){
         &:nth-of-type(@{item}){
-            // background-color: red;
             .randomColor();
             background-color: @color;
+            &:after {
+                content: %(':%d', @color);}
+
         }
         .loop(@item - 1);
     }
     .loop(@item);
-    &:after {
-        content: %(':%d', @color);
-    }
 }
